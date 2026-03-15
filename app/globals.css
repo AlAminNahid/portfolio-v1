@@ -7,8 +7,15 @@
 
   --font-outfit: "Outfit", sans-serif;
   --font-ovo: "Ovo", serif;
+
+  --shadow-black: 4px 4px 0 #000;
+  --shadow-white: 4px 4px 0 #fff;
 }
 
 body {
   font-family: var(--font-outfit);
+}
+
+.card {
+  @apply border-[0.5px] border-gray-400 rounded-xl p-6 cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 hover:shadow-black;
 }
