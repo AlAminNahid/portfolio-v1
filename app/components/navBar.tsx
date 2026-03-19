@@ -4,7 +4,6 @@ import Image from "next/image";
 import logo from "@/public/assets/logo.png";
 import arrowIcon from "@/public/assets/arrow-icon.png";
 import headerBG from "@/public/assets/header-bg-color.png";
-import moonIcon from "@/public/assets/moon_icon.png";
 import menuBlackIcon from "@/public/assets/menu-black.png";
 import closeIcon from "@/public/assets/close-black.png";
 import { useEffect, useRef, useState } from "react";
@@ -78,9 +77,6 @@ export default function NavBar() {
           </li>
         </ul>
         <div className="flex items-center gap-4">
-          <button>
-            <Image src={moonIcon} alt="Moon-Icon" className="w-6" />
-          </button>
           <a
             href="#contact"
             className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 font-ovo"

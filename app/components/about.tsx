@@ -34,8 +34,8 @@ export default function About() {
                 <Image src={codeIcon} alt="CodeIcon" className="w-7 mt-3" />
                 <h3 className="my-4 font-semibold text-gray-700">Tech Stack</h3>
                 <p className="text-gray-600 text-sm">
-                  HTML, CSS, Tailwind, JavaScript, TypeScript, ReactJS, NextJS,
-                  NestJS, Kotlin
+                  C++, HTML, CSS, Tailwind, JavaScript, TypeScript, ReactJS,
+                  NextJS, NestJS, Kotlin
                 </p>
               </li>
               <li className="card">
