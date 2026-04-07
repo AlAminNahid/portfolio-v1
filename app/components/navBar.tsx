@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import logo from "@/public/assets/logo.png";
-import arrowIcon from "@/public/assets/arrow-icon.png";
+import downloadIcon from "@/public/assets/download-icon.png";
 import headerBG from "@/public/assets/header-bg-color.png";
 import menuBlackIcon from "@/public/assets/menu-black.png";
 import closeIcon from "@/public/assets/close-black.png";
@@ -78,10 +78,12 @@ export default function NavBar() {
         </ul>
         <div className="flex items-center gap-4">
           <a
-            href="#contact"
-            className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 font-ovo"
+            href="/Nahid_s_Resume.pdf"
+            download
+            className="px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2"
           >
-            Contact <Image src={arrowIcon} className="w-3" alt="Arrow Icon" />
+            my resume
+            <Image src={downloadIcon} alt="Download-Icon" className="w-4" />
           </a>
           <button className="block md:hidden ml-3" onClick={openMenu}>
             <Image src={menuBlackIcon} alt="Moon-Icon" className="w-6" />

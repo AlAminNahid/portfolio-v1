@@ -1,8 +1,9 @@
 import Image from "next/image";
 import profileImage from "@/public/assets/profileIMG.jpg";
 import handIcon from "@/public/assets/hand-icon.png";
-import rightArrowWhite from "@/public/assets/right-arrow-white.png";
-import downloadIcon from "@/public/assets/download-icon.png";
+import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
+import { SiCodeforces } from "react-icons/si";
 
 export default function Header() {
   return (
@@ -30,26 +31,45 @@ export default function Header() {
           front-end design to back-end systems.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
+        <div className="flex items-center justify-center gap-6 py-4">
           <a
-            href="#contact"
-            className="px-10 py-3 border border-white rounded-full bg-black text-white flex items-center gap-2"
+            href="https://www.linkedin.com/in/al-amin-hossain-nahid-876858193/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            contact me
-            <Image
-              src={rightArrowWhite}
-              alt="Right-Arrow-White"
-              className="w-4"
-            />
+            <div className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 cursor-pointer hover:scale-110 hover:text-blue-600 transition duration-300">
+              <FaLinkedinIn size={20} />
+            </div>
           </a>
 
           <a
-            href="/Nahid_s_Resume.pdf"
-            download
-            className="px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2"
+            href="https://github.com/AlAminNahid"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            my resume
-            <Image src={downloadIcon} alt="Download-Icon" className="w-4" />
+            <div className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 cursor-pointer hover:scale-110 hover:text-black transition duration-300">
+              <FaGithub size={20} />
+            </div>
+          </a>
+
+          <a
+            href="https://codeforces.com/profile/AluBoss11"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 cursor-pointer hover:scale-110 hover:text-black transition duration-300">
+              <SiCodeforces size={20} />
+            </div>
+          </a>
+
+          <a
+            href="https://leetcode.com/u/al_aminnahid11/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 cursor-pointer hover:scale-110 hover:text-orange-500 transition duration-300">
+              <SiLeetcode size={20} />
+            </div>
           </a>
         </div>
       </div>

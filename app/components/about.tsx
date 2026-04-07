@@ -29,13 +29,15 @@ export default function About() {
               development and modern web technologies.
             </p>
 
-            <ul className="grid grid-cols-1 sm:grid-cols-3 gap-10 max-w-2xl">
+            <ul className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl">
               <li className="card">
                 <Image src={codeIcon} alt="CodeIcon" className="w-7 mt-3" />
-                <h3 className="my-4 font-semibold text-gray-700">Tech Stack</h3>
+                <h3 className="my-4 font-semibold text-gray-700">
+                  Languages & Frameworks
+                </h3>
                 <p className="text-gray-600 text-sm">
-                  C++, HTML, CSS, Tailwind, JavaScript, TypeScript, ReactJS,
-                  NextJS, NestJS, Kotlin
+                  C++, Java, HTML, CSS, Tailwind, JavaScript, TypeScript,
+                  ReactJS, NextJS, NestJS, Kotlin
                 </p>
               </li>
               <li className="card">

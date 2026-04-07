@@ -7,18 +7,18 @@ import rightArrow from "@/public/assets/right-arrow-bold.png";
 export default function Works() {
   const projects = [
     {
-      title: "Clinic Management System",
-      type: "Full-Stack Web App",
-      tech: "HTML, CSS, JavaScript, PHP, MySQL",
-      image: workOne,
-      github: "https://github.com/AlAminNahid/Clinic_Management_System.git",
-    },
-    {
       title: "Mess Management System",
       type: "Full-Stack Web App",
       tech: "Tailwind-CSS, ReactJS, NextJS, NestJS, PostgreSQL",
       image: workTwo,
       github: "https://github.com/AlAminNahid/Mess_Management_System.git",
+    },
+    {
+      title: "Clinic Management System",
+      type: "Full-Stack Web App",
+      tech: "HTML, CSS, JavaScript, PHP, MySQL",
+      image: workOne,
+      github: "https://github.com/AlAminNahid/Clinic_Management_System.git",
     },
   ];
 
@@ -33,7 +33,7 @@ export default function Works() {
           my expertise in Full-Stack web & Mobile Development
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 my-10">
+        <div className="grid md:grid-cols-2 gap-8 my-10">
           {projects.map((project, index) => (
             <a
               key={index}
@@ -42,7 +42,7 @@ export default function Works() {
               rel="noopener noreferrer"
               className="block"
             >
-              <div className="relative group rounded-xl overflow-hidden shadow-lg cursor-pointer">
+              <div className="relative w-full h-[300px] shadow-xl shadow-gray-400 rounded-xl overflow-hidden group">
                 <Image
                   src={project.image}
                   alt={project.title}

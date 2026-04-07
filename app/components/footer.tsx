@@ -32,6 +32,14 @@ export default function Footer() {
               </a>
             </li>
             <li>
+              <a
+                href="https://codeforces.com/profile/AluBoss11"
+                target="_blank"
+              >
+                CodeForces
+              </a>
+            </li>
+            <li>
               <a href="https://leetcode.com/u/al_aminnahid11/" target="_blank">
                 LeetCode
               </a>

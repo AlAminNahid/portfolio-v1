@@ -26,10 +26,7 @@ export default function Services() {
               Building complete web applications using modern frontend and
               backend technologies with databases and APIs...
             </p>
-            <a
-              href="#web-projects"
-              className="flex items-center gap-2 text-sm mt-5"
-            >
+            <a href="#work" className="flex items-center gap-2 text-sm mt-5">
               Read more <Image src={rightArrow} alt="" className="w-4" />
             </a>
           </li>
@@ -43,10 +40,7 @@ export default function Services() {
               development tools to create efficient and user-friendly mobile
               experiences...
             </p>
-            <a
-              href="#mobile-projects"
-              className="flex items-center gap-2 text-sm mt-5"
-            >
+            <a href="#work" className="flex items-center gap-2 text-sm mt-5">
               Read more <Image src={rightArrow} alt="" className="w-4" />
             </a>
           </li>
