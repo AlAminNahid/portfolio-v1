@@ -47,7 +47,7 @@ export default function About() {
                 </h3>
                 <p className="text-gray-600 text-sm">
                   MySQL, PostgreSQL, MongoDB, VS-Code, Firebase, Android Studio,
-                  Git, Postman, Docker
+                  Git, Postman, Docker, Vercel, Render
                 </p>
               </li>
               <li className="card">
