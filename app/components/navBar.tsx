@@ -130,19 +130,16 @@ export default function NavBar() {
             </a>
           </li>
           <li>
-            <div className="hidden md:flex items-center gap-4">
-              <a
-                href="/Nahid_s_Resume.pdf"
-                download
-                className="font-ovo flex items-center gap-2"
-              >
-                My Resume
-                <Image src={downloadIcon} alt="Download-Icon" className="w-4" />
-              </a>
-              <button className="block md:hidden ml-3" onClick={openMenu}>
-                <Image src={menuBlackIcon} alt="Moon-Icon" className="w-4" />
-              </button>
-            </div>
+            <a
+              className="font-ovo flex items-center gap-2"
+              onClick={closeMenu}
+              href="/Nahid_s_Resume.pdf"
+              download
+            >
+              My Resume
+              <Image src={downloadIcon} alt="Download-Icon" className="w-4" />
+            </a>
+          </li>
           </li>
         </ul>
       </nav>
