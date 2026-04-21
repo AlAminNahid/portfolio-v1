@@ -140,7 +140,6 @@ export default function NavBar() {
               <Image src={downloadIcon} alt="Download-Icon" className="w-4" />
             </a>
           </li>
-          </li>
         </ul>
       </nav>
     </>
