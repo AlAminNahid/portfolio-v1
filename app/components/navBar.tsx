@@ -77,10 +77,10 @@ export default function NavBar() {
           </li>
         </ul>
         <div className="flex items-center gap-4">
-          <a
+          <a>
             href="/Nahid_s_Resume.pdf"
             download
-            className="px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2"
+            className="hidden md:flex px-10 py-3 border rounded-full border-gray-500 items-center gap-2"
           >
             my resume
             <Image src={downloadIcon} alt="Download-Icon" className="w-4" />
@@ -128,6 +128,21 @@ export default function NavBar() {
             <a className="font-ovo" onClick={closeMenu} href="#contact">
               Contact Me
             </a>
+          </li>
+          <li>
+            <div className="hidden md:flex items-center gap-4">
+              <a
+                href="/Nahid_s_Resume.pdf"
+                download
+                className="font-ovo flex items-center gap-2"
+              >
+                My Resume
+                <Image src={downloadIcon} alt="Download-Icon" className="w-4" />
+              </a>
+              <button className="block md:hidden ml-3" onClick={openMenu}>
+                <Image src={menuBlackIcon} alt="Moon-Icon" className="w-4" />
+              </button>
+            </div>
           </li>
         </ul>
       </nav>
