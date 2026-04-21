@@ -77,7 +77,7 @@ export default function NavBar() {
           </li>
         </ul>
         <div className="flex items-center gap-4">
-          <a>
+          <a
             href="/Nahid_s_Resume.pdf"
             download
             className="hidden md:flex px-10 py-3 border rounded-full border-gray-500 items-center gap-2"
