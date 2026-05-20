@@ -1,15 +1,24 @@
 import workOne from "@/public/projects/one.png";
 import workTwo from "@/public/projects/two.png";
+import workThree from "@/public/projects/three.png";
+import messmasterDashboard from "@/public/projects/messmaster-dashboard.png";
 import Image from "next/image";
 import sendIcon from "@/public/assets/send-icon.png";
 import rightArrow from "@/public/assets/right-arrow-bold.png";
 
 export default function Works() {
-  const projects = [
+  const webProjects = [
+    {
+      title: "MessMaster Mobile",
+      type: "Native Android App",
+      tech: "Kotlin, XML, NestJS, PostgreSQL",
+      image: workThree,
+      github: "https://github.com/AlAminNahid/MessMasterApp.git",
+    },
     {
       title: "Mess Management System",
       type: "Full-Stack Web App",
-      tech: "Tailwind-CSS, ReactJS, NextJS, NestJS, PostgreSQL",
+      tech: "NextJS, NestJS, PostgreSQL, Tailwind-CSS",
       image: workTwo,
       github: "https://github.com/AlAminNahid/Mess_Management_System.git",
     },
@@ -21,7 +30,6 @@ export default function Works() {
       github: "https://github.com/AlAminNahid/Clinic_Management_System.git",
     },
   ];
-
   return (
     <>
       <div id="work" className="w-full px-[12%] py-10 scroll-mt-20">
@@ -29,12 +37,12 @@ export default function Works() {
         <h2 className="text-center text-5xl font-ovo">My latest work</h2>
 
         <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo">
-          Welcome to my portfolio! Explore a collection of projects showcasing
-          my expertise in Full-Stack web & Mobile Development
+          Explore a collection of projects showcasing my expertise in Full-Stack
+          web & Mobile Development
         </p>
 
-        <div className="grid md:grid-cols-2 gap-8 my-10">
-          {projects.map((project, index) => (
+        <div className="my-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {webProjects.map((project, index) => (
             <a
               key={index}
               href={project.github}
@@ -46,11 +54,11 @@ export default function Works() {
                 <Image
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-70 object-contain bg-white"
+                  className="h-full w-full bg-white object-contain pb-20"
                 />
 
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%] bg-white rounded-md p-3 flex items-center justify-between shadow-md transition-all duration-300 group-hover:bottom-6">
-                  <div>
+                  <div className="pr-3">
                     <h2 className="font-semibold text-sm">{project.title}</h2>
                     <p className="text-xs text-gray-600">{project.type}</p>
                     <p className="text-xs text-gray-600">{project.tech}</p>
@@ -66,7 +74,7 @@ export default function Works() {
         </div>
 
         <a
-          href="https://github.com/AlAminNahid"
+          href="https://github.com/AlAminNahid?tab=repositories"
           target="_blank"
           rel="noopener noreferrer"
           className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500"
