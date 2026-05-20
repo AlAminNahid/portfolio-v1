@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Al Amin Hossain Nahid",
   description:
     "Portfolio of Al Amin Hossain Nahid, a full-stack web and mobile developer building React, Next.js, backend, and Android applications.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
