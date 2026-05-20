@@ -31,7 +31,11 @@ export default function About() {
 
             <ul className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl">
               <li className="card">
-                <Image src={codeIcon} alt="CodeIcon" className="w-7 mt-3" />
+                <Image
+                  src={codeIcon}
+                  alt="CodeIcon"
+                  className="w-7 mt-3 dark:invert"
+                />
                 <h3 className="my-4 font-semibold text-gray-700">
                   Languages & Frameworks
                 </h3>
@@ -41,7 +45,11 @@ export default function About() {
                 </p>
               </li>
               <li className="card">
-                <Image src={terminalIcon} alt="CodeIcon" className="w-7 mt-3" />
+                <Image
+                  src={terminalIcon}
+                  alt="CodeIcon"
+                  className="w-7 mt-3 dark:invert"
+                />
                 <h3 className="my-4 font-semibold text-gray-700">
                   Development Tools
                 </h3>
@@ -51,7 +59,11 @@ export default function About() {
                 </p>
               </li>
               <li className="card">
-                <Image src={eduIcon} alt="EduIcon" className="w-7 mt-3" />
+                <Image
+                  src={eduIcon}
+                  alt="EduIcon"
+                  className="w-7 mt-3 dark:invert"
+                />
                 <h3 className="my-4 font-semibold text-gray-700">Education</h3>
                 <p className="text-gray-600 text-sm">
                   B.Tech in Computer Science & Engineering

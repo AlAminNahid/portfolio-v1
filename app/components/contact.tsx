@@ -65,8 +65,7 @@ export default function Contact() {
     <>
       <div
         id="contact"
-        style={{ backgroundImage: "url('/footer-bg-color.png')" }}
-        className="w-full px-[12%] py-10 scroll-mt-20 bg-no-repeat bg-center bg-[length:90%_auto]"
+        className="w-full px-[12%] py-10 scroll-mt-20 bg-[url('/footer-bg-color.png')] bg-no-repeat bg-center bg-[length:90%_auto] dark:bg-[radial-gradient(circle_at_center,rgba(55,65,81,0.35),transparent_65%)]"
       >
         <h4 className="text-center mb-2 text-lg font-ovo">Connect with me</h4>
         <h2 className="text-center text-5xl font-ovo">Get in touch</h2>
@@ -99,14 +98,14 @@ export default function Contact() {
               placeholder="Enter your name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white"
+              className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white text-gray-900 placeholder:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
             />
             <input
               type="email"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white"
+              className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white text-gray-900 placeholder:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
             />
           </div>
           <textarea
@@ -114,15 +113,19 @@ export default function Contact() {
             placeholder="Enter your message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md bg-white mb-6"
+            className="w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md bg-white text-gray-900 placeholder:text-gray-400 mb-6 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
           ></textarea>
 
           <button
             type="submit"
-            className="py-3 px-8 w-max flex items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500"
+            className="py-3 px-8 w-max flex items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500 dark:bg-white dark:text-gray-950 dark:hover:bg-gray-200"
           >
             Submit now{" "}
-            <Image src={rightArrow} alt="rightArrow" className="w-4" />
+            <Image
+              src={rightArrow}
+              alt="rightArrow"
+              className="w-4 dark:invert"
+            />
           </button>
         </form>
       </div>

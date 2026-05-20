@@ -18,7 +18,11 @@ export default function Services() {
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-10 max-w-2xl mx-auto">
           <li className="card">
-            <Image src={webIcon} alt="WebIcon" className="w-7 mt-3" />
+            <Image
+              src={webIcon}
+              alt="WebIcon"
+              className="w-7 mt-3 dark:invert"
+            />
             <h3 className="my-4 font-semibold text-gray-700">
               Full-Stack Web Development
             </h3>
@@ -28,7 +32,11 @@ export default function Services() {
             </p>
           </li>
           <li className="card">
-            <Image src={mobileIcon} alt="MobileIcon" className="w-7 mt-3" />
+            <Image
+              src={mobileIcon}
+              alt="MobileIcon"
+              className="w-7 mt-3 dark:invert"
+            />
             <h3 className="my-4 font-semibold text-gray-700">
               Android App Development
             </h3>

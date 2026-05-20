@@ -37,7 +37,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 cursor-pointer hover:scale-110 hover:text-blue-600 transition duration-300">
+            <div className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 cursor-pointer hover:scale-110 hover:text-blue-600 transition duration-300 dark:bg-gray-900 dark:shadow-gray-800 dark:hover:text-blue-400">
               <FaLinkedinIn size={20} />
             </div>
           </a>
@@ -47,7 +47,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 cursor-pointer hover:scale-110 hover:text-black transition duration-300">
+            <div className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 cursor-pointer hover:scale-110 hover:text-black transition duration-300 dark:bg-gray-900 dark:shadow-gray-800 dark:hover:text-white">
               <FaGithub size={20} />
             </div>
           </a>
@@ -57,7 +57,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 cursor-pointer hover:scale-110 hover:text-black transition duration-300">
+            <div className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 cursor-pointer hover:scale-110 hover:text-black transition duration-300 dark:bg-gray-900 dark:shadow-gray-800 dark:hover:text-white">
               <SiCodeforces size={20} />
             </div>
           </a>
@@ -67,7 +67,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 cursor-pointer hover:scale-110 hover:text-orange-500 transition duration-300">
+            <div className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 cursor-pointer hover:scale-110 hover:text-orange-500 transition duration-300 dark:bg-gray-900 dark:shadow-gray-800">
               <SiLeetcode size={20} />
             </div>
           </a>

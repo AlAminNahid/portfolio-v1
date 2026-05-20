@@ -103,24 +103,30 @@ export default function Works() {
               onClick={() => setSelectedProject(project)}
               className="block text-left"
             >
-              <div className="relative w-full h-[300px] shadow-xl shadow-gray-400 rounded-xl overflow-hidden group">
+              <div className="relative w-full h-[300px] shadow-xl shadow-gray-400 rounded-xl overflow-hidden group dark:shadow-gray-900">
                 <Image
                   src={project.image}
                   alt={project.title}
-                  className="h-full w-full bg-white object-contain pb-20"
+                  className="h-full w-full bg-white object-contain pb-20 dark:bg-gray-900"
                 />
 
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%] bg-white rounded-md p-3 flex items-center justify-between shadow-md transition-all duration-300 group-hover:bottom-6">
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%] bg-white rounded-md p-3 flex items-center justify-between shadow-md transition-all duration-300 group-hover:bottom-6 dark:bg-gray-950 dark:shadow-gray-900">
                   <div className="pr-3">
                     <h2 className="font-semibold text-sm">{project.title}</h2>
-                    <p className="text-xs text-gray-600">
+                    <p className="text-xs text-gray-600 dark:text-gray-300">
                       {project.type} · {project.status}
                     </p>
-                    <p className="text-xs text-gray-600">{project.tech}</p>
+                    <p className="text-xs text-gray-600 dark:text-gray-300">
+                      {project.tech}
+                    </p>
                   </div>
 
-                  <div className="border rounded-full w-8 h-8 flex items-center justify-center shadow-[2px_2px_#000] group-hover:bg-lime-300 transition">
-                    <Image src={sendIcon} alt="SendIcon" className="w-4" />
+                  <div className="border rounded-full w-8 h-8 flex items-center justify-center shadow-[2px_2px_#000] group-hover:bg-lime-300 transition dark:border-gray-600 dark:shadow-[2px_2px_#fff]">
+                    <Image
+                      src={sendIcon}
+                      alt="SendIcon"
+                      className="w-4 dark:invert"
+                    />
                   </div>
                 </div>
               </div>
@@ -132,9 +138,14 @@ export default function Works() {
           href="https://github.com/AlAminNahid?tab=repositories"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500"
+          className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500 dark:border-gray-500 dark:text-gray-100 dark:hover:bg-gray-900"
         >
-          Show more <Image src={rightArrow} alt="rightArrow" className="w-4" />
+          Show more{" "}
+          <Image
+            src={rightArrow}
+            alt="rightArrow"
+            className="w-4 dark:invert"
+          />
         </a>
       </div>
 
@@ -144,20 +155,20 @@ export default function Works() {
           onClick={() => setSelectedProject(null)}
         >
           <div
-            className="relative max-h-[92vh] w-full max-w-6xl overflow-y-auto rounded-xl bg-white shadow-2xl"
+            className="relative max-h-[92vh] w-full max-w-6xl overflow-y-auto rounded-xl bg-white shadow-2xl dark:bg-gray-950"
             onClick={(event) => event.stopPropagation()}
           >
             <button
               type="button"
               aria-label="Close project details"
               onClick={() => setSelectedProject(null)}
-              className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white text-2xl leading-none shadow-md hover:bg-gray-100"
+              className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white text-2xl leading-none shadow-md hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800"
             >
               ×
             </button>
 
             <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
-              <div className="flex min-h-[360px] items-center justify-center bg-gray-50 p-5 sm:p-8">
+              <div className="flex min-h-[360px] items-center justify-center bg-gray-50 p-5 dark:bg-gray-900 sm:p-8">
                 <Image
                   src={selectedProject.image}
                   alt={selectedProject.title}
@@ -176,7 +187,7 @@ export default function Works() {
                   <span className="rounded-full bg-black px-3 py-1 text-xs font-medium text-white">
                     {selectedProject.type}
                   </span>
-                  <span className="rounded-full bg-lime-100 px-3 py-1 text-xs font-medium text-gray-800">
+                  <span className="rounded-full bg-lime-100 px-3 py-1 text-xs font-medium text-gray-800 dark:bg-lime-300">
                     {selectedProject.status}
                   </span>
                 </div>
@@ -184,27 +195,27 @@ export default function Works() {
                 <h3 className="text-3xl font-semibold">
                   {selectedProject.title}
                 </h3>
-                <p className="mt-3 text-sm leading-7 text-gray-600">
+                <p className="mt-3 text-sm leading-7 text-gray-600 dark:text-gray-300">
                   {selectedProject.summary}
                 </p>
 
                 <div className="mt-5">
-                  <h4 className="text-sm font-semibold text-gray-900">
+                  <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
                     What I built
                   </h4>
-                  <p className="mt-2 text-sm leading-7 text-gray-600">
+                  <p className="mt-2 text-sm leading-7 text-gray-600 dark:text-gray-300">
                     {selectedProject.details}
                   </p>
                 </div>
 
                 <div className="mt-5">
-                  <h4 className="text-sm font-semibold text-gray-900">
+                  <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
                     Key features
                   </h4>
-                  <ul className="mt-2 space-y-2 text-sm text-gray-600">
+                  <ul className="mt-2 space-y-2 text-sm text-gray-600 dark:text-gray-300">
                     {selectedProject.highlights.map((highlight) => (
                       <li key={highlight} className="flex gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-900" />
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-900 dark:bg-gray-100" />
                         <span>{highlight}</span>
                       </li>
                     ))}
@@ -212,10 +223,10 @@ export default function Works() {
                 </div>
 
                 <div className="mt-5">
-                  <h4 className="text-sm font-semibold text-gray-900">
+                  <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
                     Tech stack
                   </h4>
-                  <p className="mt-2 text-sm text-gray-600">
+                  <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
                     {selectedProject.tech}
                   </p>
                 </div>
@@ -224,10 +235,14 @@ export default function Works() {
                   href={selectedProject.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition hover:bg-gray-800"
+                  className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition hover:bg-gray-800 dark:bg-white dark:text-gray-950 dark:hover:bg-gray-200"
                 >
                   View GitHub
-                  <Image src={rightArrow} alt="" className="w-4 invert" />
+                  <Image
+                    src={rightArrow}
+                    alt=""
+                    className="w-4 invert dark:invert-0"
+                  />
                 </a>
               </div>
             </div>
