@@ -12,6 +12,7 @@ export default function Contact() {
   const [message, setMessage] = useState<string>("");
   const [success, setSuccess] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   useEffect(() => {
     if (success || error) {
@@ -29,6 +30,7 @@ export default function Contact() {
 
     setError("");
     setSuccess(false);
+    setIsSubmitting(true);
 
     const result = contactSchema.safeParse({
       name,
@@ -39,6 +41,7 @@ export default function Contact() {
     if (!result.success) {
       const firstError = result.error.issues[0].message;
       setError(firstError);
+      setIsSubmitting(false);
       return;
     }
 
@@ -58,6 +61,8 @@ export default function Contact() {
       const errorMessage =
         error.message || "Something went wrong. Please try again.";
       setError(errorMessage);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -118,14 +123,17 @@ export default function Contact() {
 
           <button
             type="submit"
-            className="py-3 px-8 w-max flex items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500 dark:bg-white dark:text-gray-950 dark:hover:bg-gray-200"
+            disabled={isSubmitting}
+            className="py-3 px-8 w-max flex items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500 disabled:cursor-not-allowed disabled:opacity-70 dark:bg-white dark:text-gray-950 dark:hover:bg-gray-200"
           >
-            Submit now{" "}
-            <Image
-              src={rightArrow}
-              alt="rightArrow"
-              className="w-4 dark:invert"
-            />
+            {isSubmitting ? "Sending..." : "Submit now"}
+            {!isSubmitting && (
+              <Image
+                src={rightArrow}
+                alt="rightArrow"
+                className="w-4 dark:invert"
+              />
+            )}
           </button>
         </form>
       </div>
