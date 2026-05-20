@@ -6,32 +6,22 @@ import downloadIcon from "@/public/assets/download-icon.png";
 import headerBG from "@/public/assets/header-bg-color.png";
 import menuBlackIcon from "@/public/assets/menu-black.png";
 import closeIcon from "@/public/assets/close-black.png";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function NavBar() {
   const [isScroll, setIsScroll] = useState<boolean>(false);
-  const sideMenuRef = useRef<HTMLUListElement | null>(null);
-
-  const openMenu = () => {
-    if (sideMenuRef.current) {
-      sideMenuRef.current.style.transform = "translateX(-16rem)";
-    }
-  };
-  const closeMenu = () => {
-    if (sideMenuRef.current) {
-      sideMenuRef.current.style.transform = "translateX(16rem)";
-    }
-  };
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (scrollY > 50) {
-        setIsScroll(true);
-      } else {
-        setIsScroll(false);
-      }
-    });
-  });
+    const handleScroll = () => {
+      setIsScroll(window.scrollY > 50);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -85,18 +75,23 @@ export default function NavBar() {
             my resume
             <Image src={downloadIcon} alt="Download-Icon" className="w-4" />
           </a>
-          <button className="block md:hidden ml-3" onClick={openMenu}>
-            <Image src={menuBlackIcon} alt="Moon-Icon" className="w-6" />
+          <button
+            className="block md:hidden ml-3"
+            onClick={() => setIsMenuOpen(true)}
+          >
+            <Image src={menuBlackIcon} alt="Menu-Icon" className="w-6" />
           </button>
         </div>
 
         {/* Mobile Menu */}
 
         <ul
-          ref={sideMenuRef}
-          className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500"
+          className={`flex md:hidden flex-col gap-4 py-20 px-10 fixed top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500 ${isMenuOpen ? "right-0" : "-right-64"}`}
         >
-          <div className="absolute right-6 top-6" onClick={closeMenu}>
+          <div
+            className="absolute right-6 top-6"
+            onClick={() => setIsMenuOpen(false)}
+          >
             <Image
               src={closeIcon}
               alt="Close-Icon"
@@ -105,34 +100,54 @@ export default function NavBar() {
           </div>
 
           <li>
-            <a className="font-ovo" onClick={closeMenu} href="#top">
+            <a
+              className="font-ovo"
+              onClick={() => setIsMenuOpen(false)}
+              href="#top"
+            >
               Home
             </a>
           </li>
           <li>
-            <a className="font-ovo" onClick={closeMenu} href="#about">
+            <a
+              className="font-ovo"
+              onClick={() => setIsMenuOpen(false)}
+              href="#about"
+            >
               About Me
             </a>
           </li>
           <li>
-            <a className="font-ovo" onClick={closeMenu} href="#services">
+            <a
+              className="font-ovo"
+              onClick={() => setIsMenuOpen(false)}
+              href="#services"
+            >
               Services
             </a>
           </li>
           <li>
-            <a className="font-ovo" onClick={closeMenu} href="#work">
+            <a
+              className="font-ovo"
+              onClick={() => setIsMenuOpen(false)}
+              href="#work"
+            >
               My Work
             </a>
           </li>
           <li>
-            <a className="font-ovo" onClick={closeMenu} href="#contact">
+            <a
+              className="font-ovo"
+              onClick={() => setIsMenuOpen(false)}
+              href="#contact"
+            >
               Contact Me
             </a>
           </li>
           <li>
             <a
               className="font-ovo flex items-center gap-2"
-              onClick={closeMenu}
+              onClick={() => setIsMenuOpen(false)}
               href="/Nahid_s_Resume.pdf"
               download
             >

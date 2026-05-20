@@ -66,7 +66,9 @@ export default function Works() {
         </div>
 
         <a
-          href=""
+          href="https://github.com/AlAminNahid"
+          target="_blank"
+          rel="noopener noreferrer"
           className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500"
         >
           Show more <Image src={rightArrow} alt="rightArrow" className="w-4" />

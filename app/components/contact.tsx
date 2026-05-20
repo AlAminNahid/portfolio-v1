@@ -43,7 +43,7 @@ export default function Contact() {
     }
 
     try {
-      const response = await axios.post("/api/contact", {
+      await axios.post("/api/contact", {
         name,
         email,
         message,
@@ -102,7 +102,7 @@ export default function Contact() {
               className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white"
             />
             <input
-              type="text"
+              type="email"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}

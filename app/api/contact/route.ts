@@ -1,10 +1,28 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { contactSchema } from "@/app/validation/contactSchema";
+
+const escapeHtml = (value: string) =>
+  value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, message } = body;
+    const result = contactSchema.safeParse(body);
+
+    if (!result.success) {
+      return NextResponse.json(
+        { success: false, error: result.error.issues[0].message },
+        { status: 400 },
+      );
+    }
+
+    const { name, email, message } = result.data;
 
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
@@ -22,9 +40,9 @@ export async function POST(req: Request) {
       replyTo: email,
       html: `
         <h3>New Contact Message</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong> ${message}</p>
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Message:</strong> ${escapeHtml(message).replaceAll("\n", "<br />")}</p>
       `,
     });
 
