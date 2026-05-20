@@ -37,11 +37,11 @@ export default function About() {
                   className="w-7 mt-3 dark:invert"
                 />
                 <h3 className="my-4 font-semibold text-gray-700">
-                  Languages & Frameworks
+                  Core Technologies
                 </h3>
                 <p className="text-gray-600 text-sm">
-                  C++, Java, HTML, CSS, Tailwind, JavaScript, TypeScript,
-                  ReactJS, NextJS, NestJS, Kotlin
+                  C++, Java, C#, Kotlin, HTML, CSS, Tailwind, JavaScript,
+                  TypeScript, ReactJS, NextJS, NestJS, FastAPI, .NET
                 </p>
               </li>
               <li className="card">
@@ -51,11 +51,11 @@ export default function About() {
                   className="w-7 mt-3 dark:invert"
                 />
                 <h3 className="my-4 font-semibold text-gray-700">
-                  Development Tools
+                  Tools & Platforms
                 </h3>
                 <p className="text-gray-600 text-sm">
                   MySQL, PostgreSQL, MongoDB, VS-Code, Firebase, Android Studio,
-                  Git, Postman, Docker, Vercel, Render
+                  TypeORM, Prisma, Git, Postman, Docker, Vercel, Render
                 </p>
               </li>
               <li className="card">
@@ -64,9 +64,12 @@ export default function About() {
                   alt="EduIcon"
                   className="w-7 mt-3 dark:invert"
                 />
-                <h3 className="my-4 font-semibold text-gray-700">Education</h3>
+                <h3 className="my-4 font-semibold text-gray-700">
+                  Academic Background
+                </h3>
                 <p className="text-gray-600 text-sm">
-                  B.Tech in Computer Science & Engineering
+                  B.Tech in Computer Science & Engineering - American
+                  International University-Bangladesh
                 </p>
               </li>
             </ul>
