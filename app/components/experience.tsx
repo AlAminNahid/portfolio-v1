@@ -30,7 +30,7 @@ export default function Experience() {
 
               <div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
                 <FaCalendarAlt size={14} />
-                <span>June 2026 - Ongoing</span>
+                <span>June 2026 - Present</span>
               </div>
             </div>
 
