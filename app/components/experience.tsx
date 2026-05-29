@@ -38,9 +38,6 @@ export default function Experience() {
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <h3 className="text-xl font-semibold">AuraDev</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    Working on GrantOS
-                  </p>
                 </div>
 
                 <a
@@ -55,20 +52,23 @@ export default function Experience() {
               </div>
 
               <p className="mt-5 text-sm leading-7 text-gray-600 dark:text-gray-300">
-                I will be contributing to GrantOS as part of my internship at
-                AuraDev, focusing on practical software development work and
-                product features in a professional engineering environment.
+                Contributing to GrantOS as a Software Engineering Intern at
+                AuraDev, where I am involved in end-to-end product development —
+                from backend integration to building client-facing features —
+                within a professional, agile engineering environment.
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2">
-                {["GrantOS", "Product Development"].map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-200"
-                  >
-                    {item}
-                  </span>
-                ))}
+                {["Product Development", "Backend Integration", "Agile"].map(
+                  (item) => (
+                    <span
+                      key={item}
+                      className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-200"
+                    >
+                      {item}
+                    </span>
+                  ),
+                )}
               </div>
             </div>
           </div>
