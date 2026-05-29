@@ -1,5 +1,5 @@
 import Image from "next/image";
-import profileImage from "@/public/assets/profileIMG.jpg";
+import profileImage from "@/public/assets/profileIMG_rounded.png";
 import handIcon from "@/public/assets/hand-icon.png";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
