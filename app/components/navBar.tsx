@@ -63,7 +63,7 @@ export default function NavBar() {
           />
         </a>
         <ul
-          className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 transition-colors duration-300 ${isScroll ? "" : "bg-white/50 shadow-sm dark:bg-gray-900/70 dark:shadow-gray-800"}`}
+          className={`hidden md:flex items-center gap-5 lg:gap-7 rounded-full px-8 lg:px-10 py-3 transition-colors duration-300 ${isScroll ? "" : "bg-white/50 shadow-sm dark:bg-gray-900/70 dark:shadow-gray-800"}`}
         >
           <li>
             <a className="font-ovo" href="#top">
@@ -78,6 +78,11 @@ export default function NavBar() {
           <li>
             <a className="font-ovo" href="#services">
               Services
+            </a>
+          </li>
+          <li>
+            <a className="font-ovo" href="#experience">
+              Experience
             </a>
           </li>
           <li>
@@ -167,6 +172,15 @@ export default function NavBar() {
               href="#services"
             >
               Services
+            </a>
+          </li>
+          <li>
+            <a
+              className="font-ovo"
+              onClick={() => setIsMenuOpen(false)}
+              href="#experience"
+            >
+              Experience
             </a>
           </li>
           <li>
