@@ -120,6 +120,8 @@ export default function NavBar() {
             />
           </a>
           <button
+            type="button"
+            aria-label="Open navigation menu"
             className="block md:hidden ml-3"
             onClick={() => setIsMenuOpen(true)}
           >
@@ -136,16 +138,19 @@ export default function NavBar() {
         <ul
           className={`flex md:hidden flex-col gap-4 py-20 px-10 fixed top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500 dark:bg-gray-900 ${isMenuOpen ? "right-0" : "-right-64"}`}
         >
-          <div
-            className="absolute right-6 top-6"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <Image
-              src={closeIcon}
-              alt="Close-Icon"
-              className="w-5 cursor-pointer dark:invert"
-            />
-          </div>
+          <li className="absolute right-6 top-6 list-none">
+            <button
+              type="button"
+              aria-label="Close navigation menu"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <Image
+                src={closeIcon}
+                alt="Close-Icon"
+                className="w-5 cursor-pointer dark:invert"
+              />
+            </button>
+          </li>
 
           <li>
             <a

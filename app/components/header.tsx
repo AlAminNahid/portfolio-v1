@@ -2,13 +2,12 @@ import Image from "next/image";
 import profileImage from "@/public/assets/profileIMG_rounded.png";
 import handIcon from "@/public/assets/hand-icon.png";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
-import { SiLeetcode } from "react-icons/si";
 import { SiCodeforces } from "react-icons/si";
 
 export default function Header() {
   return (
     <>
-      <div className="w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4">
+      <div className="mx-auto flex min-h-screen w-11/12 max-w-3xl flex-col items-center justify-center gap-4 pt-28 pb-12 text-center sm:pt-24">
         <div>
           <Image
             src={profileImage}
@@ -36,30 +35,30 @@ export default function Header() {
             href="https://www.linkedin.com/in/al-amin-hossain-nahid-876858193/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Visit Al Amin Hossain Nahid on LinkedIn"
+            className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 text-gray-950 cursor-pointer hover:scale-110 hover:text-blue-600 transition duration-300 dark:bg-gray-900 dark:text-gray-100 dark:shadow-gray-700 dark:hover:text-blue-400"
           >
-            <div className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 cursor-pointer hover:scale-110 hover:text-blue-600 transition duration-300 dark:bg-gray-900 dark:shadow-gray-800 dark:hover:text-blue-400">
-              <FaLinkedinIn size={20} />
-            </div>
+            <FaLinkedinIn size={20} />
           </a>
 
           <a
             href="https://github.com/AlAminNahid"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Visit Al Amin Hossain Nahid on GitHub"
+            className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 text-gray-950 cursor-pointer hover:scale-110 hover:text-black transition duration-300 dark:bg-gray-900 dark:text-gray-100 dark:shadow-gray-700 dark:hover:text-white"
           >
-            <div className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 cursor-pointer hover:scale-110 hover:text-black transition duration-300 dark:bg-gray-900 dark:shadow-gray-800 dark:hover:text-white">
-              <FaGithub size={20} />
-            </div>
+            <FaGithub size={20} />
           </a>
 
           <a
             href="https://codeforces.com/profile/AluBoss11"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Visit Al Amin Hossain Nahid on Codeforces"
+            className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 text-gray-950 cursor-pointer hover:scale-110 hover:text-black transition duration-300 dark:bg-gray-900 dark:text-gray-100 dark:shadow-gray-700 dark:hover:text-white"
           >
-            <div className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 cursor-pointer hover:scale-110 hover:text-black transition duration-300 dark:bg-gray-900 dark:shadow-gray-800 dark:hover:text-white">
-              <SiCodeforces size={20} />
-            </div>
+            <SiCodeforces size={20} />
           </a>
         </div>
       </div>
