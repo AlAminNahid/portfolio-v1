@@ -59,16 +59,18 @@ export default function Experience() {
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2">
-                {["Product Development", "Backend Integration", "Agile"].map(
-                  (item) => (
-                    <span
-                      key={item}
-                      className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-200"
-                    >
-                      {item}
-                    </span>
-                  ),
-                )}
+                {[
+                  "Product Development",
+                  "Backend Integration",
+                  "Frontend Integration",
+                ].map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-200"
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
             </div>
           </div>

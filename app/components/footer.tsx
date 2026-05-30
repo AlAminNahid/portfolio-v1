@@ -43,11 +43,6 @@ export default function Footer() {
                 CodeForces
               </a>
             </li>
-            <li>
-              <a href="https://leetcode.com/u/al_aminnahid11/" target="_blank">
-                LeetCode
-              </a>
-            </li>
           </ul>
         </div>
       </div>

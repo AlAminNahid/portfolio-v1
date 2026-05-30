@@ -61,16 +61,6 @@ export default function Header() {
               <SiCodeforces size={20} />
             </div>
           </a>
-
-          <a
-            href="https://leetcode.com/u/al_aminnahid11/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div className="rounded-full shadow-lg bg-white/70 shadow-gray-400 p-4 cursor-pointer hover:scale-110 hover:text-orange-500 transition duration-300 dark:bg-gray-900 dark:shadow-gray-800">
-              <SiLeetcode size={20} />
-            </div>
-          </a>
         </div>
       </div>
     </>
