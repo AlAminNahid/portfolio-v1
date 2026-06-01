@@ -37,7 +37,7 @@ export default function Experience() {
             <div>
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
-                  <h3 className="text-xl font-semibold">AuraDev</h3>
+                  <h3 className="text-xl font-semibold">AuraDev LTD</h3>
                 </div>
 
                 <a

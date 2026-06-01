@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 const projects = [
   {
-    title: "MessMaster Mobile",
+    title: "MessMaster Mobile App",
     type: "Native Android App",
     status: "In Progress",
     tech: "Kotlin, XML, NestJS, PostgreSQL",
@@ -115,9 +115,6 @@ export default function Works() {
                     <h2 className="font-semibold text-sm">{project.title}</h2>
                     <p className="text-xs text-gray-600 dark:text-gray-300">
                       {project.type} · {project.status}
-                    </p>
-                    <p className="text-xs text-gray-600 dark:text-gray-300">
-                      {project.tech}
                     </p>
                   </div>
 
