@@ -86,6 +86,11 @@ export default function NavBar() {
             </a>
           </li>
           <li>
+            <a className="font-ovo" href="#research">
+              Research
+            </a>
+          </li>
+          <li>
             <a className="font-ovo" href="#work">
               My Work
             </a>
@@ -186,6 +191,15 @@ export default function NavBar() {
               href="#experience"
             >
               Experience
+            </a>
+          </li>
+          <li>
+            <a
+              className="font-ovo"
+              onClick={() => setIsMenuOpen(false)}
+              href="#research"
+            >
+              Research
             </a>
           </li>
           <li>
