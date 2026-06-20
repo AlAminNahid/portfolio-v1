@@ -3,6 +3,9 @@
 import workOne from "@/public/projects/one.png";
 import workTwo from "@/public/projects/two.png";
 import workThree from "@/public/projects/three.png";
+import medicareOne from "@/public/projects/one/one.png";
+import medicareTwo from "@/public/projects/one/two.png";
+import medicareThree from "@/public/projects/one/three.png";
 import Image from "next/image";
 import sendIcon from "@/public/assets/send-icon.png";
 import rightArrow from "@/public/assets/right-arrow-bold.png";
@@ -48,22 +51,23 @@ const projects = [
     ],
   },
   {
-    title: "Clinic Management System",
+    title: "MediCare",
     type: "Full-Stack Web App",
     status: "Completed",
-    tech: "HTML, CSS, JavaScript, PHP, MySQL",
-    image: workOne,
+    tech: "NextJS, NestJS, PostgreSQL, TypeORM",
+    image: medicareOne,
+    images: [medicareOne, medicareTwo, medicareThree],
     previewType: "web",
-    github: "https://github.com/AlAminNahid/Clinic_Management_System.git",
+    github: "https://github.com/AlAminNahid/MediCare.git",
     summary:
       "Clinic workflow app for managing patients, doctors, appointments, and records.",
     details:
-      "A full-stack clinic management system focused on core administrative workflows. It includes patient and doctor management, appointment handling, and database-backed records using PHP and MySQL.",
+      "A full-stack clinic management system built with a modern stack. It includes patient and doctor management, appointment handling, and database-backed records using NestJS and PostgreSQL with TypeORM.",
     highlights: [
       "Patient and doctor management",
       "Appointment workflow support",
-      "MySQL-backed record storage",
-      "Traditional full-stack PHP application",
+      "PostgreSQL with TypeORM data layer",
+      "Next.js frontend with NestJS REST API",
     ],
   },
 ];
@@ -72,6 +76,7 @@ export default function Works() {
   const [selectedProject, setSelectedProject] = useState<
     (typeof projects)[number] | null
   >(null);
+  const [slideIndex, setSlideIndex] = useState(0);
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -83,6 +88,15 @@ export default function Works() {
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
   }, []);
+
+  function openProject(project: (typeof projects)[number]) {
+    setSelectedProject(project);
+    setSlideIndex(0);
+  }
+
+  const activeImages =
+    selectedProject?.images ?? (selectedProject ? [selectedProject.image] : []);
+  const totalSlides = activeImages.length;
 
   return (
     <>
@@ -100,7 +114,7 @@ export default function Works() {
             <button
               key={index}
               type="button"
-              onClick={() => setSelectedProject(project)}
+              onClick={() => openProject(project)}
               className="block text-left"
             >
               <div className="relative w-full h-[300px] shadow-xl shadow-gray-400 rounded-xl overflow-hidden group dark:shadow-gray-900">
@@ -165,10 +179,10 @@ export default function Works() {
             </button>
 
             <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
-              <div className="flex min-h-[360px] items-center justify-center bg-gray-50 p-5 dark:bg-gray-900 sm:p-8">
+              <div className="relative flex min-h-[360px] items-center justify-center bg-gray-50 p-5 dark:bg-gray-900 sm:p-8">
                 <Image
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
+                  src={activeImages[slideIndex]}
+                  alt={`${selectedProject.title} screenshot ${slideIndex + 1}`}
                   quality={100}
                   sizes="(min-width: 1024px) 56rem, 90vw"
                   className={
@@ -177,6 +191,70 @@ export default function Works() {
                       : "max-h-[62vh] w-full rounded-lg object-contain shadow-xl"
                   }
                 />
+                {totalSlides > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      aria-label="Previous image"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSlideIndex(
+                          (i) => (i - 1 + totalSlides) % totalSlides,
+                        );
+                      }}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-white/80 shadow-md hover:bg-white transition dark:bg-gray-800/80 dark:hover:bg-gray-800"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className="w-5 h-5"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Next image"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSlideIndex((i) => (i + 1) % totalSlides);
+                      }}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-white/80 shadow-md hover:bg-white transition dark:bg-gray-800/80 dark:hover:bg-gray-800"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className="w-5 h-5"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+                      {activeImages.map((_, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          aria-label={`Go to image ${i + 1}`}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSlideIndex(i);
+                          }}
+                          className={`h-1.5 rounded-full transition-all ${i === slideIndex ? "w-5 bg-gray-900 dark:bg-white" : "w-1.5 bg-gray-400 dark:bg-gray-500"}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
 
               <div className="p-6 sm:p-8">
