@@ -29,7 +29,7 @@ export default function Services() {
           {services.map(({ num, title, desc }) => (
             <li
               key={num}
-              className="group flex items-start gap-8 py-10 border-b border-zinc-200 dark:border-zinc-800 first:border-t cursor-default"
+              className="group flex items-start gap-8 py-10 border-b border-zinc-200 dark:border-zinc-800 first:border-t"
             >
               <span className="text-xs font-mono text-zinc-400 pt-1.5 shrink-0 w-8">
                 {num}
@@ -42,9 +42,6 @@ export default function Services() {
                   {desc}
                 </p>
               </div>
-              <span className="text-zinc-300 dark:text-zinc-700 group-hover:text-indigo-500 group-hover:translate-x-1 transition-all duration-200 text-xl mt-1 shrink-0">
-                →
-              </span>
             </li>
           ))}
         </ul>
