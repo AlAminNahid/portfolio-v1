@@ -97,7 +97,7 @@ export default function Works() {
     <>
       <div
         id="work"
-        className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20 min-h-screen snap-start"
+        className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20 min-h-screen"
       >
         <div className="max-w-6xl mx-auto">
           <p className="text-xs font-mono tracking-widest text-zinc-400 uppercase mb-4">

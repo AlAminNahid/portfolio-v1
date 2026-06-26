@@ -21,7 +21,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20 min-h-screen flex flex-col justify-center snap-start"
+      className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20 min-h-screen flex flex-col justify-center"
     >
       <div className="max-w-6xl mx-auto w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-start">

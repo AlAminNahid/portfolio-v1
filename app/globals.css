@@ -7,7 +7,6 @@
 }
 
 html {
-  scroll-snap-type: y proximity;
   scrollbar-width: thin;
   scrollbar-color: #d4d4d8 transparent;
 }

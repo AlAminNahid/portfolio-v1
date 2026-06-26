@@ -52,7 +52,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20 min-h-screen flex flex-col justify-center snap-start"
+      className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20 min-h-screen flex flex-col justify-center"
     >
       <div className="max-w-2xl mx-auto w-full">
         <p className="text-xs font-mono tracking-widest text-zinc-400 uppercase mb-4">
