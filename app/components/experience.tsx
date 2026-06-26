@@ -1,81 +1,65 @@
-import { FaBriefcase, FaCalendarAlt, FaExternalLinkAlt } from "react-icons/fa";
+import { FaExternalLinkAlt } from "react-icons/fa";
+
+const tags = ["Product Development", "Backend Integration", "Frontend Integration"];
 
 export default function Experience() {
   return (
-    <>
-      <div id="experience" className="w-full px-[12%] py-10 scroll-mt-20">
-        <h4 className="text-center mb-2 text-lg font-ovo">My journey</h4>
-        <h2 className="text-center text-5xl font-ovo">Experience</h2>
-
-        <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo">
-          I am beginning my professional software engineering journey through
-          hands-on product work, backend integration, and real client-focused
-          development.
+    <section
+      id="experience"
+      className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20 min-h-screen flex flex-col justify-center snap-start"
+    >
+      <div className="max-w-3xl mx-auto w-full">
+        <p className="text-xs font-mono tracking-widest text-zinc-400 uppercase mb-4">
+          Experience
         </p>
+        <h2 className="text-4xl sm:text-5xl font-bold text-zinc-900 dark:text-zinc-50 mb-16">
+          My Journey
+        </h2>
 
-        <div className="mx-auto max-w-4xl">
-          <div className="relative grid gap-6 rounded-xl border-[0.5px] border-gray-400 bg-white p-6 shadow-xl shadow-gray-200 transition-colors duration-300 dark:border-gray-700 dark:bg-gray-900/70 dark:shadow-gray-950 md:grid-cols-[0.85fr_1.15fr] md:p-8">
-            <div className="flex flex-col justify-between gap-6 border-b border-gray-200 pb-6 dark:border-gray-700 md:border-b-0 md:border-r md:pb-0 md:pr-8">
-              <div>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-black text-white dark:bg-white dark:text-gray-950">
-                  <FaBriefcase size={18} />
-                </div>
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400">
-                  Intern
-                </p>
-                <h3 className="mt-2 text-2xl font-semibold">
-                  Software Engineering
-                </h3>
-              </div>
+        <div className="relative pl-8 border-l-2 border-zinc-200 dark:border-zinc-800">
+          {/* Timeline dot */}
+          <div className="absolute -left-[9px] top-1 h-4 w-4 rounded-full border-2 border-indigo-500 bg-white dark:bg-zinc-950" />
 
-              <div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
-                <FaCalendarAlt size={14} />
-                <span>June 2026 - Present</span>
-              </div>
-            </div>
+          <p className="text-xs font-mono text-zinc-400">June 2026 – Present</p>
 
+          <div className="mt-3 flex flex-wrap items-start justify-between gap-3">
             <div>
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <div>
-                  <h3 className="text-xl font-semibold">AuraDev LTD</h3>
-                </div>
-
-                <a
-                  href="https://www.auradev.co.uk/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-gray-400 px-4 py-2 text-sm transition hover:bg-lightHover dark:border-gray-600 dark:hover:bg-gray-800"
-                >
-                  Company
-                  <FaExternalLinkAlt size={12} />
-                </a>
-              </div>
-
-              <p className="mt-5 text-sm leading-7 text-gray-600 dark:text-gray-300">
-                Contributing to GrantOS as a Software Engineering Intern at
-                AuraDev, where I am involved in end-to-end product development —
-                from backend integration to building client-facing features —
-                within a professional, agile engineering environment.
-              </p>
-
-              <div className="mt-5 flex flex-wrap gap-2">
-                {[
-                  "Product Development",
-                  "Backend Integration",
-                  "Frontend Integration",
-                ].map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-200"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
+              <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+                Software Engineering Intern
+              </h3>
+              <a
+                href="https://www.auradev.co.uk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-indigo-500 transition mt-1"
+              >
+                AuraDev LTD <FaExternalLinkAlt size={11} />
+              </a>
             </div>
+            <span className="text-xs font-mono px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400">
+              Intern
+            </span>
+          </div>
+
+          <p className="mt-5 text-sm text-zinc-500 dark:text-zinc-400 leading-7">
+            Contributing to GrantOS as a Software Engineering Intern at AuraDev
+            — involved in end-to-end product development, from backend
+            integration to building client-facing features within a
+            professional, agile engineering environment.
+          </p>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-xs px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 }

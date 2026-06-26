@@ -1,53 +1,54 @@
-import mobileIcon from "@/public/assets/mobile-icon.png";
-import webIcon from "@/public/assets/web-icon.png";
-import rightArrow from "@/public/assets/right-arrow.png";
-import Image from "next/image";
+const services = [
+  {
+    num: "01",
+    title: "Full-Stack Web Development",
+    desc: "Building complete web applications using modern frontend and backend technologies with databases and REST APIs — from design to deployment.",
+  },
+  {
+    num: "02",
+    title: "Android App Development",
+    desc: "Developing native Android applications using Kotlin and modern tooling to create efficient, user-friendly mobile experiences that connect to real backends.",
+  },
+];
 
 export default function Services() {
   return (
-    <>
-      <div id="services" className="w-full px-[12%] py-10 scroll-mt-20">
-        <h4 className="text-center mb-2 text-lg font-ovo">What I offer</h4>
-        <h2 className="text-center text-5xl font-ovo">My services</h2>
-
-        <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo">
-          I build scalable and user-friendly applications by combining modern
-          front-end technologies with powerful back-end systems, delivering
-          complete web and mobile solutions.
+    <section
+      id="services"
+      className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20 min-h-screen flex flex-col justify-center snap-start"
+    >
+      <div className="max-w-4xl mx-auto w-full">
+        <p className="text-xs font-mono tracking-widest text-zinc-400 uppercase mb-4">
+          Services
         </p>
+        <h2 className="text-4xl sm:text-5xl font-bold text-zinc-900 dark:text-zinc-50 mb-16">
+          What I Build
+        </h2>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-10 max-w-2xl mx-auto">
-          <li className="card">
-            <Image
-              src={webIcon}
-              alt="WebIcon"
-              className="w-7 mt-3 dark:invert"
-            />
-            <h3 className="my-4 font-semibold text-gray-700">
-              Full-Stack Web Development
-            </h3>
-            <p className="text-gray-600 text-sm">
-              Building complete web applications using modern frontend and
-              backend technologies with databases and APIs...
-            </p>
-          </li>
-          <li className="card">
-            <Image
-              src={mobileIcon}
-              alt="MobileIcon"
-              className="w-7 mt-3 dark:invert"
-            />
-            <h3 className="my-4 font-semibold text-gray-700">
-              Android App Development
-            </h3>
-            <p className="text-gray-600 text-sm">
-              Developing Android applications using Kotlin and modern
-              development tools to create efficient and user-friendly mobile
-              experiences...
-            </p>
-          </li>
+        <ul>
+          {services.map(({ num, title, desc }) => (
+            <li
+              key={num}
+              className="group flex items-start gap-8 py-10 border-b border-zinc-200 dark:border-zinc-800 first:border-t cursor-default"
+            >
+              <span className="text-xs font-mono text-zinc-400 pt-1.5 shrink-0 w-8">
+                {num}
+              </span>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50 group-hover:text-indigo-500 transition-colors duration-200">
+                  {title}
+                </h3>
+                <p className="mt-2 text-zinc-500 dark:text-zinc-400 leading-7">
+                  {desc}
+                </p>
+              </div>
+              <span className="text-zinc-300 dark:text-zinc-700 group-hover:text-indigo-500 group-hover:translate-x-1 transition-all duration-200 text-xl mt-1 shrink-0">
+                →
+              </span>
+            </li>
+          ))}
         </ul>
       </div>
-    </>
+    </section>
   );
 }

@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
-import { Outfit, Ovo } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const outfit = Outfit({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-});
-
-const ovo = Ovo({
-  subsets: ["latin"],
-  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -30,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${outfit.className} ${ovo.className} bg-white text-gray-950 antialiased leading-8 overflow-x-hidden transition-colors duration-300 dark:bg-gray-950 dark:text-gray-100`}
+        className={`${inter.className} antialiased bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 overflow-x-hidden transition-colors duration-300`}
       >
         {children}
         <Analytics />
