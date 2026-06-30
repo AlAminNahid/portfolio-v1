@@ -2,52 +2,23 @@
 
 import Image from "next/image";
 import downloadIcon from "@/public/assets/download-icon.png";
-import { useEffect, useState } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-
-const navLinks = [
-  { label: "Home", href: "#top" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Experience", href: "#experience" },
-  { label: "Work", href: "#work" },
-  { label: "Research", href: "#research" },
-  { label: "Contact", href: "#contact" },
-];
+import { useState } from "react";
+import { navLinks } from "@/constants/navigation";
+import { useTheme } from "@/hooks/useTheme";
+import { useScrolled } from "@/hooks/useScrolled";
 
 export default function NavBar() {
-  const [isScroll, setIsScroll] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScroll(window.scrollY > 50);
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const dark = saved ? saved === "dark" : prefersDark;
-    setIsDarkMode(dark);
-    document.documentElement.classList.toggle("dark", dark);
-  }, []);
-
-  const toggleDark = () => {
-    const next = !isDarkMode;
-    setIsDarkMode(next);
-    document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("theme", next ? "dark" : "light");
-  };
+  const { isDarkMode, toggleDark } = useTheme();
+  const isScrolled = useScrolled();
 
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-[8%] py-4 transition-all duration-300 ${
-          isScroll
+          isScrolled
             ? "bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-200/80 dark:border-zinc-800/80"
             : ""
         }`}

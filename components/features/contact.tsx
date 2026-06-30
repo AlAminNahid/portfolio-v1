@@ -1,53 +1,10 @@
 "use client";
 
-import axios from "axios";
-import { FormEvent, useState, useEffect } from "react";
-import { contactSchema } from "@/app/validation/contactSchema";
+import { useContactForm } from "@/hooks/useContactForm";
 
 export default function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  useEffect(() => {
-    if (success || error) {
-      const timer = setTimeout(() => {
-        setSuccess(false);
-        setError("");
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [success, error]);
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setError("");
-    setSuccess(false);
-    setIsSubmitting(true);
-
-    const result = contactSchema.safeParse({ name, email, message });
-
-    if (!result.success) {
-      setError(result.error.issues[0].message);
-      setIsSubmitting(false);
-      return;
-    }
-
-    try {
-      await axios.post("/api/contact", { name, email, message });
-      setSuccess(true);
-      setName("");
-      setEmail("");
-      setMessage("");
-    } catch (err: any) {
-      setError(err.message || "Something went wrong. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const { form, handleChange, handleSubmit, isSubmitting, feedback } =
+    useContactForm();
 
   return (
     <section
@@ -84,8 +41,9 @@ export default function Contact() {
               </label>
               <input
                 type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                name="name"
+                value={form.name}
+                onChange={handleChange}
                 placeholder="Your name"
                 className="w-full border-b border-zinc-300 dark:border-zinc-700 bg-transparent py-3 text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-600 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none transition-colors"
               />
@@ -97,8 +55,9 @@ export default function Contact() {
               </label>
               <input
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                name="email"
+                value={form.email}
+                onChange={handleChange}
                 placeholder="your@email.com"
                 className="w-full border-b border-zinc-300 dark:border-zinc-700 bg-transparent py-3 text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-600 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none transition-colors"
               />
@@ -109,20 +68,24 @@ export default function Contact() {
                 Message
               </label>
               <textarea
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                name="message"
+                value={form.message}
+                onChange={handleChange}
                 rows={4}
                 placeholder="Tell me about your project or idea..."
                 className="w-full border-b border-zinc-300 dark:border-zinc-700 bg-transparent py-3 text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-600 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none transition-colors resize-none"
               />
             </div>
 
-            {error && (
-              <p className="text-sm text-red-500 dark:text-red-400">{error}</p>
-            )}
-            {success && (
-              <p className="text-sm text-emerald-500 dark:text-emerald-400">
-                Message sent successfully!
+            {feedback && (
+              <p
+                className={`text-sm ${
+                  feedback.type === "success"
+                    ? "text-emerald-500 dark:text-emerald-400"
+                    : "text-red-500 dark:text-red-400"
+                }`}
+              >
+                {feedback.message}
               </p>
             )}
 

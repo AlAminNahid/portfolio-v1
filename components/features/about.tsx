@@ -1,21 +1,4 @@
-const skillGroups = [
-  {
-    label: "Languages",
-    skills: ["C++", "Java", "C#", "Kotlin", "Python", "TypeScript", "JavaScript"],
-  },
-  {
-    label: "Frontend",
-    skills: ["React", "Next.js", "Tailwind CSS", "Bootstrap", "HTML / CSS"],
-  },
-  {
-    label: "Backend & DB",
-    skills: ["NestJS", "FastAPI", ".NET", "PostgreSQL", "MySQL", "MongoDB", "TypeORM", "Prisma"],
-  },
-  {
-    label: "Tools",
-    skills: ["Git", "Docker", "Postman", "Firebase", "Vercel", "Android Studio"],
-  },
-];
+import { skillGroups } from "@/constants/skills";
 
 export default function About() {
   return (
@@ -61,13 +44,14 @@ export default function About() {
                 <p className="text-xs font-mono tracking-widest text-zinc-400 uppercase mb-3">
                   {label}
                 </p>
-                <ul className="space-y-1.5">
-                  {skills.map((skill) => (
+                <ul className="flex flex-wrap gap-2">
+                  {skills.map(({ name, icon: Icon }) => (
                     <li
-                      key={skill}
-                      className="text-sm text-zinc-700 dark:text-zinc-300"
+                      key={name}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/50 text-xs font-medium text-zinc-700 dark:text-zinc-300"
                     >
-                      {skill}
+                      <Icon className="w-3.5 h-3.5 shrink-0" />
+                      {name}
                     </li>
                   ))}
                 </ul>

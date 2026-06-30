@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+// @ts-ignore: allow importing CSS module without type declarations
 import "./globals.css";
 
 const inter = Inter({
