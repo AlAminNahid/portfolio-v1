@@ -16,6 +16,8 @@ export interface Project {
   images?: StaticImageData[];
   previewType: "web" | "mobile";
   github: string;
+  githubLinks?: { label: string; href: string }[];
+  downloadUrl?: string;
   summary: string;
   details: string;
   highlights: string[];

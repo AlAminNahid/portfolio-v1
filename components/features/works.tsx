@@ -39,20 +39,20 @@ export default function Works() {
             and mobile development.
           </p>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="flex flex-wrap justify-center gap-6">
             {projects.map((project, index) => (
               <button
                 key={project.title}
                 type="button"
                 onClick={() => openProject(project)}
-                className="group text-left"
+                className="group text-left w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
               >
                 <div className="relative overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-900 aspect-video">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-contain p-4 group-hover:scale-105 transition duration-500"
+                    className="object-contain p-1 group-hover:scale-105 transition duration-500"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition duration-300 flex items-center justify-center rounded-xl">
                     <span className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition duration-300">
@@ -114,7 +114,7 @@ export default function Works() {
 
             <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
               {/* Image panel */}
-              <div className="relative flex min-h-[480px] items-center justify-center bg-zinc-50 dark:bg-zinc-950 p-6 sm:p-8 rounded-tl-2xl rounded-bl-2xl">
+              <div className="relative flex min-h-[560px] items-center justify-center bg-zinc-50 dark:bg-zinc-950 p-6 sm:p-8 rounded-tl-2xl rounded-bl-2xl">
                 <Image
                   src={activeImages[slideIndex]}
                   alt={`${selectedProject.title} screenshot ${slideIndex + 1}`}
@@ -122,8 +122,8 @@ export default function Works() {
                   sizes="(min-width: 1024px) 56rem, 90vw"
                   className={
                     selectedProject.previewType === "mobile"
-                      ? "max-h-[75vh] max-w-[260px] w-full rounded-2xl object-contain shadow-xl"
-                      : "max-h-[65vh] w-full rounded-lg object-contain shadow-xl"
+                      ? "max-h-[85vh] max-w-[380px] w-full rounded-2xl border border-black object-contain shadow-xl"
+                      : "max-h-[65vh] w-full rounded-lg border border-black object-contain shadow-xl"
                   }
                 />
                 {totalSlides > 1 && (
@@ -133,12 +133,23 @@ export default function Works() {
                       aria-label="Previous image"
                       onClick={(e) => {
                         e.stopPropagation();
-                        setSlideIndex((i) => (i - 1 + totalSlides) % totalSlides);
+                        setSlideIndex(
+                          (i) => (i - 1 + totalSlides) % totalSlides,
+                        );
                       }}
                       className="absolute left-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-white dark:bg-zinc-800 shadow-md hover:bg-zinc-50 dark:hover:bg-zinc-700 transition"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                        <path fillRule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clipRule="evenodd" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className="w-4 h-4"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
+                          clipRule="evenodd"
+                        />
                       </svg>
                     </button>
                     <button
@@ -150,8 +161,17 @@ export default function Works() {
                       }}
                       className="absolute right-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-white dark:bg-zinc-800 shadow-md hover:bg-zinc-50 dark:hover:bg-zinc-700 transition"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                        <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className="w-4 h-4"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                          clipRule="evenodd"
+                        />
                       </svg>
                     </button>
                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
@@ -160,7 +180,10 @@ export default function Works() {
                           key={i}
                           type="button"
                           aria-label={`Go to image ${i + 1}`}
-                          onClick={(e) => { e.stopPropagation(); setSlideIndex(i); }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSlideIndex(i);
+                          }}
                           className={`h-1 rounded-full transition-all ${i === slideIndex ? "w-6 bg-zinc-900 dark:bg-white" : "w-1.5 bg-zinc-400 dark:bg-zinc-600"}`}
                         />
                       ))}
@@ -175,7 +198,9 @@ export default function Works() {
                   <span className="rounded-full bg-zinc-900 dark:bg-white px-3 py-1 text-xs font-medium text-white dark:text-zinc-900">
                     {selectedProject.type}
                   </span>
-                  <span className={`rounded-full px-3 py-1 text-xs font-medium ${selectedProject.status === "Completed" ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60" : "bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800/60"}`}>
+                  <span
+                    className={`rounded-full px-3 py-1 text-xs font-medium ${selectedProject.status === "Completed" ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60" : "bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800/60"}`}
+                  >
                     {selectedProject.status}
                   </span>
                 </div>
@@ -202,7 +227,10 @@ export default function Works() {
                   </p>
                   <ul className="space-y-2">
                     {selectedProject.highlights.map((h) => (
-                      <li key={h} className="flex items-start gap-2 text-sm text-zinc-500 dark:text-zinc-400">
+                      <li
+                        key={h}
+                        className="flex items-start gap-2 text-sm text-zinc-500 dark:text-zinc-400"
+                      >
                         <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-indigo-500" />
                         {h}
                       </li>
@@ -219,14 +247,33 @@ export default function Works() {
                   </p>
                 </div>
 
-                <a
-                  href={selectedProject.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-8 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-sm font-semibold hover:opacity-90 transition"
-                >
-                  View on GitHub →
-                </a>
+                <div className="mt-8 flex flex-wrap items-center gap-3">
+                  {selectedProject.downloadUrl && (
+                    <a
+                      href={selectedProject.downloadUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-indigo-500 text-white text-sm font-semibold hover:opacity-90 transition"
+                    >
+                      Download App →
+                    </a>
+                  )}
+                  {(
+                    selectedProject.githubLinks ?? [
+                      { label: "View on GitHub", href: selectedProject.github },
+                    ]
+                  ).map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-sm font-semibold hover:opacity-90 transition"
+                    >
+                      {link.label} →
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

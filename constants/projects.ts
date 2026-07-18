@@ -1,5 +1,10 @@
-import workTwo from "@/public/projects/two.png";
-import workThree from "@/public/projects/three.png";
+import messOne from "@/public/projects/two/One.jpg";
+import messTwo from "@/public/projects/two/Two.jpg";
+import messThree from "@/public/projects/two/Three.jpg";
+import messFour from "@/public/projects/two/Four.jpg";
+import messFive from "@/public/projects/two/Five.jpg";
+import messSix from "@/public/projects/two/Six.jpg";
+import messSeven from "@/public/projects/two/Seven.jpg";
 import medicareOne from "@/public/projects/one/one.png";
 import medicareTwo from "@/public/projects/one/two.png";
 import medicareThree from "@/public/projects/one/three.png";
@@ -7,47 +12,48 @@ import { type Project } from "@/types";
 
 export const projects: Project[] = [
   {
-    title: "MessMaster Mobile App",
+    title: "MessMaster",
     type: "Native Android App",
-    status: "In Progress",
+    status: "Completed",
     tech: "Kotlin, XML, NestJS, PostgreSQL",
-    image: workThree,
+    image: messOne,
+    images: [
+      messOne,
+      messTwo,
+      messThree,
+      messFour,
+      messFive,
+      messSix,
+      messSeven,
+    ],
     previewType: "mobile",
     github: "https://github.com/AlAminNahid/MessMasterApp.git",
+    githubLinks: [
+      {
+        label: "App Repo",
+        href: "https://github.com/AlAminNahid/MessMasterApp.git",
+      },
+      {
+        label: "Backend Repo",
+        href: "https://github.com/AlAminNahid/MessMasterApp_Backend.git",
+      },
+    ],
+    downloadUrl: "#",
     summary:
-      "Android client for MessMaster, built with Kotlin and XML on top of the shared NestJS backend.",
+      "Full-stack mess management system with a native Android client and a NestJS/PostgreSQL backend.",
     details:
-      "MessMaster Mobile helps mess managers and members handle daily mess operations from Android. It supports authentication, mess creation/joining, manager/member flows, meal tracking, utilities, notices, and dashboard summaries while reusing the same backend as the web version.",
+      "MessMaster helps mess managers and members handle daily mess operations from Android, backed by a dedicated NestJS API and PostgreSQL database. It supports authentication, mess creation/joining, manager/member flows, meal tracking, utilities, notices, and dashboard summaries — all built as a self-contained full-stack system.",
     highlights: [
       "Native Android UI built with Kotlin and XML",
-      "Connects to the shared NestJS REST API",
+      "NestJS + PostgreSQL REST API backend",
       "Manager/member workflows for real mess operations",
       "Dashboard screens for meals, costs, notices, and utility data",
     ],
   },
   {
-    title: "Mess Management System",
-    type: "Full-Stack Web App",
-    status: "In Progress",
-    tech: "NextJS, NestJS, PostgreSQL, Tailwind-CSS",
-    image: workTwo,
-    previewType: "web",
-    github: "https://github.com/AlAminNahid/Mess_Management_System.git",
-    summary:
-      "Web version of MessMaster for managing shared living expenses, meals, notices, and members.",
-    details:
-      "The web app demonstrates the full-stack side of MessMaster. It uses a Next.js frontend with a NestJS backend and PostgreSQL database to manage mess members, meal records, utility costs, notices, and shared operational workflows.",
-    highlights: [
-      "Next.js frontend for the web experience",
-      "NestJS backend shared with the Android app",
-      "PostgreSQL data model for mess operations",
-      "Role-based manager and member workflows",
-    ],
-  },
-  {
     title: "MediCare",
     type: "Full-Stack Web App",
-    status: "Completed",
+    status: "In Progress",
     tech: "NextJS, NestJS, PostgreSQL, TypeORM",
     image: medicareOne,
     images: [medicareOne, medicareTwo, medicareThree],
