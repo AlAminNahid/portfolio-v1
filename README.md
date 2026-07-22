@@ -4,7 +4,7 @@
 
 **Full-Stack Developer · Computer Science Student · Open to Opportunities**
 
-[![Live Portfolio](https://img.shields.io/badge/Live%20Portfolio-Visit%20Now-0A66C2?style=for-the-badge&logo=vercel&logoColor=white)](https://portfolio-v1-lime-one.vercel.app/)
+[![Live Portfolio](https://img.shields.io/badge/Live%20Portfolio-Visit%20Now-0A66C2?style=for-the-badge&logo=vercel&logoColor=white)](https://alamin-nahid.is-a.dev/)
 [![Next.js](https://img.shields.io/badge/Next.js%2016-Framework-000000?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS%20v4-Styling-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
@@ -19,7 +19,7 @@ A production-ready personal portfolio built with **Next.js 16 App Router**, **Re
 
 Every section of the site — hero, about, services, experience, research, works, and contact — is driven by structured data constants, keeping the UI components free of hardcoded content and making updates a one-line change.
 
-**Live site →** https://portfolio-v1-lime-one.vercel.app/
+**Live site →** https://alamin-nahid.is-a.dev/
 
 ---
 
@@ -54,65 +54,34 @@ Every section of the site — hero, about, services, experience, research, works
 ```
 portfolio-v1/
 │
-├── app/                          # Next.js App Router — routing concerns only
-│   ├── api/contact/route.ts      # Contact form API endpoint
-│   ├── layout.tsx                # Root layout (font, metadata, analytics)
-│   ├── page.tsx                  # Main landing page — composes all sections
-│   ├── error.tsx                 # Next.js error boundary wrapper
-│   ├── loading.tsx               # Next.js loading wrapper
-│   └── globals.css               # Global base styles
+├── src/                          # Application source code
+│   ├── app/                      # Next.js App Router — routing concerns only
+│   │   ├── api/contact/route.ts  # Contact form API endpoint
+│   │   ├── layout.tsx            # Root layout (font, metadata, analytics)
+│   │   ├── page.tsx              # Main landing page — composes all sections
+│   │   ├── error.tsx             # Next.js error boundary wrapper
+│   │   ├── loading.tsx           # Next.js loading wrapper
+│   │   └── globals.css           # Global base styles
+│   │
+│   ├── components/               # UI component library
+│   │   ├── features/             # Section-level components (one per page section)
+│   │   ├── layouts/              # Persistent layout components
+│   │   └── ui/                   # Primitive / reusable UI components
+│   │
+│   ├── constants/                # All static data — edit here to update content
+│   ├── hooks/                    # Custom React hooks
+│   ├── services/                 # External API communication layer
+│   ├── types/                    # Shared TypeScript interfaces
+│   ├── validation/               # Zod schemas (shared between client and server)
+│   ├── lib/                      # Server-side utilities (pure functions)
+│   └── config/                   # Initialised singletons and configuration
 │
-├── components/                   # UI component library
-│   ├── features/                 # Section-level components (one per page section)
-│   │   ├── header.tsx
-│   │   ├── about.tsx
-│   │   ├── services.tsx
-│   │   ├── experience.tsx
-│   │   ├── works.tsx
-│   │   ├── research.tsx
-│   │   └── contact.tsx
-│   ├── layouts/                  # Persistent layout components
-│   │   ├── navBar.tsx
-│   │   └── footer.tsx
-│   └── ui/                       # Primitive / reusable UI components
-│       ├── SkeletonView.tsx
-│       ├── ErrorView.tsx
-│       └── CSharpIcon.tsx
+├── public/                       # Static assets served at /
+│   ├── assets/                   # Images and icons
+│   └── projects/                 # Project screenshots
 │
-├── constants/                    # All static data — edit here to update content
-│   ├── hero.ts                   # Background icons, CTA links, social links
-│   ├── navigation.ts             # Nav link labels and anchors
-│   ├── skills.ts                 # Skill groups with icons
-│   ├── services.ts               # Services offered
-│   ├── experience.ts             # Work experience entries
-│   ├── research.ts               # Research papers
-│   └── projects.ts               # Portfolio projects
-│
-├── hooks/                        # Custom React hooks
-│   ├── useTheme.ts               # Dark / light mode toggle and persistence
-│   ├── useScrolled.ts            # Scroll position detection
-│   └── useContactForm.ts         # Contact form state, validation, submission
-│
-├── services/                     # External API communication layer
-│   └── contactService.ts         # Sends contact payload to /api/contact
-│
-├── types/                        # Shared TypeScript interfaces
-│   └── index.ts
-│
-├── validation/                   # Zod schemas (shared between client and server)
-│   └── contactSchema.ts
-│
-├── lib/                          # Server-side utilities (pure functions)
-│   ├── mailer.ts                 # sendMail — orchestrates transporter + templates
-│   ├── emailTemplates.ts         # buildHtmlEmail / buildTextEmail
-│   └── escapeHtml.ts             # XSS-safe HTML escaping
-│
-├── config/                       # Initialised singletons and configuration
-│   └── transporter.ts            # Nodemailer SMTP transporter instance
-│
-└── public/                       # Static assets served at /
-    ├── assets/                   # Images and icons
-    └── projects/                 # Project screenshots
+├── .env.example                  # Sample environment variables
+└── package.json                  # Scripts and dependencies
 ```
 
 ---
@@ -139,7 +108,13 @@ npm install
 
 ### 3 — Configure environment
 
-Create a `.env.local` file in the project root:
+Copy the sample file to `.env` in the project root:
+
+```bash
+cp .env.example .env
+```
+
+Then update the values in `.env`:
 
 ```env
 EMAIL_USER=your_gmail@gmail.com
@@ -162,17 +137,17 @@ Open [http://localhost:3000](http://localhost:3000).
 
 All site content is driven by files in `constants/` — no component edits required for content changes.
 
-| What to change             | File to edit                           |
-| -------------------------- | -------------------------------------- |
-| Name, bio, university      | `components/features/about.tsx`        |
-| Hero CTAs and social links | `constants/hero.ts`                    |
-| Navigation links           | `constants/navigation.ts`              |
-| Skills and technologies    | `constants/skills.ts`                  |
-| Services / offerings       | `constants/services.ts`                |
-| Work experience            | `constants/experience.ts`              |
-| Research papers            | `constants/research.ts`                |
-| Projects                   | `constants/projects.ts`                |
-| Contact email recipient    | `config/transporter.ts` + `.env.local` |
+| What to change             | File to edit                         |
+| -------------------------- | ------------------------------------ |
+| Name, bio, university      | `src/components/features/about.tsx`  |
+| Hero CTAs and social links | `src/constants/hero.ts`              |
+| Navigation links           | `src/constants/navigation.ts`        |
+| Skills and technologies    | `src/constants/skills.ts`            |
+| Services / offerings       | `src/constants/services.ts`          |
+| Work experience            | `src/constants/experience.ts`        |
+| Research papers            | `src/constants/research.ts`          |
+| Projects                   | `src/constants/projects.ts`          |
+| Contact email recipient    | `src/config/transporter.ts` + `.env` |
 
 ---
 
