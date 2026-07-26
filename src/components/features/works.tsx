@@ -248,6 +248,16 @@ export default function Works() {
                 </div>
 
                 <div className="mt-8 flex flex-wrap items-center gap-3">
+                  {selectedProject.liveUrl && (
+                    <a
+                      href={selectedProject.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-indigo-500 text-white text-sm font-semibold hover:opacity-90 transition"
+                    >
+                      Live Demo →
+                    </a>
+                  )}
                   {selectedProject.downloadUrl && (
                     <a
                       href={selectedProject.downloadUrl}

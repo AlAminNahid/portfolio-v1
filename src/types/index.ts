@@ -18,6 +18,7 @@ export interface Project {
   github: string;
   githubLinks?: { label: string; href: string }[];
   downloadUrl?: string;
+  liveUrl?: string;
   summary: string;
   details: string;
   highlights: string[];

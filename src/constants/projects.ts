@@ -8,6 +8,10 @@ import messSeven from "@/public/projects/two/Seven.jpg";
 import medicareOne from "@/public/projects/one/one.png";
 import medicareTwo from "@/public/projects/one/two.png";
 import medicareThree from "@/public/projects/one/three.png";
+import billimbiOne from "@/public/projects/three/One.png";
+import billimbiTwo from "@/public/projects/three/Two.png";
+import billimbiThree from "@/public/projects/three/Three.png";
+import billimbiFour from "@/public/projects/three/Four.png";
 import { type Project } from "@/types";
 
 export const projects: Project[] = [
@@ -48,6 +52,26 @@ export const projects: Project[] = [
       "NestJS + PostgreSQL REST API backend",
       "Manager/member workflows for real mess operations",
       "Dashboard screens for meals, costs, notices, and utility data",
+    ],
+  },
+  {
+    title: "Billimbi-Studio",
+    type: "Frontend Web App",
+    status: "Completed",
+    tech: "NextJS, TypeScript, TailwindCSS",
+    image: billimbiOne,
+    images: [billimbiOne, billimbiTwo, billimbiThree, billimbiFour],
+    previewType: "web",
+    github: "https://github.com/AlAminNahid/bilimbi_studio.git",
+    liveUrl: "https://bilimbi-studio.vercel.app/",
+    summary: "A modern frontend studio app built with Next.js and TailwindCSS.",
+    details:
+      "Billimbi-Studio is a frontend web application that showcases modern design and development practices using Next.js and TailwindCSS. It serves as a portfolio and studio platform for creative projects.",
+    highlights: [
+      "Modern frontend design with Next.js",
+      "Responsive layouts with TailwindCSS",
+      "TypeScript for type safety and maintainability",
+      "Showcase of creative projects and portfolio",
     ],
   },
   {
