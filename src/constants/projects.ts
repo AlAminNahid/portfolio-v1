@@ -5,6 +5,7 @@ import messFour from "@/public/projects/two/Four.jpg";
 import messFive from "@/public/projects/two/Five.jpg";
 import messSix from "@/public/projects/two/Six.jpg";
 import messSeven from "@/public/projects/two/Seven.jpg";
+import aiChatBotOne from "@/public/projects/four/one.png";
 import medicareOne from "@/public/projects/one/one.png";
 import medicareTwo from "@/public/projects/one/two.png";
 import medicareThree from "@/public/projects/one/three.png";
@@ -72,6 +73,26 @@ export const projects: Project[] = [
       "Responsive layouts with TailwindCSS",
       "TypeScript for type safety and maintainability",
       "Showcase of creative projects and portfolio",
+    ],
+  },
+  {
+    title: "AI-ChatBot",
+    type: "Full-Stack Web App",
+    status: "In Progress",
+    tech: "NextJS, Gemini API",
+    image: aiChatBotOne,
+    images: [aiChatBotOne],
+    previewType: "web",
+    github: "https://github.com/AlAminNahid/ai-chat.git",
+    liveUrl: "https://ai-aluboss-chat.vercel.app/",
+    summary:
+      "AI chat system built with Next.js and the Gemini API, with RAG support in progress.",
+    details:
+      "AI-ChatBot is a conversational AI application built with Next.js and Google's Gemini API. It's currently being extended with Retrieval-Augmented Generation (RAG) to ground responses in external knowledge sources.",
+    highlights: [
+      "Chat interface built with Next.js",
+      "Powered by Google's Gemini API",
+      "RAG integration in progress for context-aware responses",
     ],
   },
   {
