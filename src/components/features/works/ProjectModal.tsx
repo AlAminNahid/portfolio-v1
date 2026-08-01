@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 import { type Project } from "@/types";
 import { useEscapeKey } from "@/hooks/useEscapeKey";
+import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
 import ArrowButton from "./ArrowButton";
 
 type ProjectModalProps = {
@@ -15,6 +17,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const [slideIndex, setSlideIndex] = useState(0);
 
   useEscapeKey(onClose);
+  useBodyScrollLock();
+  const containerRef = useFocusTrap<HTMLDivElement>();
 
   const activeImages = project.images ?? [project.image];
   const totalSlides = activeImages.length;
@@ -25,6 +29,11 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
       onClick={onClose}
     >
       <div
+        ref={containerRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-modal-title"
+        tabIndex={-1}
         className="relative max-h-[92vh] w-full max-w-6xl overflow-y-auto rounded-2xl bg-surface shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
@@ -100,7 +109,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               </span>
             </div>
 
-            <h3 className="text-2xl font-bold text-fg">
+            <h3 id="project-modal-title" className="text-2xl font-bold text-fg">
               {project.title}
             </h3>
             <p className="mt-3 text-sm text-fg-muted leading-7">

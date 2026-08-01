@@ -5,7 +5,12 @@ import { contactSchema } from "@/validation/contactSchema";
 import { sendContactMessage } from "@/services/contactService";
 import { FormFields, Feedback } from "@/types/index";
 
-const EMPTY_FORM: FormFields = { name: "", email: "", message: "" };
+const EMPTY_FORM: FormFields = {
+  name: "",
+  email: "",
+  message: "",
+  website: "",
+};
 
 export function useContactForm() {
   const [form, setForm] = useState<FormFields>(EMPTY_FORM);
@@ -13,8 +18,8 @@ export function useContactForm() {
   const [feedback, setFeedback] = useState<Feedback | null>(null);
 
   useEffect(() => {
-    if (!feedback) return;
-    const timer = setTimeout(() => setFeedback(null), 3000);
+    if (feedback?.type !== "success") return;
+    const timer = setTimeout(() => setFeedback(null), 5000);
     return () => clearTimeout(timer);
   }, [feedback]);
 

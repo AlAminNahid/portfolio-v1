@@ -8,11 +8,16 @@ import { useState } from "react";
 import { navLinks } from "@/constants/navigation";
 import { useTheme } from "@/hooks/useTheme";
 import { useScrolled } from "@/hooks/useScrolled";
+import { useEscapeKey } from "@/hooks/useEscapeKey";
+import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isDarkMode, toggleDark } = useTheme();
+  const { isDarkMode, toggleDark, mounted } = useTheme();
   const isScrolled = useScrolled();
+
+  useEscapeKey(() => setIsMenuOpen(false));
+  useBodyScrollLock(isMenuOpen);
 
   return (
     <>
@@ -23,10 +28,7 @@ export default function NavBar() {
             : ""
         }`}
       >
-        <a
-          href="#top"
-          className="text-base font-medium tracking-tight text-fg"
-        >
+        <a href="#top" className="text-base font-medium tracking-tight text-fg">
           Nahid<span className="text-accent font-bold">.</span>
         </a>
 
@@ -52,7 +54,15 @@ export default function NavBar() {
             }
             className="flex h-9 w-9 items-center justify-center rounded-full text-fg-muted hover:bg-surface-raised transition"
           >
-            {isDarkMode ? <FaSun size={16} /> : <FaMoon size={15} />}
+            {mounted ? (
+              isDarkMode ? (
+                <FaSun size={16} />
+              ) : (
+                <FaMoon size={15} />
+              )
+            ) : (
+              <span className="h-4 w-4" />
+            )}
           </button>
           <a
             href="/Nahid_s_Resume.pdf"

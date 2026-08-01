@@ -23,6 +23,7 @@ export default function ProjectCard({
           src={project.image}
           alt={project.title}
           fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           className="object-contain p-1 group-hover:scale-105 transition duration-500"
         />
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition duration-300 flex items-center justify-center rounded-xl">
@@ -40,9 +41,7 @@ export default function ProjectCard({
           <h3 className="font-semibold text-fg group-hover:text-accent transition">
             {project.title}
           </h3>
-          <p className="text-sm text-fg-muted">
-            {project.type}
-          </p>
+          <p className="text-sm text-fg-muted">{project.type}</p>
         </div>
         <span className="text-fg-subtle group-hover:text-accent transition text-lg mt-5 shrink-0">
           →

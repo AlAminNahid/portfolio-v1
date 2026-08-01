@@ -19,4 +19,6 @@ export const contactSchema = z.object({
     .trim()
     .min(1, "Message is required")
     .max(1000, "Message too long"),
+
+  website: z.string().optional(),
 });

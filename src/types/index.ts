@@ -77,12 +77,14 @@ export interface ContactPayload {
   name: string;
   email: string;
   message: string;
+  website?: string;
 }
 
 export interface FormFields {
   name: string;
   email: string;
   message: string;
+  website: string;
 }
 
 export interface Feedback {

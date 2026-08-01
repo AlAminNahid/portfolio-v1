@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="border-t border-border py-6 px-6 lg:px-[8%] flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-fg-muted">
-      <span>© 2026 Al Amin Hossain Nahid</span>
+      <span>© {new Date().getFullYear()} Al Amin Hossain Nahid</span>
       <div className="flex items-center gap-6">
         <a
           href="https://github.com/AlAminNahid"

@@ -4,15 +4,11 @@ import { useEffect, useState } from "react";
 
 export function useTheme() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-    const dark = saved ? saved === "dark" : prefersDark;
-    setIsDarkMode(dark);
-    document.documentElement.classList.toggle("dark", dark);
+    setIsDarkMode(document.documentElement.classList.contains("dark"));
+    setMounted(true);
   }, []);
 
   function toggleDark() {
@@ -22,5 +18,5 @@ export function useTheme() {
     localStorage.setItem("theme", next ? "dark" : "light");
   }
 
-  return { isDarkMode, toggleDark };
+  return { isDarkMode, toggleDark, mounted };
 }

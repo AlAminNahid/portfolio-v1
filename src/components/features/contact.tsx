@@ -36,12 +36,17 @@ export default function Contact() {
 
           <form onSubmit={handleSubmit} className="space-y-8">
             <div>
-              <label className="block text-xs font-mono tracking-widest text-fg-muted uppercase mb-2">
+              <label
+                htmlFor="contact-name"
+                className="block text-xs font-mono tracking-widest text-fg-muted uppercase mb-2"
+              >
                 Name
               </label>
               <input
+                id="contact-name"
                 type="text"
                 name="name"
+                autoComplete="name"
                 value={form.name}
                 onChange={handleChange}
                 placeholder="Your name"
@@ -50,12 +55,17 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="block text-xs font-mono tracking-widest text-fg-muted uppercase mb-2">
+              <label
+                htmlFor="contact-email"
+                className="block text-xs font-mono tracking-widest text-fg-muted uppercase mb-2"
+              >
                 Email
               </label>
               <input
+                id="contact-email"
                 type="email"
                 name="email"
+                autoComplete="email"
                 value={form.email}
                 onChange={handleChange}
                 placeholder="your@email.com"
@@ -64,10 +74,14 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="block text-xs font-mono tracking-widest text-fg-muted uppercase mb-2">
+              <label
+                htmlFor="contact-message"
+                className="block text-xs font-mono tracking-widest text-fg-muted uppercase mb-2"
+              >
                 Message
               </label>
               <textarea
+                id="contact-message"
                 name="message"
                 value={form.message}
                 onChange={handleChange}
@@ -77,17 +91,28 @@ export default function Contact() {
               />
             </div>
 
-            {feedback && (
-              <p
-                className={`text-sm ${
-                  feedback.type === "success"
-                    ? "text-success"
-                    : "text-danger"
-                }`}
-              >
-                {feedback.message}
-              </p>
-            )}
+            <div aria-hidden="true" className="hidden">
+              <label htmlFor="contact-website">Website</label>
+              <input
+                id="contact-website"
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={form.website}
+                onChange={handleChange}
+              />
+            </div>
+
+            <p
+              role="status"
+              aria-live="polite"
+              className={`text-sm ${!feedback ? "sr-only" : ""} ${
+                feedback?.type === "error" ? "text-danger" : "text-success"
+              }`}
+            >
+              {feedback?.message ?? ""}
+            </p>
 
             <button
               type="submit"

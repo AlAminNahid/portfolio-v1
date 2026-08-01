@@ -8,9 +8,9 @@ export default function Research() {
       className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20 min-h-screen flex flex-col justify-center"
     >
       <div className="max-w-4xl mx-auto w-full">
-        <p className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-4">
+        <h2 className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-4">
           Research
-        </p>
+        </h2>
 
         {researchPapers.map((paper, i) => (
           <div key={i}>
@@ -66,9 +66,7 @@ export default function Research() {
                       Year
                     </span>
                     <div className="h-px flex-1 bg-surface-raised" />
-                    <span className="text-xs text-fg-muted">
-                      {paper.year}
-                    </span>
+                    <span className="text-xs text-fg-muted">{paper.year}</span>
                   </div>
                 </div>
 
