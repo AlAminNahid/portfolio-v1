@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from "@/constants/site";
 // @ts-ignore: allow importing CSS module without type declarations
 import "./globals.css";
 
@@ -9,14 +15,10 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
-const SITE_URL = "https://alamin-nahid.is-a.dev";
-const DESCRIPTION =
-  "Portfolio of Al Amin Hossain Nahid, a full-stack web and mobile developer building React, Next.js, backend, and Android applications.";
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Al Amin Hossain Nahid",
-  description: DESCRIPTION,
+  title: SITE_NAME,
+  description: SITE_DESCRIPTION,
   keywords: [
     "Al Amin Hossain Nahid",
     "full-stack developer",
@@ -27,23 +29,23 @@ export const metadata: Metadata = {
     "Android developer",
     "Bangladesh",
   ],
-  authors: [{ name: "Al Amin Hossain Nahid", url: SITE_URL }],
-  creator: "Al Amin Hossain Nahid",
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     url: SITE_URL,
-    siteName: "Al Amin Hossain Nahid",
-    title: "Al Amin Hossain Nahid — Full-Stack Developer",
-    description: DESCRIPTION,
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Al Amin Hossain Nahid — Full-Stack Developer",
-    description: DESCRIPTION,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
   },
   icons: {
     icon: "/icon.svg",
