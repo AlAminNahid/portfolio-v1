@@ -18,7 +18,7 @@ export default function ProjectCard({
       onClick={onClick}
       className="group text-left w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] shrink-0 snap-start"
     >
-      <div className="relative overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-900 aspect-video">
+      <div className="relative overflow-hidden rounded-xl bg-surface-subtle aspect-video">
         <Image
           src={project.image}
           alt={project.title}
@@ -34,17 +34,17 @@ export default function ProjectCard({
 
       <div className="mt-4 flex items-start justify-between gap-2">
         <div>
-          <div className="text-xs font-mono text-zinc-400 mb-1">
+          <div className="text-xs font-mono text-fg-muted mb-1">
             {String(index + 1).padStart(2, "0")}
           </div>
-          <h3 className="font-semibold text-zinc-900 dark:text-zinc-50 group-hover:text-indigo-500 transition">
+          <h3 className="font-semibold text-fg group-hover:text-accent transition">
             {project.title}
           </h3>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+          <p className="text-sm text-fg-muted">
             {project.type}
           </p>
         </div>
-        <span className="text-zinc-300 dark:text-zinc-700 group-hover:text-indigo-500 transition text-lg mt-5 shrink-0">
+        <span className="text-fg-subtle group-hover:text-accent transition text-lg mt-5 shrink-0">
           →
         </span>
       </div>

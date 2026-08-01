@@ -25,20 +25,20 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
       onClick={onClose}
     >
       <div
-        className="relative max-h-[92vh] w-full max-w-6xl overflow-y-auto rounded-2xl bg-white dark:bg-zinc-900 shadow-2xl"
+        className="relative max-h-[92vh] w-full max-w-6xl overflow-y-auto rounded-2xl bg-surface shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
           aria-label="Close project details"
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 text-lg leading-none transition"
+          className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-surface-raised text-fg-muted hover:text-fg text-lg leading-none transition"
         >
           ×
         </button>
 
         <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="relative flex min-h-[560px] items-center justify-center bg-zinc-50 dark:bg-zinc-950 p-6 sm:p-8 rounded-tl-2xl rounded-bl-2xl">
+          <div className="relative flex min-h-[560px] items-center justify-center bg-canvas p-6 sm:p-8 rounded-tl-2xl rounded-bl-2xl">
             <Image
               src={activeImages[slideIndex]}
               alt={`${project.title} screenshot ${slideIndex + 1}`}
@@ -59,7 +59,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     e.stopPropagation();
                     setSlideIndex((i) => (i - 1 + totalSlides) % totalSlides);
                   }}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 h-9 w-9 bg-white dark:bg-zinc-800 shadow-md hover:bg-zinc-50 dark:hover:bg-zinc-700"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 h-9 w-9 bg-surface-raised shadow-md hover:bg-surface-raised-hover"
                 />
                 <ArrowButton
                   direction="right"
@@ -68,7 +68,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     e.stopPropagation();
                     setSlideIndex((i) => (i + 1) % totalSlides);
                   }}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 h-9 w-9 bg-white dark:bg-zinc-800 shadow-md hover:bg-zinc-50 dark:hover:bg-zinc-700"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 h-9 w-9 bg-surface-raised shadow-md hover:bg-surface-raised-hover"
                 />
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
                   {activeImages.map((_, i) => (
@@ -80,7 +80,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                         e.stopPropagation();
                         setSlideIndex(i);
                       }}
-                      className={`h-1 rounded-full transition-all ${i === slideIndex ? "w-6 bg-zinc-900 dark:bg-white" : "w-1.5 bg-zinc-400 dark:bg-zinc-600"}`}
+                      className={`h-1 rounded-full transition-all ${i === slideIndex ? "w-6 bg-surface-inverted" : "w-1.5 bg-fg-subtle"}`}
                     />
                   ))}
                 </div>
@@ -90,43 +90,43 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           <div className="p-6 sm:p-8">
             <div className="mb-4 flex flex-wrap items-center gap-2">
-              <span className="rounded-full bg-zinc-900 dark:bg-white px-3 py-1 text-xs font-medium text-white dark:text-zinc-900">
+              <span className="rounded-full bg-surface-inverted px-3 py-1 text-xs font-medium text-fg-inverted">
                 {project.type}
               </span>
               <span
-                className={`rounded-full px-3 py-1 text-xs font-medium ${project.status === "Completed" ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60" : "bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800/60"}`}
+                className={`rounded-full px-3 py-1 text-xs font-medium ${project.status === "Completed" ? "bg-success-surface/60 text-success border border-success-border/60" : "bg-warning-surface/60 text-warning border border-warning-border/60"}`}
               >
                 {project.status}
               </span>
             </div>
 
-            <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+            <h3 className="text-2xl font-bold text-fg">
               {project.title}
             </h3>
-            <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400 leading-7">
+            <p className="mt-3 text-sm text-fg-muted leading-7">
               {project.summary}
             </p>
 
             <div className="mt-6">
-              <p className="text-xs font-mono tracking-widest text-zinc-400 uppercase mb-2">
+              <p className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-2">
                 What I built
               </p>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-7">
+              <p className="text-sm text-fg-muted leading-7">
                 {project.details}
               </p>
             </div>
 
             <div className="mt-6">
-              <p className="text-xs font-mono tracking-widest text-zinc-400 uppercase mb-3">
+              <p className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-3">
                 Key features
               </p>
               <ul className="space-y-2">
                 {project.highlights.map((h) => (
                   <li
                     key={h}
-                    className="flex items-start gap-2 text-sm text-zinc-500 dark:text-zinc-400"
+                    className="flex items-start gap-2 text-sm text-fg-muted"
                   >
-                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-indigo-500" />
+                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
                     {h}
                   </li>
                 ))}
@@ -134,10 +134,10 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
 
             <div className="mt-6">
-              <p className="text-xs font-mono tracking-widest text-zinc-400 uppercase mb-2">
+              <p className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-2">
                 Tech stack
               </p>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              <p className="text-sm text-fg-muted">
                 {project.tech}
               </p>
             </div>
@@ -148,7 +148,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-indigo-500 text-white text-sm font-semibold hover:opacity-90 transition"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-white text-sm font-semibold hover:opacity-90 transition"
                 >
                   Live Demo →
                 </a>
@@ -158,7 +158,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   href={project.downloadUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-indigo-500 text-white text-sm font-semibold hover:opacity-90 transition"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-white text-sm font-semibold hover:opacity-90 transition"
                 >
                   Download App →
                 </a>
@@ -173,7 +173,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-sm font-semibold hover:opacity-90 transition"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface-inverted text-fg-inverted text-sm font-semibold hover:opacity-90 transition"
                 >
                   {link.label} →
                 </a>

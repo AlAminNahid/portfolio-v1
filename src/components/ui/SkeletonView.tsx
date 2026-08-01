@@ -1,8 +1,25 @@
-function Bar({ className, style }: { className?: string; style?: React.CSSProperties }) {
-  return <div style={style} className={`rounded-md bg-zinc-200 dark:bg-zinc-800 ${className ?? ""}`} />;
+function Bar({
+  className,
+  style,
+}: {
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <div
+      style={style}
+      className={`rounded-md bg-surface-raised ${className ?? ""}`}
+    />
+  );
 }
 
-function SectionShell({ children, className }: { children: React.ReactNode; className?: string }) {
+function SectionShell({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
     <section className={`w-full px-6 lg:px-[8%] py-24 ${className ?? ""}`}>
       <div className="max-w-6xl mx-auto w-full">{children}</div>
@@ -26,7 +43,7 @@ function SectionHeading() {
 // ── NavBar ─────────────────────────────────────────────────────────────────
 function NavSkeleton() {
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-[8%] py-4 bg-white/80 dark:bg-zinc-950/80 border-b border-zinc-200/80 dark:border-zinc-800/80">
+    <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-[8%] py-4 bg-canvas/80 border-b border-border/80">
       <Bar className="h-5 w-20" />
       <div className="hidden md:flex gap-8">
         {[64, 52, 60, 72, 48, 68, 56].map((w, i) => (
@@ -103,7 +120,7 @@ function ServicesSkeleton() {
     <SectionShell>
       <SectionLabel />
       <SectionHeading />
-      <div className="divide-y divide-zinc-200 dark:divide-zinc-800 border-t border-zinc-200 dark:border-zinc-800">
+      <div className="divide-y divide-border border-t border-border">
         {[0, 1].map((i) => (
           <div key={i} className="flex items-start gap-8 py-10">
             <Bar className="h-3 w-6 mt-1 shrink-0" />
@@ -125,7 +142,7 @@ function ExperienceSkeleton() {
     <SectionShell>
       <SectionLabel />
       <SectionHeading />
-      <div className="pl-8 border-l-2 border-zinc-200 dark:border-zinc-800">
+      <div className="pl-8 border-l-2 border-border">
         <Bar className="h-3 w-40 mb-4" />
         <Bar className="h-6 w-64 mb-2" />
         <Bar className="h-4 w-32 mb-5" />
@@ -200,11 +217,13 @@ function ContactSkeleton() {
         <SectionLabel />
         <SectionHeading />
         <Bar className="h-5 w-64 mb-12" />
-        <div className="pt-10 border-t border-zinc-200 dark:border-zinc-800 space-y-8">
+        <div className="pt-10 border-t border-border space-y-8">
           {["Name", "Email", "Message"].map((field) => (
             <div key={field}>
               <Bar className="h-3 w-16 mb-3" />
-              <Bar className={`w-full ${field === "Message" ? "h-20" : "h-10"} rounded-none border-b border-zinc-200 dark:border-zinc-800 bg-transparent`} />
+              <Bar
+                className={`w-full ${field === "Message" ? "h-20" : "h-10"} rounded-none border-b border-border bg-transparent`}
+              />
             </div>
           ))}
           <Bar className="h-12 w-40 rounded-full" />
@@ -217,7 +236,7 @@ function ContactSkeleton() {
 // ── Footer ────────────────────────────────────────────────────────────────────
 function FooterSkeleton() {
   return (
-    <div className="border-t border-zinc-200 dark:border-zinc-800 py-6 px-6 lg:px-[8%] flex items-center justify-between">
+    <div className="border-t border-border py-6 px-6 lg:px-[8%] flex items-center justify-between">
       <Bar className="h-4 w-48" />
       <div className="flex gap-6">
         <Bar className="h-4 w-16" />

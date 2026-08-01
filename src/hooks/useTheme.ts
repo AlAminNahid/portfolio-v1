@@ -7,7 +7,9 @@ export function useTheme() {
 
   useEffect(() => {
     const saved = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
     const dark = saved ? saved === "dark" : prefersDark;
     setIsDarkMode(dark);
     document.documentElement.classList.toggle("dark", dark);

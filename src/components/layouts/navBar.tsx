@@ -19,12 +19,15 @@ export default function NavBar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-[8%] py-4 transition-all duration-300 ${
           isScrolled
-            ? "bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-200/80 dark:border-zinc-800/80"
+            ? "bg-canvas/80 backdrop-blur-md border-b border-border/80"
             : ""
         }`}
       >
-        <a href="#top" className="text-base font-medium tracking-tight text-zinc-900 dark:text-zinc-50">
-          Nahid<span className="text-indigo-500 font-bold">.</span>
+        <a
+          href="#top"
+          className="text-base font-medium tracking-tight text-fg"
+        >
+          Nahid<span className="text-accent font-bold">.</span>
         </a>
 
         <ul className="hidden md:flex items-center gap-8">
@@ -32,7 +35,7 @@ export default function NavBar() {
             <li key={href}>
               <a
                 href={href}
-                className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors duration-200"
+                className="text-sm text-fg-muted hover:text-fg transition-colors duration-200"
               >
                 {label}
               </a>
@@ -44,15 +47,17 @@ export default function NavBar() {
           <button
             type="button"
             onClick={toggleDark}
-            aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
+            aria-label={
+              isDarkMode ? "Switch to light mode" : "Switch to dark mode"
+            }
+            className="flex h-9 w-9 items-center justify-center rounded-full text-fg-muted hover:bg-surface-raised transition"
           >
             {isDarkMode ? <FaSun size={16} /> : <FaMoon size={15} />}
           </button>
           <a
             href="/Nahid_s_Resume.pdf"
             download
-            className="hidden md:flex items-center gap-2 text-sm px-4 py-2 rounded-full border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition"
+            className="hidden md:flex items-center gap-2 text-sm px-4 py-2 rounded-full border border-border-strong text-fg-secondary hover:bg-surface-subtle transition"
           >
             Resume
             <Image src={downloadIcon} alt="" className="w-3 dark:invert" />
@@ -60,7 +65,7 @@ export default function NavBar() {
           <button
             type="button"
             onClick={() => setIsMenuOpen(true)}
-            className="md:hidden flex h-9 w-9 items-center justify-center text-zinc-700 dark:text-zinc-300"
+            className="md:hidden flex h-9 w-9 items-center justify-center text-fg-secondary"
             aria-label="Open menu"
           >
             <HiMenuAlt3 size={22} />
@@ -75,11 +80,11 @@ export default function NavBar() {
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={() => setIsMenuOpen(false)}
           />
-          <div className="absolute right-0 top-0 bottom-0 w-64 bg-white dark:bg-zinc-900 flex flex-col py-16 px-8 gap-5">
+          <div className="absolute right-0 top-0 bottom-0 w-64 bg-surface flex flex-col py-16 px-8 gap-5">
             <button
               type="button"
               onClick={() => setIsMenuOpen(false)}
-              className="absolute right-5 top-5 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition"
+              className="absolute right-5 top-5 text-fg-muted hover:text-fg transition"
               aria-label="Close menu"
             >
               <HiX size={22} />
@@ -89,7 +94,7 @@ export default function NavBar() {
                 key={href}
                 href={href}
                 onClick={() => setIsMenuOpen(false)}
-                className="text-base font-medium text-zinc-700 dark:text-zinc-300 hover:text-indigo-500 dark:hover:text-indigo-400 transition"
+                className="text-base font-medium text-fg-secondary hover:text-accent transition"
               >
                 {label}
               </a>
@@ -97,7 +102,7 @@ export default function NavBar() {
             <a
               href="/Nahid_s_Resume.pdf"
               download
-              className="mt-4 text-sm text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition"
+              className="mt-4 text-sm text-fg-muted hover:text-fg-secondary transition"
             >
               Download Resume ↓
             </a>

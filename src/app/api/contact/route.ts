@@ -16,11 +16,17 @@ export async function POST(req: Request) {
 
     await sendMail(result.data);
 
-    return NextResponse.json({ success: true, message: "Email sent successfully!" });
+    return NextResponse.json({
+      success: true,
+      message: "Email sent successfully!",
+    });
   } catch (error: unknown) {
     console.error("✉️ Mailer Error:", error);
     return NextResponse.json(
-      { success: false, error: "Failed to send message. Please try again later." },
+      {
+        success: false,
+        error: "Failed to send message. Please try again later.",
+      },
       { status: 500 },
     );
   }

@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${inter.className} antialiased bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 overflow-x-hidden transition-colors duration-300`}
+        className={`${inter.className} antialiased bg-canvas text-fg overflow-x-hidden transition-colors duration-300`}
       >
         {children}
         <Analytics />

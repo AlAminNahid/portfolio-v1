@@ -2,8 +2,8 @@ import { type MailPayload } from "@/types";
 import { escapeHtml } from "@/lib/escapeHtml";
 
 export function buildHtmlEmail({ name, email, message }: MailPayload): string {
-  const cleanName    = escapeHtml(name);
-  const cleanEmail   = escapeHtml(email);
+  const cleanName = escapeHtml(name);
+  const cleanEmail = escapeHtml(email);
   const cleanMessage = escapeHtml(message).replaceAll("\n", "<br />");
 
   return `

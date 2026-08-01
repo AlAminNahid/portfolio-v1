@@ -9,7 +9,12 @@ export const researchPapers: ResearchPaper[] = [
       "A MobileNetV3-based deep learning approach using the BDWaste dataset, focused on classifying waste images for smarter and more sustainable urban waste-management workflows.",
     coAuthors:
       "Co-authored with Ferdus Hossain, Tariful Islam Fahim, and Salman Zzoha. Accepted at the International Conference on Power, Electronics, Communications, Computing, and Intelligent Infrastructure.",
-    highlights: ["MobileNetV3", "BDWaste Dataset", "Deep Learning", "Urban Sustainability"],
+    highlights: [
+      "MobileNetV3",
+      "BDWaste Dataset",
+      "Deep Learning",
+      "Urban Sustainability",
+    ],
     status: "Accepted",
     year: 2026,
     conferenceUrl: "https://peccii.pust.ac.bd/",

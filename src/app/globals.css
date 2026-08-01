@@ -6,13 +6,121 @@
   --font-sans: "Inter", sans-serif;
 }
 
-html {
-  scrollbar-width: thin;
-  scrollbar-color: #d4d4d8 transparent;
+/*
+ * Semantic color tokens.
+ *
+ * Values are expressed in terms of Tailwind's own palette variables rather
+ * than raw hex so the shades stay canonical (v4's palette is oklch-based —
+ * hand-written hex would drift).
+ *
+ * Light values live on :root, dark overrides on .dark. Components should use
+ * the semantic utilities (bg-surface, text-fg-muted, border-border-strong…)
+ * and never reference zinc/indigo/emerald directly — that way dark mode is
+ * maintained here, once, instead of in every `dark:` variant.
+ */
+:root {
+  /* Surfaces */
+  --canvas: var(--color-white);
+  --surface: var(--color-white);
+  --surface-subtle: var(--color-zinc-100);
+  --surface-raised: var(--color-zinc-200);
+  --surface-raised-hover: var(--color-zinc-50);
+  --surface-inverted: var(--color-zinc-900);
+
+  /* Foreground */
+  --fg: var(--color-zinc-900);
+  --fg-secondary: var(--color-zinc-700);
+  --fg-muted: var(--color-zinc-500);
+  --fg-subtle: var(--color-zinc-400);
+  --fg-inverted: var(--color-white);
+
+  /* Lines */
+  --border: var(--color-zinc-200);
+  --border-strong: var(--color-zinc-300);
+
+  /* Accent — interactive / emphasis */
+  --accent: var(--color-indigo-500);
+  --accent-strong: var(--color-indigo-600);
+
+  /* Status */
+  --success: var(--color-emerald-700);
+  --success-solid: var(--color-emerald-500);
+  --success-surface: var(--color-emerald-50);
+  --success-border: var(--color-emerald-200);
+  --warning: var(--color-amber-700);
+  --warning-surface: var(--color-amber-50);
+  --warning-border: var(--color-amber-200);
+  --danger: var(--color-red-500);
 }
 
-html.dark {
-  scrollbar-color: #3f3f46 transparent;
+.dark {
+  --canvas: var(--color-zinc-950);
+  --surface: var(--color-zinc-900);
+  --surface-subtle: var(--color-zinc-900);
+  --surface-raised: var(--color-zinc-800);
+  --surface-raised-hover: var(--color-zinc-700);
+  --surface-inverted: var(--color-white);
+
+  --fg: var(--color-zinc-50);
+  --fg-secondary: var(--color-zinc-300);
+  --fg-muted: var(--color-zinc-400);
+  --fg-subtle: var(--color-zinc-600);
+  --fg-inverted: var(--color-zinc-900);
+
+  --border: var(--color-zinc-800);
+  --border-strong: var(--color-zinc-700);
+
+  --accent: var(--color-indigo-400);
+  --accent-strong: var(--color-indigo-500);
+
+  --success: var(--color-emerald-400);
+  --success-solid: var(--color-emerald-500);
+  --success-surface: var(--color-emerald-950);
+  --success-border: var(--color-emerald-800);
+  --warning: var(--color-amber-400);
+  --warning-surface: var(--color-amber-950);
+  --warning-border: var(--color-amber-800);
+  --danger: var(--color-red-400);
+}
+
+/*
+ * `inline` is required here: it makes the generated utilities emit
+ * `var(--surface)` rather than resolving to a build-time constant, which is
+ * what lets the .dark overrides above actually take effect.
+ */
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-raised-hover: var(--surface-raised-hover);
+  --color-surface-inverted: var(--surface-inverted);
+
+  --color-fg: var(--fg);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-fg-inverted: var(--fg-inverted);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+
+  --color-success: var(--success);
+  --color-success-solid: var(--success-solid);
+  --color-success-surface: var(--success-surface);
+  --color-success-border: var(--success-border);
+  --color-warning: var(--warning);
+  --color-warning-surface: var(--warning-surface);
+  --color-warning-border: var(--warning-border);
+  --color-danger: var(--danger);
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
 }
 
 html::-webkit-scrollbar {
@@ -24,20 +132,12 @@ html::-webkit-scrollbar-track {
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: #d4d4d8;
+  background-color: var(--border-strong);
   border-radius: 10px;
 }
 
-html.dark::-webkit-scrollbar-thumb {
-  background-color: #3f3f46;
-}
-
 html::-webkit-scrollbar-thumb:hover {
-  background-color: #a1a1aa;
-}
-
-html.dark::-webkit-scrollbar-thumb:hover {
-  background-color: #52525b;
+  background-color: var(--fg-subtle);
 }
 
 body {
@@ -45,8 +145,13 @@ body {
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .cursor {

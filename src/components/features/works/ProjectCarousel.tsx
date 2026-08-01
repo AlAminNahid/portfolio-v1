@@ -36,7 +36,7 @@ export default function ProjectCarousel({
             aria-label="Previous project"
             disabled={carouselIndex === 0}
             onClick={() => scrollToProject(carouselIndex - 1)}
-            className="hidden sm:flex h-10 w-10 shrink-0 border border-zinc-300 dark:border-zinc-700 text-zinc-500 hover:bg-zinc-50 dark:hover:bg-zinc-900 hover:text-indigo-500"
+            className="hidden sm:flex h-10 w-10 shrink-0 border border-border-strong text-fg-muted hover:bg-surface-subtle hover:text-accent"
           />
         )}
 
@@ -60,7 +60,7 @@ export default function ProjectCarousel({
             aria-label="Next project"
             disabled={carouselIndex === projects.length - 1}
             onClick={() => scrollToProject(carouselIndex + 1)}
-            className="hidden sm:flex h-10 w-10 shrink-0 border border-zinc-300 dark:border-zinc-700 text-zinc-500 hover:bg-zinc-50 dark:hover:bg-zinc-900 hover:text-indigo-500"
+            className="hidden sm:flex h-10 w-10 shrink-0 border border-border-strong text-fg-muted hover:bg-surface-subtle hover:text-accent"
           />
         )}
       </div>
@@ -73,14 +73,14 @@ export default function ProjectCarousel({
               aria-label="Previous project"
               disabled={carouselIndex === 0}
               onClick={() => scrollToProject(carouselIndex - 1)}
-              className="h-8 w-8 border border-zinc-300 dark:border-zinc-700 text-zinc-500"
+              className="h-8 w-8 border border-border-strong text-fg-muted"
             />
             <ArrowButton
               direction="right"
               aria-label="Next project"
               disabled={carouselIndex === projects.length - 1}
               onClick={() => scrollToProject(carouselIndex + 1)}
-              className="h-8 w-8 border border-zinc-300 dark:border-zinc-700 text-zinc-500"
+              className="h-8 w-8 border border-border-strong text-fg-muted"
             />
           </div>
         </div>
