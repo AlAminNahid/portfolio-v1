@@ -9,6 +9,7 @@ import aiChatBotOne from "@/public/projects/four/one.png";
 import medicareOne from "@/public/projects/one/one.png";
 import medicareTwo from "@/public/projects/one/two.png";
 import medicareThree from "@/public/projects/one/three.png";
+import medicareFour from "@/public/projects/one/four.png";
 import billimbiOne from "@/public/projects/three/One.png";
 import billimbiTwo from "@/public/projects/three/Two.png";
 import billimbiThree from "@/public/projects/three/Three.png";
@@ -43,56 +44,63 @@ export const projects: Project[] = [
         href: "https://github.com/AlAminNahid/MessMasterApp_Backend.git",
       },
     ],
-    downloadUrl: "#",
+    downloadUrl:
+      "https://play.google.com/apps/internaltest/4700604083528970813",
     summary:
-      "Full-stack mess management system with a native Android client and a NestJS/PostgreSQL backend.",
+      "Smart mess management app for shared living — tracks meals, utilities, and monthly expenses with automatic bill calculation.",
     details:
-      "MessMaster helps mess managers and members handle daily mess operations from Android, backed by a dedicated NestJS API and PostgreSQL database. It supports authentication, mess creation/joining, manager/member flows, meal tracking, utilities, notices, and dashboard summaries — all built as a self-contained full-stack system.",
+      "MessMaster is a full-stack Android application built for student messes, hostels, and shared apartments. After login, users either create a mess (becoming the Manager) or join one as a Member. The Manager records daily meals, manages utility costs (electricity, water, internet, grocery), posts notices, and generates monthly bills. Members view their meal history, utility shares, and calculated rates. The meal rate is computed automatically as total monthly expense divided by total meals, giving everyone a fair, transparent bill. The backend is a NestJS REST API with JWT (access + refresh tokens) and PostgreSQL via TypeORM.",
     highlights: [
-      "Native Android UI built with Kotlin and XML",
-      "NestJS + PostgreSQL REST API backend",
-      "Manager/member workflows for real mess operations",
-      "Dashboard screens for meals, costs, notices, and utility data",
+      "Currently in internal testing on Google Play — use the link to request access",
+      "Role-based system: Manager creates/manages the mess, Members track their share",
+      "Automatic meal rate calculation: total expense ÷ total meals",
+      "Utility cost tracking — electricity, water, internet, grocery, and more",
+      "Notice board for manager announcements and member shopping requests",
+      "JWT auth with access + refresh tokens, bcrypt password hashing",
+      "NestJS REST API backed by PostgreSQL with TypeORM",
     ],
   },
   {
-    title: "Billimbi-Studio",
-    type: "Frontend Web App",
+    title: "Bilimbi Studio",
+    type: "Marketing Site",
     status: "Completed",
-    tech: "NextJS, TypeScript, TailwindCSS",
+    tech: "NextJS, TypeScript, Custom CSS",
     image: billimbiOne,
     images: [billimbiOne, billimbiTwo, billimbiThree, billimbiFour],
     previewType: "web",
     github: "https://github.com/AlAminNahid/bilimbi_studio.git",
-    liveUrl: "https://bilimbi-studio.vercel.app/",
-    summary: "A modern frontend studio app built with Next.js and TailwindCSS.",
+    liveUrl: "https://bilimbi-studio.is-a.dev",
+    summary:
+      "Marketing site for Bilimbi Studio — a small software studio based in Dhaka, Bangladesh.",
     details:
-      "Billimbi-Studio is a frontend web application that showcases modern design and development practices using Next.js and TailwindCSS. It serves as a portfolio and studio platform for creative projects.",
+      "Bilimbi Studio is a fully hand-crafted marketing site for a focused software studio in Dhaka. Built with Next.js App Router and TypeScript, the site is styled entirely with custom CSS using a two-tier design-token system — brand primitives (raw colour values) and semantic roles (what each colour is for) — with zero utility-class frameworks. Sections cover the studio's projects, process, team, and a contact form, all driven from typed constants so content never lives inside components.",
     highlights: [
-      "Modern frontend design with Next.js",
-      "Responsive layouts with TailwindCSS",
-      "TypeScript for type safety and maintainability",
-      "Showcase of creative projects and portfolio",
+      "Hand-authored CSS with a two-tier design-token system (no Tailwind utilities)",
+      "Content-driven architecture — all copy lives in typed constants, not components",
+      "Sections: hero, projects, how-we-build process, team, and contact form",
+      "Deployed on Vercel with automatic preview deployments on pull requests",
     ],
   },
   {
-    title: "AI-ChatBot",
+    title: "AI Chat",
     type: "Full-Stack Web App",
-    status: "In Progress",
-    tech: "NextJS, Gemini API",
+    status: "Completed",
+    tech: "NextJS, Gemini API, Prisma, PostgreSQL",
     image: aiChatBotOne,
     images: [aiChatBotOne],
     previewType: "web",
     github: "https://github.com/AlAminNahid/ai-chat.git",
-    liveUrl: "https://ai-aluboss-chat.vercel.app/",
+    liveUrl: "https://ai-nova-chat.vercel.app/",
     summary:
-      "AI chat system built with Next.js and the Gemini API, with RAG support in progress.",
+      "Conversational AI app powered by Gemini with persistent chat history stored in PostgreSQL via Prisma.",
     details:
-      "AI-ChatBot is a conversational AI application built with Next.js and Google's Gemini API. It's currently being extended with Retrieval-Augmented Generation (RAG) to ground responses in external knowledge sources.",
+      "AI Chat is a full-stack conversational AI application built with Next.js App Router and Google's Gemini API. Every conversation is persisted in a PostgreSQL database hosted on Neon, accessed through Prisma 7 with the native Postgres adapter. Users can start new chats, continue previous ones from a sidebar, and delete conversations — all backed by a clean REST API with dedicated endpoints for chat completions and conversation management.",
     highlights: [
-      "Chat interface built with Next.js",
-      "Powered by Google's Gemini API",
-      "RAG integration in progress for context-aware responses",
+      "Google Gemini API for AI chat completions",
+      "Conversation persistence with Prisma 7 and PostgreSQL (Neon)",
+      "Sidebar with full conversation history — resume or delete any chat",
+      "REST API: POST /chat, GET/DELETE /conversations/[id]",
+      "Next.js App Router with Tailwind CSS v4",
     ],
   },
   {
@@ -101,18 +109,19 @@ export const projects: Project[] = [
     status: "In Progress",
     tech: "NextJS, NestJS, PostgreSQL, TypeORM",
     image: medicareOne,
-    images: [medicareOne, medicareTwo, medicareThree],
+    images: [medicareOne, medicareTwo, medicareThree, medicareFour],
     previewType: "web",
     github: "https://github.com/AlAminNahid/MediCare.git",
     summary:
-      "Clinic workflow app for managing patients, doctors, appointments, and records.",
+      "Medical chamber management SaaS — doctors run their chambers, patients book serial-based appointments online.",
     details:
-      "A full-stack clinic management system built with a modern stack. It includes patient and doctor management, appointment handling, and database-backed records using NestJS and PostgreSQL with TypeORM.",
+      "MediCare is a full-stack medical chamber management platform with three distinct portals: Admin, Doctor, and Patient. Doctors manage their private chambers (locations, schedules, fees) and handle a daily serial-ordered appointment queue. Patients browse doctors, pick a chamber, and receive a serial number instead of a fixed time slot. The admin oversees the platform — managing medicines, users, and backups. Built with Next.js and NestJS, backed by PostgreSQL via TypeORM, and secured with JWT auth.",
     highlights: [
-      "Patient and doctor management",
-      "Appointment workflow support",
-      "PostgreSQL with TypeORM data layer",
-      "Next.js frontend with NestJS REST API",
+      "Three-role system: Admin, Doctor, and Patient portals",
+      "Serial-based appointment booking per chamber per day",
+      "Doctor chamber management with schedules, locations, and fees",
+      "Digital prescriptions and shared medicine reference list",
+      "JWT-secured NestJS REST API with PostgreSQL and TypeORM",
     ],
   },
 ];
