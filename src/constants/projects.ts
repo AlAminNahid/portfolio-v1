@@ -51,7 +51,7 @@ export const projects: Project[] = [
     details:
       "MessMaster is a full-stack Android application built for student messes, hostels, and shared apartments. After login, users either create a mess (becoming the Manager) or join one as a Member. The Manager records daily meals, manages utility costs (electricity, water, internet, grocery), posts notices, and generates monthly bills. Members view their meal history, utility shares, and calculated rates. The meal rate is computed automatically as total monthly expense divided by total meals, giving everyone a fair, transparent bill. The backend is a NestJS REST API with JWT (access + refresh tokens) and PostgreSQL via TypeORM.",
     highlights: [
-      "Currently in internal testing on Google Play — use the link to request access",
+      "Currently in internal testing on Google Play — request early access via the link",
       "Role-based system: Manager creates/manages the mess, Members track their share",
       "Automatic meal rate calculation: total expense ÷ total meals",
       "Utility cost tracking — electricity, water, internet, grocery, and more",
@@ -112,6 +112,7 @@ export const projects: Project[] = [
     images: [medicareOne, medicareTwo, medicareThree, medicareFour],
     previewType: "web",
     github: "https://github.com/AlAminNahid/MediCare.git",
+    liveUrl: "https://medi-care-nine-flax.vercel.app",
     summary:
       "Medical chamber management SaaS — doctors run their chambers, patients book serial-based appointments online.",
     details:

@@ -57,5 +57,4 @@ export const socialLinks: SocialLink[] = [
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/al-amin-hossain-nahid-876858193/",
   },
-  { label: "Codeforces", href: "https://codeforces.com/profile/AluBoss11" },
 ];

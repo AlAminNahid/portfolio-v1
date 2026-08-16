@@ -34,7 +34,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
         aria-modal="true"
         aria-labelledby="project-modal-title"
         tabIndex={-1}
-        className="relative max-h-[92vh] w-full max-w-6xl overflow-y-auto rounded-2xl bg-surface shadow-2xl"
+        className="relative max-h-[92vh] w-full max-w-6xl overflow-y-auto lg:overflow-hidden rounded-2xl bg-surface shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -46,7 +46,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           ×
         </button>
 
-        <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="grid lg:grid-cols-[1.2fr_0.8fr] lg:h-[90vh]">
           <div className="relative flex min-h-[560px] items-center justify-center bg-canvas p-6 sm:p-8 rounded-tl-2xl rounded-bl-2xl">
             <Image
               src={activeImages[slideIndex]}
@@ -97,7 +97,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             )}
           </div>
 
-          <div className="p-6 sm:p-8">
+          <div className="p-6 sm:p-8 lg:overflow-y-auto">
             <div className="mb-4 flex flex-wrap items-center gap-2">
               <span className="rounded-full bg-surface-inverted px-3 py-1 text-xs font-medium text-fg-inverted">
                 {project.type}
@@ -169,7 +169,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-white text-sm font-semibold hover:opacity-90 transition"
                 >
-                  Download App →
+                  Request Early Access →
                 </a>
               )}
               {(
