@@ -58,14 +58,14 @@ export default function Header() {
           >
             <a
               href="#work"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-fg text-fg-inverted text-sm font-semibold hover:opacity-80 transition-opacity duration-200"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-fg text-fg-inverted text-sm font-semibold hover:opacity-80 transition-opacity duration-200"
             >
               View Selected Work
               <span className="text-base">→</span>
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border-strong text-sm font-medium text-fg-secondary hover:border-fg-muted hover:text-fg transition-colors duration-200"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-border-strong text-sm font-medium text-fg-secondary hover:border-fg-muted hover:text-fg transition-colors duration-200"
             >
               Get in Touch
             </a>

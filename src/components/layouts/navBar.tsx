@@ -88,9 +88,9 @@ export default function NavBar() {
           <a
             href="/Nahid_s_Resume.pdf"
             download
-            className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-border-strong text-xs font-medium tracking-wide uppercase text-fg-secondary hover:border-accent hover:text-accent transition-colors duration-200"
+            className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-md border border-border-strong text-xs font-medium tracking-wide uppercase text-fg-secondary hover:border-accent hover:text-accent transition-colors duration-200"
           >
-            Resume
+            Resume ↓
           </a>
 
           <button

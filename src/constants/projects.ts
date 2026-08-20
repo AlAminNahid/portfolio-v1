@@ -14,6 +14,7 @@ import billimbiOne from "@/public/projects/three/One.png";
 import billimbiTwo from "@/public/projects/three/Two.png";
 import billimbiThree from "@/public/projects/three/Three.png";
 import billimbiFour from "@/public/projects/three/Four.png";
+import jotionOne from "@/public/projects/five/one.png";
 import { type Project } from "@/types";
 
 export const projects: Project[] = [
@@ -38,6 +39,30 @@ export const projects: Project[] = [
       "Content-driven architecture — all copy lives in typed constants, not components",
       "Sections: hero, projects, how-we-build process, team, and contact form",
       "Deployed on Vercel with automatic preview deployments on pull requests",
+    ],
+  },
+  {
+    title: "Jotion",
+    type: "Clone of Notion",
+    category: "Full-Stack Web App",
+    year: "2026",
+    status: "Completed",
+    tech: "Next.js, TypeScript, Tailwind CSS, Shadcn/UI, Clerk, Convex",
+    image: jotionOne,
+    images: [jotionOne],
+    previewType: "web",
+    github: "https://github.com/AlAminNahid/notion-clone.git",
+    liveUrl: "https://notion-clone-flame-pi.vercel.app/",
+    summary:
+      "A Notion-inspired connected workspace — write, plan, and organise documents with real-time sync and auth out of the box.",
+    details:
+      "Jotion is a full-stack Notion clone built with Next.js App Router and TypeScript. Authentication is handled end-to-end by Clerk, which plugs directly into Convex via a JWT provider so every database query is user-scoped without a separate auth layer. Convex serves as the real-time backend — schema, queries, mutations, and subscriptions all live in TypeScript functions that deploy atomically, eliminating the need for a traditional REST API. The UI is built with Shadcn/UI components on top of Tailwind CSS v4, with dark/light mode via next-themes.",
+    highlights: [
+      "Clerk authentication with modal sign-in/sign-up, wired to Convex via JWT provider",
+      "Convex real-time backend — schema, queries, and mutations in typed TypeScript functions",
+      "Next.js App Router with route groups: marketing layout and authenticated documents layout",
+      "Dark/light mode with next-themes and Shadcn/UI component system",
+      "Deployed on Vercel with Convex cloud handling the real-time database",
     ],
   },
   {
