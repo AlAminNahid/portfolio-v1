@@ -18,8 +18,81 @@ import { type Project } from "@/types";
 
 export const projects: Project[] = [
   {
+    title: "Bilimbi Studio",
+    type: "Marketing Site",
+    category: "Frontend · Design",
+    year: "2026",
+    status: "Completed",
+    tech: "Next.js, TypeScript, Custom CSS",
+    image: billimbiOne,
+    images: [billimbiOne, billimbiTwo, billimbiThree, billimbiFour],
+    previewType: "web",
+    github: "https://github.com/AlAminNahid/bilimbi_studio.git",
+    liveUrl: "https://bilimbi-studio.is-a.dev",
+    summary:
+      "Marketing site for Bilimbi Studio — a small software studio based in Dhaka, Bangladesh.",
+    details:
+      "Bilimbi Studio is a fully hand-crafted marketing site for a focused software studio in Dhaka. Built with Next.js App Router and TypeScript, the site is styled entirely with custom CSS using a two-tier design-token system — brand primitives (raw colour values) and semantic roles (what each colour is for) — with zero utility-class frameworks. Sections cover the studio's projects, process, team, and a contact form, all driven from typed constants so content never lives inside components.",
+    highlights: [
+      "Hand-authored CSS with a two-tier design-token system (no Tailwind utilities)",
+      "Content-driven architecture — all copy lives in typed constants, not components",
+      "Sections: hero, projects, how-we-build process, team, and contact form",
+      "Deployed on Vercel with automatic preview deployments on pull requests",
+    ],
+  },
+  {
+    title: "AI Chat",
+    type: "Full-Stack Web App",
+    category: "AI · Full-Stack",
+    year: "2026",
+    status: "Completed",
+    tech: "Next.js, Gemini API, Prisma, PostgreSQL",
+    image: aiChatBotOne,
+    images: [aiChatBotOne],
+    previewType: "web",
+    github: "https://github.com/AlAminNahid/ai-chat.git",
+    liveUrl: "https://ai-nova-chat.vercel.app/",
+    summary:
+      "Conversational AI app powered by Gemini with persistent chat history stored in PostgreSQL via Prisma.",
+    details:
+      "AI Chat is a full-stack conversational AI application built with Next.js App Router and Google's Gemini API. Every conversation is persisted in a PostgreSQL database hosted on Neon, accessed through Prisma 7 with the native Postgres adapter. Users can start new chats, continue previous ones from a sidebar, and delete conversations — all backed by a clean REST API with dedicated endpoints for chat completions and conversation management.",
+    highlights: [
+      "Google Gemini API for AI chat completions",
+      "Conversation persistence with Prisma 7 and PostgreSQL (Neon)",
+      "Sidebar with full conversation history — resume or delete any chat",
+      "REST API: POST /chat, GET/DELETE /conversations/[id]",
+      "Next.js App Router with Tailwind CSS v4",
+    ],
+  },
+  {
+    title: "MediCare",
+    type: "Full-Stack Web App",
+    category: "Full-Stack · SaaS",
+    year: "2026",
+    status: "In Progress",
+    tech: "Next.js, NestJS, PostgreSQL, TypeORM",
+    image: medicareOne,
+    images: [medicareOne, medicareTwo, medicareThree, medicareFour],
+    previewType: "web",
+    github: "https://github.com/AlAminNahid/MediCare.git",
+    liveUrl: "https://medi-care-nine-flax.vercel.app",
+    summary:
+      "Medical chamber management SaaS — doctors run their chambers, patients book serial-based appointments online.",
+    details:
+      "MediCare is a full-stack medical chamber management platform with three distinct portals: Admin, Doctor, and Patient. Doctors manage their private chambers (locations, schedules, fees) and handle a daily serial-ordered appointment queue. Patients browse doctors, pick a chamber, and receive a serial number instead of a fixed time slot. The admin oversees the platform — managing medicines, users, and backups. Built with Next.js and NestJS, backed by PostgreSQL via TypeORM, and secured with JWT auth.",
+    highlights: [
+      "Three-role system: Admin, Doctor, and Patient portals",
+      "Serial-based appointment booking per chamber per day",
+      "Doctor chamber management with schedules, locations, and fees",
+      "Digital prescriptions and shared medicine reference list",
+      "JWT-secured NestJS REST API with PostgreSQL and TypeORM",
+    ],
+  },
+  {
     title: "MessMaster",
     type: "Native Android App",
+    category: "Mobile · Full-Stack",
+    year: "2026",
     status: "Completed",
     tech: "Kotlin, XML, NestJS, PostgreSQL",
     image: messOne,
@@ -58,71 +131,6 @@ export const projects: Project[] = [
       "Notice board for manager announcements and member shopping requests",
       "JWT auth with access + refresh tokens, bcrypt password hashing",
       "NestJS REST API backed by PostgreSQL with TypeORM",
-    ],
-  },
-  {
-    title: "Bilimbi Studio",
-    type: "Marketing Site",
-    status: "Completed",
-    tech: "NextJS, TypeScript, Custom CSS",
-    image: billimbiOne,
-    images: [billimbiOne, billimbiTwo, billimbiThree, billimbiFour],
-    previewType: "web",
-    github: "https://github.com/AlAminNahid/bilimbi_studio.git",
-    liveUrl: "https://bilimbi-studio.is-a.dev",
-    summary:
-      "Marketing site for Bilimbi Studio — a small software studio based in Dhaka, Bangladesh.",
-    details:
-      "Bilimbi Studio is a fully hand-crafted marketing site for a focused software studio in Dhaka. Built with Next.js App Router and TypeScript, the site is styled entirely with custom CSS using a two-tier design-token system — brand primitives (raw colour values) and semantic roles (what each colour is for) — with zero utility-class frameworks. Sections cover the studio's projects, process, team, and a contact form, all driven from typed constants so content never lives inside components.",
-    highlights: [
-      "Hand-authored CSS with a two-tier design-token system (no Tailwind utilities)",
-      "Content-driven architecture — all copy lives in typed constants, not components",
-      "Sections: hero, projects, how-we-build process, team, and contact form",
-      "Deployed on Vercel with automatic preview deployments on pull requests",
-    ],
-  },
-  {
-    title: "AI Chat",
-    type: "Full-Stack Web App",
-    status: "Completed",
-    tech: "NextJS, Gemini API, Prisma, PostgreSQL",
-    image: aiChatBotOne,
-    images: [aiChatBotOne],
-    previewType: "web",
-    github: "https://github.com/AlAminNahid/ai-chat.git",
-    liveUrl: "https://ai-nova-chat.vercel.app/",
-    summary:
-      "Conversational AI app powered by Gemini with persistent chat history stored in PostgreSQL via Prisma.",
-    details:
-      "AI Chat is a full-stack conversational AI application built with Next.js App Router and Google's Gemini API. Every conversation is persisted in a PostgreSQL database hosted on Neon, accessed through Prisma 7 with the native Postgres adapter. Users can start new chats, continue previous ones from a sidebar, and delete conversations — all backed by a clean REST API with dedicated endpoints for chat completions and conversation management.",
-    highlights: [
-      "Google Gemini API for AI chat completions",
-      "Conversation persistence with Prisma 7 and PostgreSQL (Neon)",
-      "Sidebar with full conversation history — resume or delete any chat",
-      "REST API: POST /chat, GET/DELETE /conversations/[id]",
-      "Next.js App Router with Tailwind CSS v4",
-    ],
-  },
-  {
-    title: "MediCare",
-    type: "Full-Stack Web App",
-    status: "In Progress",
-    tech: "NextJS, NestJS, PostgreSQL, TypeORM",
-    image: medicareOne,
-    images: [medicareOne, medicareTwo, medicareThree, medicareFour],
-    previewType: "web",
-    github: "https://github.com/AlAminNahid/MediCare.git",
-    liveUrl: "https://medi-care-nine-flax.vercel.app",
-    summary:
-      "Medical chamber management SaaS — doctors run their chambers, patients book serial-based appointments online.",
-    details:
-      "MediCare is a full-stack medical chamber management platform with three distinct portals: Admin, Doctor, and Patient. Doctors manage their private chambers (locations, schedules, fees) and handle a daily serial-ordered appointment queue. Patients browse doctors, pick a chamber, and receive a serial number instead of a fixed time slot. The admin oversees the platform — managing medicines, users, and backups. Built with Next.js and NestJS, backed by PostgreSQL via TypeORM, and secured with JWT auth.",
-    highlights: [
-      "Three-role system: Admin, Doctor, and Patient portals",
-      "Serial-based appointment booking per chamber per day",
-      "Doctor chamber management with schedules, locations, and fees",
-      "Digital prescriptions and shared medicine reference list",
-      "JWT-secured NestJS REST API with PostgreSQL and TypeORM",
     ],
   },
 ];

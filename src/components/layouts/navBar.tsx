@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import downloadIcon from "@/public/assets/download-icon.png";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { useState } from "react";
@@ -9,7 +7,6 @@ import { motion } from "framer-motion";
 import { navLinks } from "@/constants/navigation";
 import { useTheme } from "@/hooks/useTheme";
 import { useScrolled } from "@/hooks/useScrolled";
-import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetClose,
@@ -26,17 +23,20 @@ export default function NavBar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-[8%] py-4 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-[8%] py-5 transition-all duration-500 ${
           isScrolled
-            ? "bg-canvas/80 backdrop-blur-md border-b border-border/80"
+            ? "bg-canvas/85 backdrop-blur-xl border-b border-border/60"
             : ""
         }`}
       >
-        <a href="#top" className="text-base font-medium tracking-tight text-fg">
-          Nahid<span className="text-accent font-bold">.</span>
+        <a
+          href="#top"
+          className="text-sm font-semibold tracking-widest uppercase text-fg hover:text-accent transition-colors duration-200"
+        >
+          Nahid
         </a>
 
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden md:flex items-center gap-10">
           {navLinks.map(({ label, href }) => (
             <li
               key={href}
@@ -46,13 +46,13 @@ export default function NavBar() {
             >
               <a
                 href={href}
-                className="relative text-sm text-fg-muted hover:text-fg transition-colors duration-200"
+                className="text-xs font-medium tracking-widest uppercase text-fg-muted hover:text-fg transition-colors duration-200"
               >
                 {label}
                 {hoveredLink === href && (
                   <motion.span
-                    layoutId="nav-hover-underline"
-                    className="absolute left-0 right-0 -bottom-1 h-px bg-fg"
+                    layoutId="nav-underline"
+                    className="absolute left-0 right-0 -bottom-1.5 h-px bg-accent"
                     transition={{ type: "spring", stiffness: 500, damping: 35 }}
                   />
                 )}
@@ -61,58 +61,63 @@ export default function NavBar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <button
             type="button"
             onClick={toggleDark}
             aria-label={
-              isDarkMode ? "Switch to light mode" : "Switch to dark mode"
+              mounted
+                ? isDarkMode
+                  ? "Switch to light mode"
+                  : "Switch to dark mode"
+                : "Toggle theme"
             }
-            className="flex h-9 w-9 items-center justify-center rounded-full text-fg-muted hover:bg-surface-raised transition"
+            className="flex h-8 w-8 items-center justify-center text-fg-muted hover:text-fg transition-colors"
           >
             {mounted ? (
               isDarkMode ? (
-                <FaSun size={16} />
+                <FaSun size={14} />
               ) : (
-                <FaMoon size={15} />
+                <FaMoon size={14} />
               )
             ) : (
               <span className="h-4 w-4" />
             )}
           </button>
-          <Button
-            asChild
-            variant="outline"
-            className="hidden md:flex h-auto items-center gap-2 rounded-full border-border-strong px-4 py-2 text-sm font-normal text-fg-secondary hover:bg-surface-subtle hover:text-fg-secondary"
+
+          <a
+            href="/Nahid_s_Resume.pdf"
+            download
+            className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-border-strong text-xs font-medium tracking-wide uppercase text-fg-secondary hover:border-accent hover:text-accent transition-colors duration-200"
           >
-            <a href="/Nahid_s_Resume.pdf" download>
-              Resume
-              <Image src={downloadIcon} alt="" className="w-3 dark:invert" />
-            </a>
-          </Button>
+            Resume
+          </a>
+
           <button
             type="button"
             onClick={() => setIsMenuOpen(true)}
-            className="md:hidden flex h-9 w-9 items-center justify-center text-fg-secondary"
+            className="md:hidden flex h-8 w-8 items-center justify-center text-fg-secondary"
             aria-label="Open menu"
           >
-            <HiMenuAlt3 size={22} />
+            <HiMenuAlt3 size={20} />
           </button>
         </div>
       </nav>
 
-      {/* Mobile drawer */}
       <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
         <SheetContent
           aria-describedby={undefined}
-          className="w-64 data-[side=right]:w-64 sm:max-w-64 data-[side=right]:sm:max-w-64 bg-surface flex flex-col py-16 px-8 gap-5"
+          className="w-72 data-[side=right]:w-72 sm:max-w-72 data-[side=right]:sm:max-w-72 bg-canvas flex flex-col py-16 px-8 gap-2 border-l border-border"
         >
           <SheetTitle className="sr-only">Navigation menu</SheetTitle>
+          <p className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-6">
+            Navigation
+          </p>
           {navLinks.map(({ label, href }) => (
             <SheetClose key={href} asChild>
               <a
                 href={href}
-                className="text-base font-medium text-fg-secondary hover:text-accent transition"
+                className="py-2 text-sm font-medium text-fg-secondary hover:text-fg border-b border-border transition-colors"
               >
                 {label}
               </a>
@@ -121,9 +126,9 @@ export default function NavBar() {
           <a
             href="/Nahid_s_Resume.pdf"
             download
-            className="mt-4 text-sm text-fg-muted hover:text-fg-secondary transition"
+            className="mt-6 text-xs font-mono tracking-widest uppercase text-fg-muted hover:text-fg transition-colors"
           >
-            Download Resume ↓
+            Resume ↓
           </a>
         </SheetContent>
       </Sheet>

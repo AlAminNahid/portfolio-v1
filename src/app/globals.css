@@ -5,42 +5,31 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: "Inter", sans-serif;
+  --font-sans: var(--font-plus-jakarta), "Plus Jakarta Sans", sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
-/*
- * Semantic color tokens.
- *
- * Values are expressed in terms of Tailwind's own palette variables rather
- * than raw hex so the shades stay canonical (v4's palette is oklch-based —
- * hand-written hex would drift).
- *
- * Light values live on :root, dark overrides on .dark. Components should use
- * the semantic utilities (bg-surface, text-fg-muted, border-border-strong…)
- * and never reference zinc/indigo/emerald directly — that way dark mode is
- * maintained here, once, instead of in every `dark:` variant.
- */
 :root {
   /* Surfaces */
   --canvas: var(--color-white);
-  --surface: var(--color-white);
-  --surface-subtle: var(--color-zinc-100);
-  --surface-raised: var(--color-zinc-200);
-  --surface-raised-hover: var(--color-zinc-50);
-  --surface-inverted: var(--color-zinc-900);
+  --surface: var(--color-stone-50);
+  --surface-subtle: var(--color-stone-100);
+  --surface-raised: var(--color-stone-200);
+  --surface-raised-hover: var(--color-stone-50);
+  --surface-inverted: var(--color-stone-900);
 
   /* Foreground */
-  --fg: var(--color-zinc-900);
-  --fg-secondary: var(--color-zinc-700);
-  --fg-muted: var(--color-zinc-500);
-  --fg-subtle: var(--color-zinc-400);
+  --fg: var(--color-stone-900);
+  --fg-secondary: var(--color-stone-700);
+  --fg-muted: var(--color-stone-500);
+  --fg-subtle: var(--color-stone-400);
   --fg-inverted: var(--color-white);
 
   /* Lines */
-  --border: var(--color-zinc-200);
-  --border-strong: var(--color-zinc-300);
+  --border: var(--color-stone-200);
+  --border-strong: var(--color-stone-300);
 
-  /* Accent — interactive / emphasis */
+  /* Accent — muted indigo */
   --accent: var(--color-indigo-500);
   --accent-strong: var(--color-indigo-600);
   --accent-foreground: var(--color-white);
@@ -55,11 +44,6 @@
   --warning-border: var(--color-amber-200);
   --danger: var(--color-red-500);
 
-  /*
-   * shadcn/ui variable contract — aliased onto the tokens above instead of
-   * a second palette, so shadcn components (Dialog, Sheet, Button) stay in
-   * sync with the rest of the site automatically.
-   */
   --background: var(--canvas);
   --foreground: var(--fg);
   --card: var(--surface);
@@ -79,24 +63,24 @@
 }
 
 .dark {
-  --canvas: var(--color-zinc-900);
-  --surface: var(--color-zinc-800);
-  --surface-subtle: var(--color-zinc-800);
-  --surface-raised: var(--color-zinc-700);
-  --surface-raised-hover: var(--color-zinc-600);
-  --surface-inverted: var(--color-white);
+  --canvas: #0f0f11;
+  --surface: #181820;
+  --surface-subtle: #1c1c26;
+  --surface-raised: #232330;
+  --surface-raised-hover: #2a2a38;
+  --surface-inverted: var(--color-neutral-50);
 
-  --fg: var(--color-zinc-50);
-  --fg-secondary: var(--color-zinc-300);
-  --fg-muted: var(--color-zinc-400);
-  --fg-subtle: var(--color-zinc-500);
-  --fg-inverted: var(--color-zinc-900);
+  --fg: var(--color-neutral-50);
+  --fg-secondary: var(--color-neutral-300);
+  --fg-muted: var(--color-neutral-400);
+  --fg-subtle: var(--color-neutral-500);
+  --fg-inverted: #0f0f11;
 
-  --border: var(--color-zinc-700);
-  --border-strong: var(--color-zinc-600);
+  --border: #242430;
+  --border-strong: #2e2e3e;
 
   --accent: var(--color-indigo-400);
-  --accent-strong: var(--color-indigo-500);
+  --accent-strong: var(--color-indigo-300);
   --accent-foreground: var(--color-white);
 
   --success: var(--color-emerald-400);
@@ -125,11 +109,6 @@
   --ring: var(--accent);
 }
 
-/*
- * `inline` is required here: it makes the generated utilities emit
- * `var(--surface)` rather than resolving to a build-time constant, which is
- * what lets the .dark overrides above actually take effect.
- */
 @theme inline {
   --color-canvas: var(--canvas);
   --color-surface: var(--surface);
@@ -159,7 +138,6 @@
   --color-warning-border: var(--warning-border);
   --color-danger: var(--danger);
 
-  /* shadcn/ui variable contract, aliased onto the tokens above */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -208,29 +186,6 @@ body {
   font-family: var(--font-sans);
 }
 
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-.cursor {
-  display: inline-block;
-  width: 3px;
-  height: 0.85em;
-  background-color: currentColor;
-  margin-left: 4px;
-  vertical-align: -0.05em;
-  border-radius: 1px;
-  animation: blink 1s step-end infinite;
-}
-/*
- ---break---
- */
 @layer base {
   * {
     @apply border-border outline-ring/50;

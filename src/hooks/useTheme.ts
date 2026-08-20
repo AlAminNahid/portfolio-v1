@@ -1,21 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTheme as useNextTheme } from "next-themes";
 
 export function useTheme() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { resolvedTheme, setTheme } = useNextTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setIsDarkMode(document.documentElement.classList.contains("dark"));
     setMounted(true);
   }, []);
 
+  const isDarkMode = resolvedTheme === "dark";
+
   function toggleDark() {
-    const next = !isDarkMode;
-    setIsDarkMode(next);
-    document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("theme", next ? "dark" : "light");
+    setTheme(isDarkMode ? "light" : "dark");
   }
 
   return { isDarkMode, toggleDark, mounted };

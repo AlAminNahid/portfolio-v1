@@ -10,6 +10,8 @@ export interface NavLink {
 export interface Project {
   title: string;
   type: string;
+  category: string;
+  year: string;
   status: "In Progress" | "Completed";
   tech: string;
   image: StaticImageData;
@@ -46,7 +48,8 @@ export interface ExperienceEntry {
   companyUrl: string;
   period: string;
   badge: string;
-  description: string;
+  summary: string;
+  highlights: readonly string[];
   tags: readonly string[];
 }
 

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import {
   SITE_DESCRIPTION,
@@ -9,10 +9,18 @@ import {
 } from "@/constants/site";
 // @ts-ignore: allow importing CSS module without type declarations
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-plus-jakarta",
+});
+
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  variable: "--font-jetbrains-mono",
 });
 
 export const metadata: Metadata = {
@@ -21,12 +29,15 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   keywords: [
     "Al Amin Hossain Nahid",
+    "AI Engineer",
     "full-stack developer",
     "Next.js",
     "React",
     "NestJS",
     "FastAPI",
     "Android developer",
+    "machine learning",
+    "computer vision",
     "Bangladesh",
   ],
   authors: [{ name: SITE_NAME, url: SITE_URL }],
@@ -46,7 +57,7 @@ export const metadata: Metadata = {
         url: "/home-screen.png",
         width: 1200,
         height: 630,
-        alt: "Al Amin Hossain Nahid — Full-Stack Developer",
+        alt: "Al Amin Hossain Nahid — AI Engineer & Full-Stack Developer",
       },
     ],
   },
@@ -67,18 +78,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var s=localStorage.getItem("theme");var d=s?s==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;if(d)document.documentElement.classList.add("dark");}catch(e){}})();`,
-          }}
-        />
-      </head>
+    <html
+      lang="en"
+      className={`scroll-smooth ${plusJakarta.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
       <body
-        className={`${inter.className} antialiased bg-canvas text-fg overflow-x-hidden transition-colors duration-300`}
+        className={`${plusJakarta.className} antialiased bg-canvas text-fg overflow-x-hidden transition-colors duration-300`}
+        suppressHydrationWarning
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

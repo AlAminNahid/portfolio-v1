@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { type Project } from "@/types";
+import { XIcon } from "lucide-react";
 import {
   Dialog,
   DialogClose,
@@ -44,9 +45,9 @@ export default function ProjectModal({
               <button
                 type="button"
                 aria-label="Close project details"
-                className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-surface-raised text-fg-muted hover:text-fg text-lg leading-none transition"
+                className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-surface-raised text-fg-muted hover:text-fg transition"
               >
-                ×
+                <XIcon size={15} />
               </button>
             </DialogClose>
 
