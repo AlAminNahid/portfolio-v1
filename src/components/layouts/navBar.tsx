@@ -3,21 +3,25 @@
 import Image from "next/image";
 import downloadIcon from "@/public/assets/download-icon.png";
 import { FaMoon, FaSun } from "react-icons/fa";
-import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { HiMenuAlt3 } from "react-icons/hi";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { navLinks } from "@/constants/navigation";
 import { useTheme } from "@/hooks/useTheme";
 import { useScrolled } from "@/hooks/useScrolled";
-import { useEscapeKey } from "@/hooks/useEscapeKey";
-import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTitle,
+} from "@/components/ui/sheet";
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const { isDarkMode, toggleDark, mounted } = useTheme();
   const isScrolled = useScrolled();
-
-  useEscapeKey(() => setIsMenuOpen(false));
-  useBodyScrollLock(isMenuOpen);
 
   return (
     <>
@@ -34,12 +38,24 @@ export default function NavBar() {
 
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map(({ label, href }) => (
-            <li key={href}>
+            <li
+              key={href}
+              className="relative"
+              onMouseEnter={() => setHoveredLink(href)}
+              onMouseLeave={() => setHoveredLink(null)}
+            >
               <a
                 href={href}
-                className="text-sm text-fg-muted hover:text-fg transition-colors duration-200"
+                className="relative text-sm text-fg-muted hover:text-fg transition-colors duration-200"
               >
                 {label}
+                {hoveredLink === href && (
+                  <motion.span
+                    layoutId="nav-hover-underline"
+                    className="absolute left-0 right-0 -bottom-1 h-px bg-fg"
+                    transition={{ type: "spring", stiffness: 500, damping: 35 }}
+                  />
+                )}
               </a>
             </li>
           ))}
@@ -64,14 +80,16 @@ export default function NavBar() {
               <span className="h-4 w-4" />
             )}
           </button>
-          <a
-            href="/Nahid_s_Resume.pdf"
-            download
-            className="hidden md:flex items-center gap-2 text-sm px-4 py-2 rounded-full border border-border-strong text-fg-secondary hover:bg-surface-subtle transition"
+          <Button
+            asChild
+            variant="outline"
+            className="hidden md:flex h-auto items-center gap-2 rounded-full border-border-strong px-4 py-2 text-sm font-normal text-fg-secondary hover:bg-surface-subtle hover:text-fg-secondary"
           >
-            Resume
-            <Image src={downloadIcon} alt="" className="w-3 dark:invert" />
-          </a>
+            <a href="/Nahid_s_Resume.pdf" download>
+              Resume
+              <Image src={downloadIcon} alt="" className="w-3 dark:invert" />
+            </a>
+          </Button>
           <button
             type="button"
             onClick={() => setIsMenuOpen(true)}
@@ -84,41 +102,31 @@ export default function NavBar() {
       </nav>
 
       {/* Mobile drawer */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
-          <div
-            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-            onClick={() => setIsMenuOpen(false)}
-          />
-          <div className="absolute right-0 top-0 bottom-0 w-64 bg-surface flex flex-col py-16 px-8 gap-5">
-            <button
-              type="button"
-              onClick={() => setIsMenuOpen(false)}
-              className="absolute right-5 top-5 text-fg-muted hover:text-fg transition"
-              aria-label="Close menu"
-            >
-              <HiX size={22} />
-            </button>
-            {navLinks.map(({ label, href }) => (
+      <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+        <SheetContent
+          aria-describedby={undefined}
+          className="w-64 data-[side=right]:w-64 sm:max-w-64 data-[side=right]:sm:max-w-64 bg-surface flex flex-col py-16 px-8 gap-5"
+        >
+          <SheetTitle className="sr-only">Navigation menu</SheetTitle>
+          {navLinks.map(({ label, href }) => (
+            <SheetClose key={href} asChild>
               <a
-                key={href}
                 href={href}
-                onClick={() => setIsMenuOpen(false)}
                 className="text-base font-medium text-fg-secondary hover:text-accent transition"
               >
                 {label}
               </a>
-            ))}
-            <a
-              href="/Nahid_s_Resume.pdf"
-              download
-              className="mt-4 text-sm text-fg-muted hover:text-fg-secondary transition"
-            >
-              Download Resume ↓
-            </a>
-          </div>
-        </div>
-      )}
+            </SheetClose>
+          ))}
+          <a
+            href="/Nahid_s_Resume.pdf"
+            download
+            className="mt-4 text-sm text-fg-muted hover:text-fg-secondary transition"
+          >
+            Download Resume ↓
+          </a>
+        </SheetContent>
+      </Sheet>
     </>
   );
 }

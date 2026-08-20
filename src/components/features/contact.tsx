@@ -1,6 +1,8 @@
 "use client";
 
 import { useContactForm } from "@/hooks/useContactForm";
+import { Reveal } from "@/components/ui/Reveal";
+import { Button } from "@/components/ui/button";
 
 export default function Contact() {
   const { form, handleChange, handleSubmit, isSubmitting, feedback } =
@@ -11,7 +13,7 @@ export default function Contact() {
       id="contact"
       className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20"
     >
-      <div className="max-w-2xl mx-auto w-full">
+      <Reveal className="max-w-2xl mx-auto w-full">
         <p className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-4">
           Contact
         </p>
@@ -114,16 +116,16 @@ export default function Contact() {
               {feedback?.message ?? ""}
             </p>
 
-            <button
+            <Button
               type="submit"
               disabled={isSubmitting}
-              className="flex items-center gap-2 px-6 py-3 rounded-full bg-surface-inverted text-fg-inverted text-sm font-semibold hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="h-auto rounded-full px-6 py-3 text-sm font-semibold hover:bg-primary hover:opacity-90"
             >
               {isSubmitting ? "Sending..." : "Send Message →"}
-            </button>
+            </Button>
           </form>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

@@ -1,5 +1,7 @@
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { researchPapers } from "@/constants/research";
+import { Reveal } from "@/components/ui/Reveal";
+import { RevealGroup, RevealItem } from "@/components/ui/RevealGroup";
 
 export default function Research() {
   return (
@@ -7,7 +9,7 @@ export default function Research() {
       id="research"
       className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20"
     >
-      <div className="max-w-4xl mx-auto w-full">
+      <Reveal className="max-w-4xl mx-auto w-full">
         <h2 className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-4">
           Research
         </h2>
@@ -40,16 +42,17 @@ export default function Research() {
                 <p className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-3">
                   Highlights
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <RevealGroup as="ul" className="flex flex-wrap gap-2">
                   {paper.highlights.map((tag) => (
-                    <span
+                    <RevealItem
                       key={tag}
+                      as="li"
                       className="text-xs px-3 py-1.5 rounded-full bg-surface-subtle border border-border text-fg-muted"
                     >
                       {tag}
-                    </span>
+                    </RevealItem>
                   ))}
-                </div>
+                </RevealGroup>
 
                 <div className="mt-6 flex items-center gap-3 text-xs text-fg-muted">
                   <span className="px-2.5 py-0.5 rounded-full bg-success-surface/60 text-success border border-success-border/60">
@@ -70,7 +73,7 @@ export default function Research() {
             </div>
           </div>
         ))}
-      </div>
+      </Reveal>
     </section>
   );
 }

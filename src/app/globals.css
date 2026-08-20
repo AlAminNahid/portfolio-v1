@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -41,6 +43,7 @@
   /* Accent — interactive / emphasis */
   --accent: var(--color-indigo-500);
   --accent-strong: var(--color-indigo-600);
+  --accent-foreground: var(--color-white);
 
   /* Status */
   --success: var(--color-emerald-700);
@@ -51,6 +54,28 @@
   --warning-surface: var(--color-amber-50);
   --warning-border: var(--color-amber-200);
   --danger: var(--color-red-500);
+
+  /*
+   * shadcn/ui variable contract — aliased onto the tokens above instead of
+   * a second palette, so shadcn components (Dialog, Sheet, Button) stay in
+   * sync with the rest of the site automatically.
+   */
+  --background: var(--canvas);
+  --foreground: var(--fg);
+  --card: var(--surface);
+  --card-foreground: var(--fg);
+  --popover: var(--surface);
+  --popover-foreground: var(--fg);
+  --primary: var(--surface-inverted);
+  --primary-foreground: var(--fg-inverted);
+  --secondary: var(--surface-subtle);
+  --secondary-foreground: var(--fg-secondary);
+  --muted: var(--surface-subtle);
+  --muted-foreground: var(--fg-muted);
+  --destructive: var(--danger);
+  --input: var(--border-strong);
+  --ring: var(--accent);
+  --radius: 0.75rem;
 }
 
 .dark {
@@ -72,6 +97,7 @@
 
   --accent: var(--color-indigo-400);
   --accent-strong: var(--color-indigo-500);
+  --accent-foreground: var(--color-white);
 
   --success: var(--color-emerald-400);
   --success-solid: var(--color-emerald-500);
@@ -81,6 +107,22 @@
   --warning-surface: var(--color-amber-950);
   --warning-border: var(--color-amber-800);
   --danger: var(--color-red-400);
+
+  --background: var(--canvas);
+  --foreground: var(--fg);
+  --card: var(--surface);
+  --card-foreground: var(--fg);
+  --popover: var(--surface);
+  --popover-foreground: var(--fg);
+  --primary: var(--surface-inverted);
+  --primary-foreground: var(--fg-inverted);
+  --secondary: var(--surface-subtle);
+  --secondary-foreground: var(--fg-secondary);
+  --muted: var(--surface-subtle);
+  --muted-foreground: var(--fg-muted);
+  --destructive: var(--danger);
+  --input: var(--border-strong);
+  --ring: var(--accent);
 }
 
 /*
@@ -116,6 +158,28 @@
   --color-warning-surface: var(--warning-surface);
   --color-warning-border: var(--warning-border);
   --color-danger: var(--danger);
+
+  /* shadcn/ui variable contract, aliased onto the tokens above */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
 }
 
 html {
@@ -163,4 +227,18 @@ body {
   vertical-align: -0.05em;
   border-radius: 1px;
   animation: blink 1s step-end infinite;
+}
+/*
+ ---break---
+ */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
 }

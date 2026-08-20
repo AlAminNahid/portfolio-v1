@@ -1,5 +1,7 @@
 import { skillGroups } from "@/constants/skills";
 import { services } from "@/constants/services";
+import { Reveal } from "@/components/ui/Reveal";
+import { RevealGroup, RevealItem } from "@/components/ui/RevealGroup";
 
 export default function About() {
   return (
@@ -7,7 +9,7 @@ export default function About() {
       id="about"
       className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20"
     >
-      <div className="max-w-6xl mx-auto w-full">
+      <Reveal className="max-w-6xl mx-auto w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left */}
           <div>
@@ -49,16 +51,17 @@ export default function About() {
               <p className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-3">
                 Focus
               </p>
-              <ul className="flex flex-wrap gap-2">
+              <RevealGroup as="ul" className="flex flex-wrap gap-2">
                 {services.map(({ num, title }) => (
-                  <li
+                  <RevealItem
                     key={num}
+                    as="li"
                     className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-subtle border border-border text-xs font-medium text-fg-secondary"
                   >
                     {title}
-                  </li>
+                  </RevealItem>
                 ))}
-              </ul>
+              </RevealGroup>
             </div>
           </div>
 
@@ -69,22 +72,23 @@ export default function About() {
                 <p className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-3">
                   {label}
                 </p>
-                <ul className="flex flex-wrap gap-2">
+                <RevealGroup as="ul" className="flex flex-wrap gap-2">
                   {skills.map(({ name, icon: Icon }) => (
-                    <li
+                    <RevealItem
                       key={name}
+                      as="li"
                       className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-subtle border border-border text-xs font-medium text-fg-secondary"
                     >
                       <Icon className="w-3.5 h-3.5 shrink-0" />
                       {name}
-                    </li>
+                    </RevealItem>
                   ))}
-                </ul>
+                </RevealGroup>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

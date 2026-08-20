@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { projects } from "@/constants/projects";
 import { type Project } from "@/types";
+import { RevealGroup, RevealItem } from "@/components/ui/RevealGroup";
 import ArrowButton from "./ArrowButton";
 import ProjectCard from "./ProjectCard";
 
@@ -40,19 +41,23 @@ export default function ProjectCarousel({
           />
         )}
 
-        <div
+        <RevealGroup
           ref={trackRef}
           className="flex flex-1 gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {projects.map((project, index) => (
-            <ProjectCard
+            <RevealItem
               key={project.title}
-              project={project}
-              index={index}
-              onClick={() => onSelectProject(project)}
-            />
+              className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] shrink-0 snap-start"
+            >
+              <ProjectCard
+                project={project}
+                index={index}
+                onClick={() => onSelectProject(project)}
+              />
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
 
         {projects.length > 1 && (
           <ArrowButton

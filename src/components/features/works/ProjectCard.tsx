@@ -16,7 +16,7 @@ export default function ProjectCard({
     <button
       type="button"
       onClick={onClick}
-      className="group text-left w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] shrink-0 snap-start"
+      className="group text-left w-full"
     >
       <div className="relative overflow-hidden rounded-xl bg-surface-subtle aspect-video">
         <Image

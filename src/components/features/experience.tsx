@@ -1,5 +1,7 @@
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { experiences } from "@/constants/experience";
+import { Reveal } from "@/components/ui/Reveal";
+import { RevealGroup, RevealItem } from "@/components/ui/RevealGroup";
 
 export default function Experience() {
   return (
@@ -7,7 +9,7 @@ export default function Experience() {
       id="experience"
       className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20"
     >
-      <div className="max-w-3xl mx-auto w-full">
+      <Reveal className="max-w-3xl mx-auto w-full">
         <p className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-4">
           Experience
         </p>
@@ -15,9 +17,12 @@ export default function Experience() {
           My Journey
         </h2>
 
-        <div className="relative pl-8 border-l-2 border-border space-y-12">
+        <RevealGroup
+          className="relative pl-8 border-l-2 border-border space-y-12"
+          stagger={0.15}
+        >
           {experiences.map((exp, i) => (
-            <div key={i} className="relative">
+            <RevealItem key={i} className="relative">
               <div className="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-2 border-accent bg-canvas" />
 
               <p className="text-xs font-mono text-fg-muted">{exp.period}</p>
@@ -55,10 +60,10 @@ export default function Experience() {
                   </span>
                 ))}
               </div>
-            </div>
+            </RevealItem>
           ))}
-        </div>
-      </div>
+        </RevealGroup>
+      </Reveal>
     </section>
   );
 }

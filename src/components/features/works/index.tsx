@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { type Project } from "@/types";
+import { Reveal } from "@/components/ui/Reveal";
+import { Button } from "@/components/ui/button";
 import ProjectCarousel from "./ProjectCarousel";
 import ProjectModal from "./ProjectModal";
 
@@ -14,7 +16,7 @@ export default function Works() {
         id="work"
         className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20"
       >
-        <div className="max-w-6xl mx-auto">
+        <Reveal className="max-w-6xl mx-auto">
           <p className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-4">
             Work
           </p>
@@ -29,24 +31,27 @@ export default function Works() {
           <ProjectCarousel onSelectProject={setSelectedProject} />
 
           <div className="mt-12 text-center">
-            <a
-              href="https://github.com/AlAminNahid?tab=repositories"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-fg-muted border border-border-strong rounded-full px-6 py-3 hover:bg-surface-subtle transition"
+            <Button
+              asChild
+              variant="outline"
+              className="h-auto rounded-full border-border-strong px-6 py-3 text-sm font-normal text-fg-muted hover:bg-surface-subtle hover:text-fg-muted"
             >
-              View all repositories →
-            </a>
+              <a
+                href="https://github.com/AlAminNahid?tab=repositories"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View all repositories →
+              </a>
+            </Button>
           </div>
-        </div>
+        </Reveal>
       </div>
 
-      {selectedProject && (
-        <ProjectModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-        />
-      )}
+      <ProjectModal
+        project={selectedProject}
+        onOpenChange={(open) => !open && setSelectedProject(null)}
+      />
     </>
   );
 }
