@@ -54,21 +54,21 @@
 }
 
 .dark {
-  --canvas: var(--color-zinc-950);
-  --surface: var(--color-zinc-900);
-  --surface-subtle: var(--color-zinc-900);
-  --surface-raised: var(--color-zinc-800);
-  --surface-raised-hover: var(--color-zinc-700);
+  --canvas: var(--color-zinc-900);
+  --surface: var(--color-zinc-800);
+  --surface-subtle: var(--color-zinc-800);
+  --surface-raised: var(--color-zinc-700);
+  --surface-raised-hover: var(--color-zinc-600);
   --surface-inverted: var(--color-white);
 
   --fg: var(--color-zinc-50);
   --fg-secondary: var(--color-zinc-300);
   --fg-muted: var(--color-zinc-400);
-  --fg-subtle: var(--color-zinc-600);
+  --fg-subtle: var(--color-zinc-500);
   --fg-inverted: var(--color-zinc-900);
 
-  --border: var(--color-zinc-800);
-  --border-strong: var(--color-zinc-700);
+  --border: var(--color-zinc-700);
+  --border-strong: var(--color-zinc-600);
 
   --accent: var(--color-indigo-400);
   --accent-strong: var(--color-indigo-500);

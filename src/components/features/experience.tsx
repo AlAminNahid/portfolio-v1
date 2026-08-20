@@ -5,7 +5,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20 min-h-screen flex flex-col justify-center"
+      className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20"
     >
       <div className="max-w-3xl mx-auto w-full">
         <p className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-4">

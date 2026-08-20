@@ -5,7 +5,6 @@ import Footer from "@/components/layouts/footer";
 import Header from "@/components/features/header";
 import NavBar from "@/components/layouts/navBar";
 import Research from "@/components/features/research";
-import Services from "@/components/features/services";
 import Works from "@/components/features/works";
 
 export default function Home() {
@@ -14,7 +13,6 @@ export default function Home() {
       <NavBar />
       <Header />
       <About />
-      <Services />
       <Experience />
       <Works />
       <Research />

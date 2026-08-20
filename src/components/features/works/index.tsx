@@ -12,7 +12,7 @@ export default function Works() {
     <>
       <div
         id="work"
-        className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20 min-h-screen"
+        className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20"
       >
         <div className="max-w-6xl mx-auto">
           <p className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-4">

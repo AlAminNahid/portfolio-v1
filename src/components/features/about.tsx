@@ -1,10 +1,11 @@
 import { skillGroups } from "@/constants/skills";
+import { services } from "@/constants/services";
 
 export default function About() {
   return (
     <section
       id="about"
-      className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20 min-h-screen flex flex-col justify-center"
+      className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20"
     >
       <div className="max-w-6xl mx-auto w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -42,6 +43,22 @@ export default function About() {
                   AIUB
                 </a>
               </span>
+            </div>
+
+            <div className="mt-8">
+              <p className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-3">
+                Focus
+              </p>
+              <ul className="flex flex-wrap gap-2">
+                {services.map(({ num, title }) => (
+                  <li
+                    key={num}
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-subtle border border-border text-xs font-medium text-fg-secondary"
+                  >
+                    {title}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
