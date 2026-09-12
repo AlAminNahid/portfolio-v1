@@ -10,12 +10,9 @@ export default function Capabilities() {
             What I Build
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-border">
+          <div className="grid grid-cols-1 gap-x-12 gap-y-12 md:grid-cols-2 lg:gap-x-16">
             {services.map(({ num, title, desc }) => (
-              <div
-                key={num}
-                className="group px-0 sm:px-8 first:pl-0 last:pr-0 py-8 sm:py-0"
-              >
+              <div key={num} className="group border-t border-border pt-8">
                 <p className="text-xs font-mono text-fg-subtle mb-4">{num}</p>
                 <h3 className="text-base font-semibold text-fg mb-3 group-hover:text-accent transition-colors duration-200">
                   {title}

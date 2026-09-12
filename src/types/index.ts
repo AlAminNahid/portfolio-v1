@@ -63,6 +63,8 @@ export interface ResearchPaper {
   status: string;
   year: number;
   conferenceUrl: string;
+  publisherUrl?: string;
+  publisher?: string;
 }
 
 export interface SocialLink {

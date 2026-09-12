@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Al Amin Hossain Nahid — Full-Stack Developer";
+export const alt = "Al Amin Hossain Nahid — AI & Full-Stack Engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -49,7 +49,7 @@ export default function OpengraphImage() {
             color: "#a1a1aa",
           }}
         >
-          Full-Stack Developer
+          AI &amp; Full-Stack Engineer
         </div>
       </div>
 
@@ -61,11 +61,11 @@ export default function OpengraphImage() {
           color: "#818cf8",
         }}
       >
+        <span>LLM Agents</span>
+        <span style={{ color: "#3f3f46" }}>·</span>
         <span>TypeScript</span>
         <span style={{ color: "#3f3f46" }}>·</span>
         <span>Next.js</span>
-        <span style={{ color: "#3f3f46" }}>·</span>
-        <span>NestJS</span>
         <span style={{ color: "#3f3f46" }}>·</span>
         <span>FastAPI</span>
         <span style={{ color: "#3f3f46" }}>·</span>

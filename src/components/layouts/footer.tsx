@@ -8,7 +8,7 @@ export default function Footer() {
         <div>
           <p className="text-sm font-semibold text-fg">Al Amin Hossain Nahid</p>
           <p className="text-xs font-mono text-fg-subtle mt-1">
-            Full-Stack Web & Mobile Developer
+            AI Engineer · Full-Stack Web & Mobile Developer
           </p>
         </div>
 

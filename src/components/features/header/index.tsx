@@ -39,7 +39,7 @@ export default function Header() {
             variants={item}
             className="text-sm font-mono tracking-widest uppercase text-fg-muted"
           >
-            Full-Stack Web Developer · Mobile Developer
+            AI Engineer · Full-Stack Developer · Mobile Developer
           </motion.p>
 
           <motion.p
@@ -47,9 +47,9 @@ export default function Header() {
             className="mt-8 max-w-xl text-base sm:text-lg text-fg-muted leading-relaxed"
           >
             I design and build production-ready software systems — from
-            AI-powered applications and APIs to full-stack products and native
-            mobile experiences. I understand a problem, design the system, and
-            ship the product.
+            LLM-powered agents and APIs to full-stack products and native mobile
+            experiences. I understand a problem, design the system, and ship the
+            product.
           </motion.p>
 
           <motion.div
@@ -97,20 +97,6 @@ export default function Header() {
 
         <Terminal />
       </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 0.6 }}
-        className="absolute bottom-10 left-6 lg:left-[8%] flex items-center gap-3 text-xs font-mono tracking-widest uppercase text-fg-subtle"
-      >
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-          className="h-4 w-px bg-fg-subtle"
-        />
-        Scroll ↓
-      </motion.div>
     </div>
   );
 }

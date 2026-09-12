@@ -22,9 +22,18 @@ import {
   SiFirebase,
   SiVercel,
   SiAndroidstudio,
+  SiOpenai,
+  SiShadcnui,
 } from "react-icons/si";
 import { DiDotnet } from "react-icons/di";
-import { FiDatabase } from "react-icons/fi";
+import {
+  FiDatabase,
+  FiSearch,
+  FiTool,
+  FiRadio,
+  FiRepeat,
+  FiShuffle,
+} from "react-icons/fi";
 import { type SkillGroup } from "@/types";
 
 export const skillGroups: SkillGroup[] = [
@@ -41,11 +50,23 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
+    label: "AI & LLM",
+    skills: [
+      { name: "OpenAI SDK", icon: SiOpenai },
+      { name: "OpenRouter", icon: FiShuffle },
+      { name: "Agent Harness", icon: FiRepeat },
+      { name: "Tool Calling", icon: FiTool },
+      { name: "SSE Streaming", icon: FiRadio },
+      { name: "RAG", icon: FiSearch },
+    ],
+  },
+  {
     label: "Frontend",
     skills: [
       { name: "React", icon: SiReact },
       { name: "Next.js", icon: SiNextdotjs },
       { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "shadcn/ui", icon: SiShadcnui },
     ],
   },
   {
