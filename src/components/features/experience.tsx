@@ -73,7 +73,7 @@ function ExperienceModal({
               {exp.highlights.map((point, i) => (
                 <li key={i} className="flex gap-4">
                   <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
-                  <p className="text-sm text-fg-muted leading-7">{point}</p>
+                  <p className="text-base text-fg-muted leading-7">{point}</p>
                 </li>
               ))}
             </ul>
@@ -144,7 +144,7 @@ export default function Experience() {
                 <h3 className="text-2xl font-bold text-fg tracking-tight mb-4">
                   {exp.role}
                 </h3>
-                <p className="text-sm text-fg-muted leading-7 mb-6 max-w-2xl">
+                <p className="text-base text-fg-muted leading-7 mb-6 max-w-2xl">
                   {exp.summary}
                 </p>
                 <div className="flex flex-wrap items-center gap-3">

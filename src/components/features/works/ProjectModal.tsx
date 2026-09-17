@@ -119,7 +119,7 @@ export default function ProjectModal({
                 <DialogTitle className="text-2xl font-bold text-fg">
                   {project.title}
                 </DialogTitle>
-                <p className="mt-3 text-sm text-fg-muted leading-7">
+                <p className="mt-3 text-base text-fg-muted leading-7">
                   {project.summary}
                 </p>
 
@@ -127,7 +127,7 @@ export default function ProjectModal({
                   <p className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-2">
                     What I built
                   </p>
-                  <p className="text-sm text-fg-muted leading-7">
+                  <p className="text-base text-fg-muted leading-7">
                     {project.details}
                   </p>
                 </div>
@@ -140,7 +140,7 @@ export default function ProjectModal({
                     {project.highlights.map((h) => (
                       <li
                         key={h}
-                        className="flex items-start gap-2 text-sm text-fg-muted"
+                        className="flex items-start gap-2 text-base text-fg-muted"
                       >
                         <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
                         {h}
@@ -153,7 +153,7 @@ export default function ProjectModal({
                   <p className="text-xs font-mono tracking-widest text-fg-muted uppercase mb-2">
                     Tech stack
                   </p>
-                  <p className="text-sm text-fg-muted">{project.tech}</p>
+                  <p className="text-base text-fg-muted">{project.tech}</p>
                 </div>
 
                 <div className="mt-8 flex flex-wrap items-center gap-3">

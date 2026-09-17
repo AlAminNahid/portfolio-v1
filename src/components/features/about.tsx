@@ -18,7 +18,7 @@ export default function About() {
 
         <div className="grid lg:grid-cols-2 gap-16 mb-20">
           <div>
-            <p className="text-base text-fg-muted leading-8 mb-5">
+            <p className="text-lg text-fg-muted leading-8 mb-5">
               I&apos;m a Computer Science &amp; Engineering student at{" "}
               <a
                 href="https://www.aiub.edu"
@@ -32,12 +32,12 @@ export default function About() {
               spans AI engineering, full-stack web development, native Android
               applications, and applied AI research.
             </p>
-            <p className="text-base text-fg-muted leading-8 mb-5">
+            <p className="text-lg text-fg-muted leading-8 mb-5">
               I&apos;m interested in the intersection of AI and software
               engineering — where machine learning models, LLMs becomes
               components of real products people actually use.
             </p>
-            <p className="text-base text-fg-muted leading-8">
+            <p className="text-lg text-fg-muted leading-8">
               I care about the parts users never see: clean API boundaries, data
               models that survive requirements changes, and code the next person
               can read without questions.
@@ -54,8 +54,8 @@ export default function About() {
                   key={label}
                   className="border-l-2 border-border pl-5 hover:border-accent transition-colors duration-300"
                 >
-                  <p className="text-sm font-semibold text-fg mb-1">{label}</p>
-                  <p className="text-sm text-fg-muted leading-6">{body}</p>
+                  <p className="text-base font-semibold text-fg mb-1">{label}</p>
+                  <p className="text-base text-fg-muted leading-7">{body}</p>
                 </div>
               ))}
             </div>
@@ -76,7 +76,7 @@ export default function About() {
                   {skills.map(({ name, icon: Icon }) => (
                     <li
                       key={name}
-                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-subtle text-xs font-mono text-fg-muted"
+                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-subtle text-sm font-mono text-fg-muted dark:text-white"
                     >
                       <Icon className="w-3 h-3 shrink-0" />
                       {name}

@@ -39,11 +39,11 @@ export default function Research() {
                 {paper.title}
               </h3>
 
-              <p className="text-sm text-fg-muted leading-7 mb-4">
+              <p className="text-base text-fg-muted leading-7 mb-4">
                 {paper.description}
               </p>
 
-              <p className="text-sm text-fg-muted leading-7 mb-8">
+              <p className="text-base text-fg-muted leading-7 mb-8">
                 {paper.coAuthors}
               </p>
 

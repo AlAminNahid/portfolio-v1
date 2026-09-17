@@ -44,7 +44,7 @@ export default function Header() {
 
           <motion.p
             variants={item}
-            className="mt-8 max-w-xl text-base sm:text-lg text-fg-muted leading-relaxed"
+            className="mt-8 max-w-xl text-lg sm:text-xl text-fg-muted leading-relaxed"
           >
             I design and build production-ready software systems — from
             LLM-powered agents and APIs to full-stack products and native mobile

@@ -26,7 +26,7 @@ export default function Contact() {
               <br />
               solving?
             </h2>
-            <p className="text-base text-fg-muted leading-relaxed mb-10 max-w-sm">
+            <p className="text-lg text-fg-muted leading-relaxed mb-10 max-w-sm">
               I&apos;m open to engineering roles, freelance projects, and
               research collaborations. If you&apos;re building something
               intelligent, let&apos;s talk.
@@ -35,7 +35,7 @@ export default function Contact() {
             <div className="space-y-3">
               <a
                 href="mailto:robin.nahid123@gmail.com"
-                className="flex items-center gap-3 text-sm text-fg-muted hover:text-accent transition-colors duration-200 group"
+                className="flex items-center gap-3 text-base text-fg-muted hover:text-accent transition-colors duration-200 group"
               >
                 <span className="text-xs font-mono tracking-widest uppercase text-fg-subtle w-16">
                   Email
@@ -48,7 +48,7 @@ export default function Contact() {
                 href="https://github.com/AlAminNahid"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm text-fg-muted hover:text-accent transition-colors duration-200 group"
+                className="flex items-center gap-3 text-base text-fg-muted hover:text-accent transition-colors duration-200 group"
               >
                 <span className="text-xs font-mono tracking-widest uppercase text-fg-subtle w-16">
                   GitHub
@@ -61,7 +61,7 @@ export default function Contact() {
                 href="https://www.linkedin.com/in/al-amin-hossain-nahid-876858193/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm text-fg-muted hover:text-accent transition-colors duration-200 group"
+                className="flex items-center gap-3 text-base text-fg-muted hover:text-accent transition-colors duration-200 group"
               >
                 <span className="text-xs font-mono tracking-widest uppercase text-fg-subtle w-16">
                   LinkedIn

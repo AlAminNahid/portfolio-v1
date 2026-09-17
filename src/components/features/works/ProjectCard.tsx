@@ -78,7 +78,7 @@ export default function ProjectCard({
           </span>
         </div>
 
-        <p className="text-xs text-fg-muted leading-5 line-clamp-2 flex-1">
+        <p className="text-sm text-fg-muted leading-5 line-clamp-2 flex-1">
           {project.summary}
         </p>
 
