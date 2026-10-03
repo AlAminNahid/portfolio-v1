@@ -36,7 +36,7 @@ export default function NavBar() {
           Nahid
         </a>
 
-        <ul className="hidden md:flex items-center gap-10">
+        <ul className="hidden lg:flex items-center gap-10">
           {navLinks.map(({ label, href }) => (
             <li
               key={href}
@@ -96,7 +96,7 @@ export default function NavBar() {
           <button
             type="button"
             onClick={() => setIsMenuOpen(true)}
-            className="md:hidden flex h-8 w-8 items-center justify-center text-fg-secondary"
+            className="lg:hidden flex h-8 w-8 items-center justify-center text-fg-secondary"
             aria-label="Open menu"
           >
             <HiMenuAlt3 size={20} />
