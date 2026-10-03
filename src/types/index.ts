@@ -48,6 +48,8 @@ export interface ExperienceEntry {
   companyUrl: string;
   period: string;
   badge: string;
+  tenure?: string;
+  previousRoles?: readonly { role: string; period: string; badge: string }[];
   summary: string;
   highlights: readonly string[];
   tags: readonly string[];
@@ -56,6 +58,7 @@ export interface ExperienceEntry {
 export interface ResearchPaper {
   title: string;
   conference: string;
+  conferenceFullName: string;
   location: string;
   description: string;
   coAuthors: string;
@@ -65,6 +68,16 @@ export interface ResearchPaper {
   conferenceUrl: string;
   publisherUrl?: string;
   publisher?: string;
+}
+
+export interface Certificate {
+  title: string;
+  type: string;
+  issuer: string;
+  date: string;
+  description: string;
+  image: string;
+  credentialId?: string;
 }
 
 export interface SocialLink {

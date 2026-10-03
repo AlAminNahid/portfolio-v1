@@ -13,6 +13,48 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
+function Badge({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 rounded-full border border-border text-fg-subtle">
+      {children}
+    </span>
+  );
+}
+
+function RoleTimeline({ exp }: { exp: ExperienceEntry }) {
+  const roles = [
+    { role: exp.role, period: exp.period, badge: exp.badge },
+    ...(exp.previousRoles ?? []),
+  ];
+
+  return (
+    <ol className="relative space-y-5 border-l border-border pl-5 mb-6">
+      {roles.map((r, i) => (
+        <li key={r.role} className="relative">
+          <span
+            className={`absolute -left-[24.5px] top-2.5 h-2 w-2 rounded-full ${
+              i === 0 ? "bg-accent" : "bg-border-strong"
+            }`}
+          />
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-1">
+            <h3
+              className={
+                i === 0
+                  ? "text-2xl font-bold text-fg tracking-tight"
+                  : "text-lg font-semibold text-fg-muted tracking-tight"
+              }
+            >
+              {r.role}
+            </h3>
+            <Badge>{r.badge}</Badge>
+          </div>
+          <p className="text-xs font-mono text-fg-subtle">{r.period}</p>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 function ExperienceModal({
   exp,
   open,
@@ -52,6 +94,11 @@ function ExperienceModal({
             <DialogTitle className="text-2xl font-bold text-fg tracking-tight mb-1">
               {exp.role}
             </DialogTitle>
+            {exp.previousRoles?.map((r) => (
+              <p key={r.role} className="text-xs font-mono text-fg-subtle mb-1">
+                Previously {r.role} · {r.period}
+              </p>
+            ))}
             <a
               href={exp.companyUrl}
               target="_blank"
@@ -124,7 +171,7 @@ export default function Experience() {
             >
               <div className="shrink-0">
                 <p className="text-xs font-mono text-fg-subtle mb-2">
-                  {exp.period}
+                  {exp.tenure ?? exp.period}
                 </p>
                 <a
                   href={exp.companyUrl}
@@ -135,15 +182,21 @@ export default function Experience() {
                   {exp.company}
                   <FaExternalLinkAlt size={10} />
                 </a>
-                <span className="mt-3 block text-[11px] font-mono tracking-widest uppercase px-2.5 py-1 rounded-full border border-border text-fg-subtle w-fit">
-                  {exp.badge}
-                </span>
+                {!exp.previousRoles && (
+                  <span className="mt-3 block text-[11px] font-mono tracking-widest uppercase px-2.5 py-1 rounded-full border border-border text-fg-subtle w-fit">
+                    {exp.badge}
+                  </span>
+                )}
               </div>
 
               <div>
-                <h3 className="text-2xl font-bold text-fg tracking-tight mb-4">
-                  {exp.role}
-                </h3>
+                {exp.previousRoles ? (
+                  <RoleTimeline exp={exp} />
+                ) : (
+                  <h3 className="text-2xl font-bold text-fg tracking-tight mb-4">
+                    {exp.role}
+                  </h3>
+                )}
                 <p className="text-base text-fg-muted leading-7 mb-6 max-w-2xl">
                   {exp.summary}
                 </p>

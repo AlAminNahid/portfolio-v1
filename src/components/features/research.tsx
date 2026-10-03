@@ -1,9 +1,34 @@
+"use client";
+
+import { useRef, useState } from "react";
 import { FaArrowRight, FaExternalLinkAlt } from "react-icons/fa";
 import { SiIeee } from "react-icons/si";
 import { researchPapers } from "@/constants/research";
 import { Reveal } from "@/components/ui/Reveal";
+import ArrowButton from "@/components/features/works/ArrowButton";
 
 export default function Research() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+  const count = researchPapers.length;
+
+  const slideOffset = (track: HTMLDivElement, index: number) => {
+    const slides = track.children as HTMLCollectionOf<HTMLElement>;
+    return slides[index].offsetLeft - slides[0].offsetLeft;
+  };
+
+  const scrollTo = (index: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    track.scrollTo({ left: slideOffset(track, index), behavior: "smooth" });
+  };
+
+  const handleScroll = () => {
+    const track = trackRef.current;
+    if (!track || count < 2) return;
+    setActive(Math.round(track.scrollLeft / slideOffset(track, 1)));
+  };
+
   return (
     <section
       id="research"
@@ -13,116 +38,165 @@ export default function Research() {
         <p className="text-xs font-mono tracking-widest uppercase text-fg-muted mb-2">
           Research &amp; Intelligence
         </p>
-        <h2 className="text-4xl sm:text-5xl font-bold text-fg tracking-tight mb-16">
-          Published Work
-        </h2>
+        <div className="flex items-end justify-between gap-6 mb-16">
+          <h2 className="text-4xl sm:text-5xl font-bold text-fg tracking-tight">
+            Published Work
+          </h2>
 
-        {researchPapers.map((paper, i) => (
-          <div
-            key={i}
-            className="grid lg:grid-cols-[1fr_340px] gap-12 lg:gap-20"
-          >
-            <div>
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-6">
-                <p className="text-xs font-mono tracking-widest uppercase text-fg-subtle">
-                  {paper.conference} · {paper.location} · {paper.year}
+          {count > 1 && (
+            <div className="flex items-center gap-2">
+              <ArrowButton
+                direction="left"
+                onClick={() => scrollTo(active - 1)}
+                disabled={active === 0}
+                aria-label="Previous paper"
+                className="w-10 h-10 border border-border text-fg-muted hover:border-accent/40 hover:text-fg"
+              />
+              <ArrowButton
+                direction="right"
+                onClick={() => scrollTo(active + 1)}
+                disabled={active === count - 1}
+                aria-label="Next paper"
+                className="w-10 h-10 border border-border text-fg-muted hover:border-accent/40 hover:text-fg"
+              />
+            </div>
+          )}
+        </div>
+
+        <div
+          ref={trackRef}
+          onScroll={handleScroll}
+          aria-roledescription="carousel"
+          aria-label="Research papers"
+          className="flex gap-16 overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {researchPapers.map((paper, i) => (
+            <article
+              key={paper.title}
+              aria-roledescription="slide"
+              aria-label={`${i + 1} of ${researchPapers.length}`}
+              className="w-full shrink-0 snap-start grid lg:grid-cols-[1fr_340px] gap-12 lg:gap-20"
+            >
+              <div>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-6">
+                  <p className="text-xs font-mono tracking-widest uppercase text-fg-subtle">
+                    {paper.conference} · {paper.location} · {paper.year}
+                  </p>
+                  {paper.publisherUrl && (
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-success-border/60 bg-success-surface/70 px-2.5 py-1 text-[10px] font-mono tracking-widest uppercase text-success">
+                      <SiIeee size={13} aria-hidden />
+                      {paper.publisher}
+                    </span>
+                  )}
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl font-bold text-fg tracking-tight leading-snug mb-8">
+                  {paper.title}
+                </h3>
+
+                <p className="text-base text-fg-muted leading-7 mb-4">
+                  {paper.description}
                 </p>
-                {paper.publisherUrl && (
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-success-border/60 bg-success-surface/70 px-2.5 py-1 text-[10px] font-mono tracking-widest uppercase text-success">
-                    <SiIeee size={13} aria-hidden />
-                    {paper.publisher}
-                  </span>
-                )}
-              </div>
 
-              <h3 className="text-2xl sm:text-3xl font-bold text-fg tracking-tight leading-snug mb-8">
-                {paper.title}
-              </h3>
+                <p className="text-base text-fg-muted leading-7 mb-8">
+                  {paper.coAuthors}
+                </p>
 
-              <p className="text-base text-fg-muted leading-7 mb-4">
-                {paper.description}
-              </p>
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+                  {paper.publisherUrl && (
+                    <a
+                      href={paper.publisherUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface-inverted text-fg-inverted text-sm font-semibold hover:opacity-90 transition"
+                    >
+                      Read on {paper.publisher}
+                      <FaArrowRight
+                        size={11}
+                        className="transition-transform duration-200 group-hover:translate-x-0.5"
+                      />
+                    </a>
+                  )}
 
-              <p className="text-base text-fg-muted leading-7 mb-8">
-                {paper.coAuthors}
-              </p>
-
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-                {paper.publisherUrl && (
                   <a
-                    href={paper.publisherUrl}
+                    href={paper.conferenceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface-inverted text-fg-inverted text-sm font-semibold hover:opacity-90 transition"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-fg-muted hover:text-accent transition-colors duration-200"
                   >
-                    Read on {paper.publisher}
-                    <FaArrowRight
-                      size={11}
-                      className="transition-transform duration-200 group-hover:translate-x-0.5"
-                    />
+                    Conference site <FaExternalLinkAlt size={11} />
                   </a>
-                )}
-
-                <a
-                  href={paper.conferenceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-fg-muted hover:text-accent transition-colors duration-200"
-                >
-                  Conference site <FaExternalLinkAlt size={11} />
-                </a>
-              </div>
-            </div>
-
-            <div className="border border-border rounded-xl p-6 h-fit">
-              <div className="mb-6">
-                <p className="text-xs font-mono tracking-widest uppercase text-fg-subtle mb-3">
-                  Method
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {paper.highlights.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs font-mono px-3 py-1.5 rounded-full border border-border text-fg-muted hover:border-accent/40 transition-colors"
-                    >
-                      {tag}
-                    </span>
-                  ))}
                 </div>
               </div>
 
-              <div className="border-t border-border pt-5 mb-5">
-                <p className="text-xs font-mono tracking-widest uppercase text-fg-subtle mb-2">
-                  Status
-                </p>
-                <div className="flex items-center gap-2">
-                  <span className="relative flex h-1.5 w-1.5">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success-solid opacity-60" />
-                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success-solid" />
-                  </span>
-                  <span className="text-sm font-medium text-success">
-                    {paper.status}
-                  </span>
-                </div>
-                {paper.publisher && (
-                  <p className="mt-1.5 text-xs text-fg-subtle">
-                    Indexed in the {paper.publisher} Digital Library
+              <div className="border border-border rounded-xl p-6 h-fit">
+                <div className="mb-6">
+                  <p className="text-xs font-mono tracking-widest uppercase text-fg-subtle mb-3">
+                    Method
                   </p>
-                )}
-              </div>
+                  <div className="flex flex-wrap gap-2">
+                    {paper.highlights.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs font-mono px-3 py-1.5 rounded-full border border-border text-fg-muted hover:border-accent/40 transition-colors"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
-              <div className="border-t border-border pt-5">
-                <p className="text-xs font-mono tracking-widest uppercase text-fg-subtle mb-2">
-                  Conference
-                </p>
-                <p className="text-sm text-fg-muted">
-                  International Conference on Power, Electronics,
-                  Communications, Computing, and Intelligent Infrastructure
-                </p>
+                <div className="border-t border-border pt-5 mb-5">
+                  <p className="text-xs font-mono tracking-widest uppercase text-fg-subtle mb-2">
+                    Status
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success-solid opacity-60" />
+                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success-solid" />
+                    </span>
+                    <span className="text-sm font-medium text-success">
+                      {paper.status}
+                    </span>
+                  </div>
+                  {paper.publisherUrl && (
+                    <p className="mt-1.5 text-xs text-fg-subtle">
+                      Indexed in the {paper.publisher} Digital Library
+                    </p>
+                  )}
+                </div>
+
+                <div className="border-t border-border pt-5">
+                  <p className="text-xs font-mono tracking-widest uppercase text-fg-subtle mb-2">
+                    Conference
+                  </p>
+                  <p className="text-sm text-fg-muted">
+                    {paper.conferenceFullName}
+                  </p>
+                </div>
               </div>
-            </div>
+            </article>
+          ))}
+        </div>
+
+        {count > 1 && (
+          <div className="mt-12 flex justify-center gap-2">
+            {researchPapers.map((paper, i) => (
+              <button
+                key={paper.title}
+                type="button"
+                onClick={() => scrollTo(i)}
+                aria-label={`Go to paper ${i + 1}`}
+                aria-current={active === i}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  active === i
+                    ? "w-6 bg-fg"
+                    : "w-1.5 bg-border-strong hover:bg-fg-subtle"
+                }`}
+              />
+            ))}
           </div>
-        ))}
+        )}
       </Reveal>
     </section>
   );

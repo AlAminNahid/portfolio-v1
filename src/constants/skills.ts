@@ -7,6 +7,8 @@ import {
   SiTypescript,
   SiJavascript,
   SiReact,
+  SiHtml5,
+  SiCss,
   SiNextdotjs,
   SiTailwindcss,
   SiNestjs,
@@ -21,6 +23,7 @@ import {
   SiPostman,
   SiFirebase,
   SiVercel,
+  SiRailway,
   SiAndroidstudio,
   SiOpenai,
   SiShadcnui,
@@ -63,6 +66,8 @@ export const skillGroups: SkillGroup[] = [
   {
     label: "Frontend",
     skills: [
+      { name: "HTML", icon: SiHtml5 },
+      { name: "CSS", icon: SiCss },
       { name: "React", icon: SiReact },
       { name: "Next.js", icon: SiNextdotjs },
       { name: "Tailwind CSS", icon: SiTailwindcss },
@@ -102,6 +107,7 @@ export const skillGroups: SkillGroup[] = [
       { name: "Git", icon: SiGit },
       { name: "Docker", icon: SiDocker },
       { name: "Vercel", icon: SiVercel },
+      { name: "Railway", icon: SiRailway },
       { name: "Firebase", icon: SiFirebase },
       { name: "Postman", icon: SiPostman },
       { name: "Android Studio", icon: SiAndroidstudio },

@@ -5,6 +5,9 @@ import messFour from "@/public/projects/two/Four.jpg";
 import messFive from "@/public/projects/two/Five.jpg";
 import messSix from "@/public/projects/two/Six.jpg";
 import messSeven from "@/public/projects/two/Seven.jpg";
+import messEight from "@/public/projects/two/Eight.jpg";
+import messNine from "@/public/projects/two/Nine.jpg";
+import messTen from "@/public/projects/two/Ten.jpg";
 import aiChatBotOne from "@/public/projects/four/one.png";
 import medicareOne from "@/public/projects/one/one.png";
 import medicareTwo from "@/public/projects/one/two.png";
@@ -129,6 +132,9 @@ export const projects: Project[] = [
       messFive,
       messSix,
       messSeven,
+      messEight,
+      messNine,
+      messTen,
     ],
     previewType: "mobile",
     github: "https://github.com/AlAminNahid/MessMasterApp.git",

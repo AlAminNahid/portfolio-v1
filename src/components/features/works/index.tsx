@@ -6,6 +6,7 @@ import { projects } from "@/constants/projects";
 import { Reveal } from "@/components/ui/Reveal";
 import ProjectCard from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
+import Carousel from "@/components/ui/Carousel";
 
 export default function Works() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -26,10 +27,7 @@ export default function Works() {
             const web = projects.filter((p) => p.previewType === "web");
             return (
               <div className="mb-16">
-                <p className="text-[10px] font-mono tracking-widest uppercase text-fg-subtle mb-5">
-                  Web &amp; Full-Stack
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <Carousel label="Web & Full-Stack" itemName="projects">
                   {web.map((project) => (
                     <ProjectCard
                       key={project.title}
@@ -38,7 +36,7 @@ export default function Works() {
                       onClick={() => setSelectedProject(project)}
                     />
                   ))}
-                </div>
+                </Carousel>
               </div>
             );
           })()}

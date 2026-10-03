@@ -2,11 +2,19 @@ import { type ExperienceEntry } from "@/types";
 
 export const experiences: ExperienceEntry[] = [
   {
-    role: "Software Engineering Intern",
+    role: "Software Engineer",
     company: "AuraDev LTD",
     companyUrl: "https://www.auradev.co.uk/",
-    period: "June 2026 – Present",
-    badge: "Intern",
+    period: "September 2026 – Present",
+    badge: "Full-time",
+    tenure: "June 2026 – Present",
+    previousRoles: [
+      {
+        role: "Software Engineering Intern",
+        period: "June – September 2026",
+        badge: "Intern",
+      },
+    ],
     summary:
       "Lead the AI engineering on GrantOS — an AI-powered grant management platform for nonprofits — building an autonomous proposal-writing agent on top of a Next.js 16 frontend and FastAPI backend, alongside an LLM-assisted editor, SSE streaming chat, and a full grant lifecycle pipeline.",
     highlights: [
@@ -23,7 +31,7 @@ export const experiences: ExperienceEntry[] = [
       "Agentic AI",
       "Tool Calling",
       "RAG",
-      "OpenAI SDK",
+      "OpenAI",
       "OpenRouter",
       "SSE Streaming",
       "Next.js 16",
