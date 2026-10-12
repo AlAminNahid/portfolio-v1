@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import {
   SITE_DESCRIPTION,
@@ -9,18 +9,16 @@ import {
 } from "@/constants/site";
 // @ts-ignore: allow importing CSS module without type declarations
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { Providers } from "@/components/providers";
 
-const plusJakarta = Plus_Jakarta_Sans({
+const geistSans = Geist({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-plus-jakarta",
+  variable: "--font-geist-sans",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-jetbrains-mono",
+  variable: "--font-geist-mono",
 });
 
 export const metadata: Metadata = {
@@ -29,13 +27,15 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   keywords: [
     "Al Amin Hossain Nahid",
-    "AI Engineer",
+    "Software Engineer",
     "full-stack developer",
+    "AI systems",
+    "agentic workflows",
+    "RAG",
     "Next.js",
     "React",
     "NestJS",
     "FastAPI",
-    "Android developer",
     "machine learning",
     "computer vision",
     "Bangladesh",
@@ -52,20 +52,11 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     locale: "en_US",
-    images: [
-      {
-        url: "/home-screen.png",
-        width: 1200,
-        height: 630,
-        alt: "Al Amin Hossain Nahid — AI Engineer & Full-Stack Developer",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: ["/home-screen.png"],
   },
   icons: {
     icon: "/icon.svg",
@@ -80,21 +71,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`scroll-smooth ${plusJakarta.variable} ${jetbrainsMono.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
       <body
-        className={`${plusJakarta.className} antialiased bg-canvas text-fg overflow-x-hidden transition-colors duration-300`}
+        className={`font-sans antialiased bg-canvas text-fg overflow-x-hidden`}
         suppressHydrationWarning
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <Providers>{children}</Providers>
         <Analytics />
       </body>
     </html>

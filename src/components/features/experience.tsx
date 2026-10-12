@@ -1,242 +1,73 @@
-"use client";
-
-import { useState } from "react";
-import { FaExternalLinkAlt } from "react-icons/fa";
-import { XIcon } from "lucide-react";
 import { experiences } from "@/constants/experience";
+import Section from "@/components/ui/Section";
+import SectionHead from "@/components/ui/SectionHead";
+import ArrowLink from "@/components/ui/ArrowLink";
 import { Reveal } from "@/components/ui/Reveal";
-import { type ExperienceEntry } from "@/types";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogTitle,
-} from "@/components/ui/dialog";
-
-function Badge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 rounded-full border border-border text-fg-subtle">
-      {children}
-    </span>
-  );
-}
-
-function RoleTimeline({ exp }: { exp: ExperienceEntry }) {
-  const roles = [
-    { role: exp.role, period: exp.period, badge: exp.badge },
-    ...(exp.previousRoles ?? []),
-  ];
-
-  return (
-    <ol className="relative space-y-5 border-l border-border pl-5 mb-6">
-      {roles.map((r, i) => (
-        <li key={r.role} className="relative">
-          <span
-            className={`absolute -left-[24.5px] top-2.5 h-2 w-2 rounded-full ${
-              i === 0 ? "bg-accent" : "bg-border-strong"
-            }`}
-          />
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-1">
-            <h3
-              className={
-                i === 0
-                  ? "text-2xl font-bold text-fg tracking-tight"
-                  : "text-lg font-semibold text-fg-muted tracking-tight"
-              }
-            >
-              {r.role}
-            </h3>
-            <Badge>{r.badge}</Badge>
-          </div>
-          <p className="text-xs font-mono text-fg-subtle">{r.period}</p>
-        </li>
-      ))}
-    </ol>
-  );
-}
-
-function ExperienceModal({
-  exp,
-  open,
-  onClose,
-}: {
-  exp: ExperienceEntry;
-  open: boolean;
-  onClose: () => void;
-}) {
-  return (
-    <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
-      <DialogContent
-        aria-describedby={undefined}
-        showCloseButton={false}
-        className="w-full max-w-2xl sm:max-w-2xl max-h-[88vh] overflow-y-auto rounded-2xl !bg-surface p-0 gap-0"
-      >
-        <DialogClose asChild>
-          <button
-            type="button"
-            aria-label="Close"
-            className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-surface-raised text-fg-muted hover:text-fg transition"
-          >
-            <XIcon size={15} />
-          </button>
-        </DialogClose>
-
-        <div className="p-8">
-          <div className="mb-6">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 rounded-full border border-border text-fg-subtle">
-                {exp.badge}
-              </span>
-              <span className="text-xs font-mono text-fg-subtle">
-                {exp.period}
-              </span>
-            </div>
-            <DialogTitle className="text-2xl font-bold text-fg tracking-tight mb-1">
-              {exp.role}
-            </DialogTitle>
-            {exp.previousRoles?.map((r) => (
-              <p key={r.role} className="text-xs font-mono text-fg-subtle mb-1">
-                Previously {r.role} · {r.period}
-              </p>
-            ))}
-            <a
-              href={exp.companyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-accent transition-colors"
-            >
-              {exp.company}
-              <FaExternalLinkAlt size={10} />
-            </a>
-          </div>
-
-          <div className="h-px bg-border mb-8" />
-
-          <div className="mb-8">
-            <p className="text-xs font-mono tracking-widest uppercase text-fg-subtle mb-5">
-              What I worked on
-            </p>
-            <ul className="space-y-5">
-              {exp.highlights.map((point, i) => (
-                <li key={i} className="flex gap-4">
-                  <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
-                  <p className="text-base text-fg-muted leading-7">{point}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-xs font-mono tracking-widest uppercase text-fg-subtle mb-4">
-              Stack
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {exp.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs font-mono px-3 py-1.5 rounded-full border border-border text-fg-subtle hover:border-accent/40 hover:text-fg-muted transition-colors duration-200"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-}
 
 export default function Experience() {
-  const [active, setActive] = useState<number | null>(null);
-
   return (
-    <section
-      id="experience"
-      className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20 border-t border-border"
-    >
-      <Reveal className="max-w-5xl mx-auto">
-        <p className="text-xs font-mono tracking-widest uppercase text-fg-muted mb-2">
-          Experience
-        </p>
-        <h2 className="text-4xl sm:text-5xl font-bold text-fg tracking-tight mb-16">
-          Where I&apos;ve Worked
-        </h2>
+    <Section id="experience" labelledBy="experience-heading">
+      <SectionHead
+        id="experience-heading"
+        label="Professional experience"
+        title="Where I have worked on production software."
+      />
 
-        <div className="space-y-0">
-          {experiences.map((exp, i) => (
-            <div
-              key={i}
-              className="grid lg:grid-cols-[200px_1fr] gap-6 lg:gap-16 py-12 border-t border-border first:border-t-0 first:pt-0"
-            >
-              <div className="shrink-0">
-                <p className="text-xs font-mono text-fg-subtle mb-2">
-                  {exp.tenure ?? exp.period}
-                </p>
-                <a
-                  href={exp.companyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-accent transition-colors duration-200"
-                >
-                  {exp.company}
-                  <FaExternalLinkAlt size={10} />
-                </a>
-                {!exp.previousRoles && (
-                  <span className="mt-3 block text-[11px] font-mono tracking-widest uppercase px-2.5 py-1 rounded-full border border-border text-fg-subtle w-fit">
-                    {exp.badge}
-                  </span>
+      <div>
+        {experiences.map((entry) => (
+          <Reveal key={entry.company}>
+            <article className="grid gap-6 border-t border-border py-[clamp(32px,4.4vw,56px)] last:border-b lg:grid-cols-12 lg:gap-x-6">
+              <div className="lg:col-span-3">
+                <p className="label text-fg">{entry.period}</p>
+                {entry.current && (
+                  <p className="label mt-2.5 flex items-center gap-2 text-accent">
+                    <span
+                      aria-hidden="true"
+                      className="h-1.5 w-1.5 rounded-full bg-accent"
+                    />
+                    Current role
+                  </p>
                 )}
               </div>
 
-              <div>
-                {exp.previousRoles ? (
-                  <RoleTimeline exp={exp} />
-                ) : (
-                  <h3 className="text-2xl font-bold text-fg tracking-tight mb-4">
-                    {exp.role}
-                  </h3>
-                )}
-                <p className="text-base text-fg-muted leading-7 mb-6 max-w-2xl">
-                  {exp.summary}
+              <div className="grid min-w-0 gap-[22px] lg:col-span-9">
+                <h3 className="text-[clamp(1.4rem,2.5vw,1.9rem)] leading-[1.15] font-medium tracking-[-0.025em]">
+                  {entry.company}
+                  <span className="mt-1.5 block text-[0.62em] font-normal tracking-[-0.005em] text-fg-muted">
+                    {entry.role}
+                  </span>
+                </h3>
+                <p className="max-w-[62ch] text-pretty text-fg-muted">
+                  {entry.summary}
                 </p>
-                <div className="flex flex-wrap items-center gap-3">
-                  <button
-                    onClick={() => setActive(i)}
-                    className="inline-flex items-center gap-1.5 text-xs font-mono tracking-widest uppercase text-accent hover:opacity-70 transition-opacity duration-200"
-                  >
-                    View details →
-                  </button>
-                  <span className="h-3 w-px bg-border-strong" />
-                  <div className="flex flex-wrap gap-2">
-                    {exp.tags.slice(0, 4).map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs font-mono px-3 py-1 rounded-full border border-border text-fg-subtle"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                    {exp.tags.length > 4 && (
-                      <span className="text-xs font-mono px-3 py-1 rounded-full border border-border text-fg-subtle">
-                        +{exp.tags.length - 4} more
-                      </span>
-                    )}
-                  </div>
+
+                <ul className="border-t border-border">
+                  {entry.items.map(({ title, text }) => (
+                    <li
+                      key={title}
+                      className="grid gap-1.5 border-b border-border py-3.5 text-[15px] transition-colors duration-200 hover:bg-linear-to-r hover:from-accent-soft hover:to-transparent sm:grid-cols-[minmax(0,200px)_minmax(0,1fr)] sm:gap-x-6"
+                    >
+                      <b className="font-medium">{title}</b>
+                      <span className="text-pretty text-fg-muted">{text}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {entry.note && (
+                  <p className="max-w-[60ch] text-[13px] text-fg-muted">
+                    {entry.note}
+                  </p>
+                )}
+                <div>
+                  <ArrowLink href={entry.link.href} external>
+                    {entry.link.label}
+                  </ArrowLink>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </Reveal>
-
-      {active !== null && (
-        <ExperienceModal
-          exp={experiences[active]}
-          open={active !== null}
-          onClose={() => setActive(null)}
-        />
-      )}
-    </section>
+            </article>
+          </Reveal>
+        ))}
+      </div>
+    </Section>
   );
 }

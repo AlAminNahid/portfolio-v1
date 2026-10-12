@@ -1,102 +1,90 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Terminal from "./Terminal";
-import { container, item, fadeIn } from "../../../constants/variants";
+import { ctaLinks, hero } from "@/constants/hero";
+import { RESUME_PATH } from "@/constants/site";
+import Container from "@/components/ui/Container";
+import ArrowLink from "@/components/ui/ArrowLink";
+import { Reveal } from "@/components/ui/Reveal";
+import RotatingWord from "@/components/features/header/RotatingWord";
 
 export default function Header() {
+  const [primary, secondary] = ctaLinks;
+
   return (
-    <div
-      id="top"
-      className="relative min-h-screen flex flex-col justify-center px-6 lg:px-[8%] pt-28 pb-20"
+    <section
+      aria-labelledby="hero-heading"
+      className="pt-[clamp(56px,9vw,120px)] pb-[clamp(56px,8vw,96px)]"
     >
-      <div className="max-w-7xl w-full grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-        <motion.div variants={container} initial="hidden" animate="visible">
-          <motion.div
-            variants={fadeIn}
-            className="mb-10 flex items-center gap-3"
-          >
-            <span className="flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-fg-muted">
-              <span className="h-1.5 w-1.5 rounded-full bg-success-solid animate-pulse" />
-              Available for opportunities
-            </span>
-          </motion.div>
+      <Container>
+        <div className="grid lg:grid-cols-12 lg:gap-x-6">
+          <Reveal className="mb-[clamp(28px,4vw,48px)] lg:col-span-12">
+            <p className="label flex flex-wrap gap-x-[18px] gap-y-1.5">
+              <span>
+                <span
+                  aria-hidden="true"
+                  className="mr-2.5 inline-block h-1.5 w-1.5 rounded-full bg-accent align-[1px]"
+                />
+                {hero.role}
+              </span>
+              <span>{hero.location}</span>
+            </p>
+          </Reveal>
 
-          <motion.div variants={item} className="overflow-hidden">
-            <h1 className="text-[clamp(3.2rem,6vw,6rem)] font-bold leading-[0.92] tracking-tight text-fg">
-              Al Amin
+          <Reveal delay={0.08} className="lg:col-span-11">
+            <h1
+              id="hero-heading"
+              className="text-[clamp(2.5rem,7.2vw,5.6rem)] leading-[1.02] font-medium tracking-[-0.045em] text-balance text-fg"
+            >
+              {hero.name} {hero.headline}{" "}
+              <RotatingWord words={hero.rotatingWords} />
             </h1>
-          </motion.div>
-          <motion.div variants={item} className="overflow-hidden">
-            <h1 className="text-[clamp(3.2rem,6vw,6rem)] font-bold leading-[0.92] tracking-tight text-fg">
-              Hossain Nahid
-            </h1>
-          </motion.div>
+          </Reveal>
 
-          <motion.div variants={fadeIn} className="my-8 h-px w-16 bg-accent" />
-
-          <motion.p
-            variants={item}
-            className="text-sm font-mono tracking-widest uppercase text-fg-muted"
+          <Reveal
+            delay={0.18}
+            className="mt-[clamp(32px,5vw,56px)] lg:col-span-8 lg:col-start-5"
           >
-            AI Engineer · Full-Stack Developer · Mobile Developer
-          </motion.p>
+            <p className="max-w-[56ch] text-[clamp(1.02rem,1.5vw,1.2rem)] leading-relaxed text-pretty text-fg-muted">
+              {hero.intro}
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-3">
+              <a
+                href={primary.href}
+                className="group inline-flex min-h-12 items-center gap-2.5 rounded-full bg-fg px-[22px] text-[15px] font-medium text-canvas transition-colors duration-200 hover:bg-accent hover:text-accent-foreground"
+              >
+                {primary.label}
+                <span
+                  aria-hidden="true"
+                  className="transition-transform duration-300 group-hover:translate-y-0.5"
+                >
+                  ↓
+                </span>
+              </a>
+              <ArrowLink href={RESUME_PATH} arrow="↓" download>
+                Download CV
+              </ArrowLink>
+              <ArrowLink href={secondary.href} arrow="→">
+                {secondary.label}
+              </ArrowLink>
+            </div>
+          </Reveal>
 
-          <motion.p
-            variants={item}
-            className="mt-8 max-w-xl text-lg sm:text-xl text-fg-muted leading-relaxed"
+          <Reveal
+            delay={0.28}
+            className="mt-[clamp(48px,7vw,88px)] border-t border-border pt-5 lg:col-span-12"
           >
-            I design and build production-ready software systems — from
-            LLM-powered agents and APIs to full-stack products and native mobile
-            experiences. I understand a problem, design the system, and ship the
-            product.
-          </motion.p>
-
-          <motion.div
-            variants={item}
-            className="mt-12 flex flex-wrap items-center gap-4"
-          >
-            <a
-              href="#work"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-fg text-fg-inverted text-sm font-semibold hover:opacity-80 transition-opacity duration-200"
-            >
-              View Selected Work
-              <span className="text-base">→</span>
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-border-strong text-sm font-medium text-fg-secondary hover:border-fg-muted hover:text-fg transition-colors duration-200"
-            >
-              Get in Touch
-            </a>
-          </motion.div>
-
-          <motion.div
-            variants={fadeIn}
-            className="mt-10 flex items-center gap-6"
-          >
-            <a
-              href="https://github.com/AlAminNahid"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs font-mono tracking-widest uppercase text-fg-subtle hover:text-fg transition-colors duration-200"
-            >
-              GitHub
-            </a>
-            <span className="h-3 w-px bg-border-strong" />
-            <a
-              href="https://www.linkedin.com/in/al-amin-hossain-nahid-876858193/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs font-mono tracking-widest uppercase text-fg-subtle hover:text-fg transition-colors duration-200"
-            >
-              LinkedIn
-            </a>
-          </motion.div>
-        </motion.div>
-
-        <Terminal />
-      </div>
-    </div>
+            <div className="grid gap-3.5 lg:grid-cols-12 lg:gap-x-6">
+              <p className="label text-fg lg:col-span-7">
+                {hero.specialisations}
+              </p>
+              <p className="label lg:col-span-4 lg:col-start-9">
+                Currently
+                <b className="mt-1 block font-sans text-[14.5px] font-medium tracking-normal text-fg normal-case">
+                  {hero.current}
+                </b>
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </Container>
+    </section>
   );
 }

@@ -1,73 +1,56 @@
-import { type StaticImageData } from "next/image";
-import { type ComponentType } from "react";
-import { type IconType } from "react-icons";
+import { type LucideIcon } from "lucide-react";
 
 export interface NavLink {
   label: string;
   href: string;
 }
 
-export interface Project {
-  title: string;
-  type: string;
-  category: string;
-  year: string;
-  status: "In Progress" | "Completed";
-  tech: string;
-  image: StaticImageData;
-  images?: StaticImageData[];
-  previewType: "web" | "mobile";
-  github: string;
-  githubLinks?: { label: string; href: string }[];
-  downloadUrl?: string;
-  liveUrl?: string;
-  summary: string;
-  details: string;
-  highlights: string[];
+export interface ExternalLink {
+  label: string;
+  href: string;
 }
 
-export interface Skill {
-  name: string;
-  icon: ComponentType<{ className?: string }>;
+export interface Project {
+  title: string;
+  category: string;
+  summary: string;
+  highlights: readonly string[];
+  tags: readonly string[];
+  links: readonly ExternalLink[];
 }
 
 export interface SkillGroup {
   label: string;
-  skills: Skill[];
+  skills: readonly string[];
 }
 
-export interface Service {
-  num: string;
+export interface ExperienceItem {
   title: string;
-  desc: string;
+  text: string;
 }
 
 export interface ExperienceEntry {
-  role: string;
   company: string;
-  companyUrl: string;
+  role: string;
   period: string;
-  badge: string;
-  tenure?: string;
-  previousRoles?: readonly { role: string; period: string; badge: string }[];
+  current?: boolean;
   summary: string;
-  highlights: readonly string[];
-  tags: readonly string[];
+  items: readonly ExperienceItem[];
+  note?: string;
+  link: ExternalLink;
 }
 
 export interface ResearchPaper {
   title: string;
+  authors: readonly string[];
+  abstract: string;
+  status: "Published" | "Accepted";
+  statusNote: string;
   conference: string;
   conferenceFullName: string;
   location: string;
-  description: string;
-  coAuthors: string;
-  highlights: readonly string[];
-  status: string;
-  year: number;
-  conferenceUrl: string;
-  publisherUrl?: string;
-  publisher?: string;
+  tags: readonly string[];
+  links: readonly ExternalLink[];
 }
 
 export interface Certificate {
@@ -75,14 +58,15 @@ export interface Certificate {
   type: string;
   issuer: string;
   date: string;
-  description: string;
-  image: string;
-  credentialId?: string;
+  detail?: string;
+  icon: LucideIcon;
 }
 
-export interface SocialLink {
-  label: string;
-  href: string;
+export interface Education {
+  degree: string;
+  school: string;
+  period: string;
+  grade: string;
 }
 
 export interface CtaLink {
@@ -114,11 +98,4 @@ export interface MailPayload {
   name: string;
   email: string;
   message: string;
-}
-
-export interface BgIconConfig {
-  Icon: IconType;
-  className: string;
-  size: number;
-  rotate: number;
 }

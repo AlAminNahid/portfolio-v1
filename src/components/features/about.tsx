@@ -1,93 +1,71 @@
+import { aboutParagraphs, education } from "@/constants/about";
 import { skillGroups } from "@/constants/skills";
-import { philosophy } from "@/constants/philosophy";
+import Section from "@/components/ui/Section";
+import SectionHead from "@/components/ui/SectionHead";
 import { Reveal } from "@/components/ui/Reveal";
 
 export default function About() {
   return (
-    <section
-      id="about"
-      className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20 border-t border-border"
-    >
-      <Reveal className="max-w-5xl mx-auto">
-        <p className="text-xs font-mono tracking-widest uppercase text-fg-muted mb-2">
-          About
-        </p>
-        <h2 className="text-4xl sm:text-5xl font-bold text-fg tracking-tight mb-16">
-          The Engineer
-        </h2>
+    <Section id="about" labelledBy="about-heading">
+      <SectionHead
+        id="about-heading"
+        label="About"
+        title="Engineer first, across the whole stack."
+      />
 
-        <div className="grid lg:grid-cols-2 gap-16 mb-20">
-          <div>
-            <p className="text-lg text-fg-muted leading-8 mb-5">
-              I&apos;m a Computer Science &amp; Engineering student at{" "}
-              <a
-                href="https://www.aiub.edu"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-fg underline underline-offset-4 decoration-border-strong hover:decoration-accent transition-colors"
+      <div className="grid gap-14 lg:grid-cols-12 lg:gap-x-6">
+        <Reveal className="grid gap-5 text-[clamp(1.05rem,1.6vw,1.25rem)] leading-relaxed tracking-[-0.008em] text-pretty lg:col-span-8 lg:col-start-4">
+          {aboutParagraphs.map((text, i) => (
+            <p key={text} className={i > 0 ? "text-fg-muted" : undefined}>
+              {text}
+            </p>
+          ))}
+        </Reveal>
+
+        <Reveal className="lg:col-span-12">
+          <p className="label mb-5 text-fg">Technical expertise</p>
+          <div className="grid border-t border-border sm:grid-cols-2 lg:grid-cols-3">
+            {skillGroups.map(({ label, skills }, i) => (
+              <section
+                key={label}
+                aria-label={label}
+                className="border-b border-border py-7 sm:py-9 sm:pb-11 sm:max-lg:odd:pr-8 sm:max-lg:even:border-l sm:max-lg:even:pl-8 lg:px-8 lg:not-nth-[3n+1]:border-l lg:nth-[3n]:pr-0 lg:nth-[3n+1]:pl-0"
               >
-                AIUB
-              </a>{" "}
-              and an engineer focused on building intelligent systems. My work
-              spans AI engineering, full-stack web development, native Android
-              applications, and applied AI research.
-            </p>
-            <p className="text-lg text-fg-muted leading-8 mb-5">
-              I&apos;m interested in the intersection of AI and software
-              engineering — where machine learning models, LLMs becomes
-              components of real products people actually use.
-            </p>
-            <p className="text-lg text-fg-muted leading-8">
-              I care about the parts users never see: clean API boundaries, data
-              models that survive requirements changes, and code the next person
-              can read without questions.
-            </p>
-          </div>
-
-          <div>
-            <p className="text-xs font-mono tracking-widest uppercase text-fg-subtle mb-8">
-              How I Think
-            </p>
-            <div className="space-y-6">
-              {philosophy.map(({ label, body }) => (
-                <div
-                  key={label}
-                  className="border-l-2 border-border pl-5 hover:border-accent transition-colors duration-300"
-                >
-                  <p className="text-base font-semibold text-fg mb-1">{label}</p>
-                  <p className="text-base text-fg-muted leading-7">{body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <p className="text-xs font-mono tracking-widest uppercase text-fg-muted mb-8">
-            Technical Expertise
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-0 border-l border-t border-border rounded-xl overflow-hidden">
-            {skillGroups.map(({ label, skills }) => (
-              <div key={label} className="p-5 border-r border-b border-border">
-                <p className="text-xs font-mono tracking-widest uppercase text-fg-subtle mb-3">
-                  {label}
+                <p className="mb-[18px] flex items-center gap-3.5 font-mono text-[13px] text-fg-muted tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                  <span
+                    aria-hidden="true"
+                    className="h-px w-12 bg-gradient-to-r from-accent to-transparent"
+                  />
                 </p>
-                <ul className="flex flex-wrap gap-1.5">
-                  {skills.map(({ name, icon: Icon }) => (
+                <h3 className="mb-[22px] text-[clamp(1.4rem,2.2vw,1.75rem)] font-medium tracking-[-0.025em]">
+                  {label}
+                </h3>
+                <ul className="flex flex-wrap items-start gap-2.5">
+                  {skills.map((skill) => (
                     <li
-                      key={name}
-                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-subtle text-sm font-mono text-fg-muted dark:text-white"
+                      key={skill}
+                      className="rounded-full border border-border bg-surface px-5 py-2.5 text-[14.5px] leading-tight text-fg shadow-[0_1px_2px_rgb(0_0_0/0.05)] transition duration-200 hover:-translate-y-0.5 hover:border-accent hover:text-accent"
                     >
-                      <Icon className="w-3 h-3 shrink-0" />
-                      {name}
+                      {skill}
                     </li>
                   ))}
                 </ul>
-              </div>
+              </section>
             ))}
           </div>
-        </div>
-      </Reveal>
-    </section>
+        </Reveal>
+
+        <Reveal className="grid gap-1.5 rounded border border-border bg-surface px-6 py-[22px] lg:col-span-12">
+          <p className="label">Education</p>
+          <p className="text-[1.05rem] font-medium tracking-[-0.015em]">
+            {education.degree}
+          </p>
+          <p className="text-[14.5px] text-fg-muted">
+            {education.school} · {education.period} · {education.grade}
+          </p>
+        </Reveal>
+      </div>
+    </Section>
   );
 }

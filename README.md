@@ -2,7 +2,7 @@
 
 # Al Amin Hossain Nahid — Portfolio
 
-**Full-Stack Developer · Computer Science Student · Open to Opportunities**
+**Software Engineer | Full-Stack & AI Systems**
 
 [![Live Portfolio](https://img.shields.io/badge/Live%20Portfolio-Visit%20Now-0A66C2?style=for-the-badge&logo=vercel&logoColor=white)](https://alamin-nahid.is-a.dev/)
 [![Next.js](https://img.shields.io/badge/Next.js%2016-Framework-000000?style=for-the-badge&logo=next.js)](https://nextjs.org/)
@@ -25,11 +25,12 @@ Every section of the site — hero, about, services, experience, research, works
 
 ## Features
 
-- **Dark / light mode** — persisted to `localStorage`, applied on first paint to prevent flash
-- **Skeleton loading UI** — full-page, section-accurate skeleton that mirrors the real layout
-- **Working contact form** — client-side Zod validation, server-side API route, Gmail SMTP via Nodemailer
-- **Responsive design** — mobile-first, tested across all breakpoints
-- **Performance first** — `next/image` for all images, font optimization via `next/font`, Vercel Analytics
+- **Editorial, image-free design** — typography-led layout in a warm off-white / charcoal palette with one cobalt accent
+- **Light and dark themes** — follows the system by default, with a manual toggle (`next-themes`)
+- **Sections** — header, about with technical expertise, experience, projects, research carousel, certificates, and contact
+- **Working contact form** — client-side Zod validation, honeypot, rate-limited API route, Gmail SMTP via Nodemailer
+- **Accessible motion** — scroll progress, rotating headline, reveals; all respect `prefers-reduced-motion`
+- **Responsive** — verified from phone to wide desktop
 
 ---
 
@@ -38,6 +39,7 @@ Every section of the site — hero, about, services, experience, research, works
 | Layer       | Technology                 |
 | ----------- | -------------------------- |
 | Framework   | Next.js 16 (App Router)    |
+| Fonts       | Geist, Geist Mono          |
 | UI Library  | React 19                   |
 | Language    | TypeScript 5 (strict mode) |
 | Styling     | Tailwind CSS v4            |
@@ -60,7 +62,6 @@ portfolio-v1/
 │   │   ├── layout.tsx            # Root layout (font, metadata, analytics)
 │   │   ├── page.tsx              # Main landing page — composes all sections
 │   │   ├── error.tsx             # Next.js error boundary wrapper
-│   │   ├── loading.tsx           # Next.js loading wrapper
 │   │   └── globals.css           # Global base styles
 │   │
 │   ├── components/               # UI component library
@@ -77,8 +78,7 @@ portfolio-v1/
 │   └── config/                   # Initialised singletons and configuration
 │
 ├── public/                       # Static assets served at /
-│   ├── assets/                   # Images and icons
-│   └── projects/                 # Project screenshots
+│   └── Nahid_s_Resume.pdf        # Downloadable CV
 │
 ├── .env.example                  # Sample environment variables
 └── package.json                  # Scripts and dependencies
@@ -139,6 +139,17 @@ All site content is driven by files in `constants/` — no component edits requi
 
 | What to change             | File to edit                         |
 | -------------------------- | ------------------------------------ |
+| Name, role, headline, CTAs | `src/constants/hero.ts`              |
+| About text and education   | `src/constants/about.ts`             |
+| Navigation links           | `src/constants/navigation.ts`        |
+| Technical expertise        | `src/constants/skills.ts`            |
+| Work experience            | `src/constants/experience.ts`        |
+| Projects                   | `src/constants/projects.ts`          |
+| Research papers            | `src/constants/research.ts`          |
+| Certificates               | `src/constants/certificates.ts`      |
+| Site title, email, CV path | `src/constants/site.ts`              |
+
+-------------------------- | ------------------------------------ |
 | Name, bio, university      | `src/components/features/about.tsx`  |
 | Hero CTAs and social links | `src/constants/hero.ts`              |
 | Navigation links           | `src/constants/navigation.ts`        |

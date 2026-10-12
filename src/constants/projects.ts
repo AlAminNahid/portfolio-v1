@@ -1,167 +1,67 @@
-import messOne from "@/public/projects/two/One.jpg";
-import messTwo from "@/public/projects/two/Two.jpg";
-import messThree from "@/public/projects/two/Three.jpg";
-import messFour from "@/public/projects/two/Four.jpg";
-import messFive from "@/public/projects/two/Five.jpg";
-import messSix from "@/public/projects/two/Six.jpg";
-import messSeven from "@/public/projects/two/Seven.jpg";
-import messEight from "@/public/projects/two/Eight.jpg";
-import messNine from "@/public/projects/two/Nine.jpg";
-import messTen from "@/public/projects/two/Ten.jpg";
-import aiChatBotOne from "@/public/projects/four/one.png";
-import medicareOne from "@/public/projects/one/one.png";
-import medicareTwo from "@/public/projects/one/two.png";
-import medicareThree from "@/public/projects/one/three.png";
-import medicareFour from "@/public/projects/one/four.png";
-import billimbiOne from "@/public/projects/three/One.png";
-import billimbiTwo from "@/public/projects/three/Two.png";
-import billimbiThree from "@/public/projects/three/Three.png";
-import billimbiFour from "@/public/projects/three/Four.png";
-import jotionOne from "@/public/projects/five/one.png";
 import { type Project } from "@/types";
 
 export const projects: Project[] = [
   {
     title: "Bilimbi Studio",
-    type: "Marketing Site",
-    category: "Frontend · Design",
-    year: "2026",
-    status: "Completed",
-    tech: "Next.js, TypeScript, Custom CSS",
-    image: billimbiOne,
-    images: [billimbiOne, billimbiTwo, billimbiThree, billimbiFour],
-    previewType: "web",
-    github: "https://github.com/AlAminNahid/bilimbi_studio.git",
-    liveUrl: "https://bilimbi-studio.is-a.dev",
+    category: "Production website",
     summary:
-      "Marketing site for Bilimbi Studio — a small software studio based in Dhaka, Bangladesh.",
-    details:
-      "Bilimbi Studio is a fully hand-crafted marketing site for a focused software studio in Dhaka. Built with Next.js App Router and TypeScript, the site is styled entirely with custom CSS using a two-tier design-token system — brand primitives (raw colour values) and semantic roles (what each colour is for) — with zero utility-class frameworks. Sections cover the studio's projects, process, team, and a contact form, all driven from typed constants so content never lives inside components.",
+      "A content-driven marketing website for a small software studio in Dhaka, built and deployed with a hand-authored design-token system.",
     highlights: [
-      "Hand-authored CSS with a two-tier design-token system (no Tailwind utilities)",
-      "Content-driven architecture — all copy lives in typed constants, not components",
-      "Sections: hero, projects, how-we-build process, team, and contact form",
-      "Deployed on Vercel with automatic preview deployments on pull requests",
+      "Two-tier design tokens: brand primitives and semantic roles, with hand-written CSS",
+      "All copy lives in typed constants, never inside components",
+      "Validated contact-form API using Zod and an external email service",
+      "Deployed on Vercel with preview deployments on pull requests",
     ],
-  },
-  {
-    title: "Jotion",
-    type: "Clone of Notion",
-    category: "Full-Stack Web App",
-    year: "2026",
-    status: "Completed",
-    tech: "Next.js, TypeScript, Tailwind CSS, Shadcn/UI, Clerk, Convex",
-    image: jotionOne,
-    images: [jotionOne],
-    previewType: "web",
-    github: "https://github.com/AlAminNahid/notion-clone.git",
-    liveUrl: "https://notion-clone-flame-pi.vercel.app/",
-    summary:
-      "A Notion-inspired connected workspace — write, plan, and organise documents with real-time sync and auth out of the box.",
-    details:
-      "Jotion is a full-stack Notion clone built with Next.js App Router and TypeScript. Authentication is handled end-to-end by Clerk, which plugs directly into Convex via a JWT provider so every database query is user-scoped without a separate auth layer. Convex serves as the real-time backend — schema, queries, mutations, and subscriptions all live in TypeScript functions that deploy atomically, eliminating the need for a traditional REST API. The UI is built with Shadcn/UI components on top of Tailwind CSS v4, with dark/light mode via next-themes.",
-    highlights: [
-      "Clerk authentication with modal sign-in/sign-up, wired to Convex via JWT provider",
-      "Convex real-time backend — schema, queries, and mutations in typed TypeScript functions",
-      "Next.js App Router with route groups: marketing layout and authenticated documents layout",
-      "Dark/light mode with next-themes and Shadcn/UI component system",
-      "Deployed on Vercel with Convex cloud handling the real-time database",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Zod"],
+    links: [
+      { label: "Live site", href: "https://bilimbi-studio.is-a.dev" },
+      {
+        label: "GitHub",
+        href: "https://github.com/AlAminNahid/bilimbi_studio",
+      },
     ],
   },
   {
     title: "AI Chat",
-    type: "Full-Stack Web App",
-    category: "AI · Full-Stack",
-    year: "2026",
-    status: "Completed",
-    tech: "Next.js, Gemini API, Prisma, PostgreSQL",
-    image: aiChatBotOne,
-    images: [aiChatBotOne],
-    previewType: "web",
-    github: "https://github.com/AlAminNahid/ai-chat.git",
-    liveUrl: "https://ai-nova-chat.vercel.app/",
+    category: "AI + Full-stack",
     summary:
-      "Conversational AI app powered by Gemini with persistent chat history stored in PostgreSQL via Prisma.",
-    details:
-      "AI Chat is a full-stack conversational AI application built with Next.js App Router and Google's Gemini API. Every conversation is persisted in a PostgreSQL database hosted on Neon, accessed through Prisma 7 with the native Postgres adapter. Users can start new chats, continue previous ones from a sidebar, and delete conversations — all backed by a clean REST API with dedicated endpoints for chat completions and conversation management.",
+      "A multi-conversation AI chat application with persistent history, powered by Google Gemini through server-side API routes with streamed responses.",
     highlights: [
-      "Google Gemini API for AI chat completions",
-      "Conversation persistence with Prisma 7 and PostgreSQL (Neon)",
-      "Sidebar with full conversation history — resume or delete any chat",
-      "REST API: POST /chat, GET/DELETE /conversations/[id]",
-      "Next.js App Router with Tailwind CSS v4",
+      "Gemini integrated server-side with streamed responses",
+      "Conversations persisted with Prisma 7 and PostgreSQL on Neon",
+      "Sidebar history to resume or delete any conversation",
+      "REST endpoints for chat completion and conversation management",
+      "Reusable React components, Next.js App Router, Tailwind CSS",
     ],
-  },
-  {
-    title: "MediCare",
-    type: "Full-Stack Web App",
-    category: "Full-Stack · SaaS",
-    year: "2026",
-    status: "In Progress",
-    tech: "Next.js, NestJS, PostgreSQL, TypeORM",
-    image: medicareOne,
-    images: [medicareOne, medicareTwo, medicareThree, medicareFour],
-    previewType: "web",
-    github: "https://github.com/AlAminNahid/MediCare.git",
-    liveUrl: "https://medi-care-nine-flax.vercel.app",
-    summary:
-      "Medical chamber management SaaS — doctors run their chambers, patients book serial-based appointments online.",
-    details:
-      "MediCare is a full-stack medical chamber management platform with three distinct portals: Admin, Doctor, and Patient. Doctors manage their private chambers (locations, schedules, fees) and handle a daily serial-ordered appointment queue. Patients browse doctors, pick a chamber, and receive a serial number instead of a fixed time slot. The admin oversees the platform — managing medicines, users, and backups. Built with Next.js and NestJS, backed by PostgreSQL via TypeORM, and secured with JWT auth.",
-    highlights: [
-      "Three-role system: Admin, Doctor, and Patient portals",
-      "Serial-based appointment booking per chamber per day",
-      "Doctor chamber management with schedules, locations, and fees",
-      "Digital prescriptions and shared medicine reference list",
-      "JWT-secured NestJS REST API with PostgreSQL and TypeORM",
+    tags: ["Next.js", "Gemini API", "Prisma", "PostgreSQL", "Tailwind CSS"],
+    links: [
+      { label: "Live site", href: "https://ai-nova-chat.vercel.app/" },
+      { label: "GitHub", href: "https://github.com/AlAminNahid/ai-chat" },
     ],
   },
   {
     title: "MessMaster",
-    type: "Native Android App",
-    category: "Mobile · Full-Stack",
-    year: "2026",
-    status: "Completed",
-    tech: "Kotlin, XML, NestJS, PostgreSQL",
-    image: messOne,
-    images: [
-      messOne,
-      messTwo,
-      messThree,
-      messFour,
-      messFive,
-      messSix,
-      messSeven,
-      messEight,
-      messNine,
-      messTen,
-    ],
-    previewType: "mobile",
-    github: "https://github.com/AlAminNahid/MessMasterApp.git",
-    githubLinks: [
-      {
-        label: "App Repo",
-        href: "https://github.com/AlAminNahid/MessMasterApp.git",
-      },
-      {
-        label: "Backend Repo",
-        href: "https://github.com/AlAminNahid/MessMasterApp_Backend.git",
-      },
-    ],
-    downloadUrl:
-      "https://play.google.com/apps/internaltest/4700604083528970813",
+    category: "Mobile + Backend",
     summary:
-      "Smart mess management app for shared living — tracks meals, utilities, and monthly expenses with automatic bill calculation.",
-    details:
-      "MessMaster is a full-stack Android application built for student messes, hostels, and shared apartments. After login, users either create a mess (becoming the Manager) or join one as a Member. The Manager records daily meals, manages utility costs (electricity, water, internet, grocery), posts notices, and generates monthly bills. Members view their meal history, utility shares, and calculated rates. The meal rate is computed automatically as total monthly expense divided by total meals, giving everyone a fair, transparent bill. The backend is a NestJS REST API with JWT (access + refresh tokens) and PostgreSQL via TypeORM.",
+      "A native Android app for student messes, hostels and shared apartments, with a NestJS backend. Tracks meals, utilities and monthly expenses and calculates each member's bill.",
     highlights: [
-      "Currently in internal testing on Google Play — request early access via the link",
-      "Role-based system: Manager creates/manages the mess, Members track their share",
-      "Automatic meal rate calculation: total expense ÷ total meals",
-      "Utility cost tracking — electricity, water, internet, grocery, and more",
-      "Notice board for manager announcements and member shopping requests",
-      "JWT auth with access + refresh tokens, bcrypt password hashing",
-      "NestJS REST API backed by PostgreSQL with TypeORM",
+      "Manager and Member roles: a manager creates the mess, records meals, manages utilities and posts notices",
+      "Meal rate calculated automatically as total monthly expense ÷ total meals",
+      "Utility tracking for electricity, water, internet, grocery and more",
+      "JWT auth with access and refresh tokens, bcrypt password hashing, validated APIs",
+      "Android client built with MVVM, Kotlin Coroutines, Retrofit and Material Design",
+      "NestJS and PostgreSQL backend with TypeORM, in internal testing on Google Play",
+    ],
+    tags: ["Kotlin", "Android SDK", "NestJS", "PostgreSQL", "TypeORM", "JWT"],
+    links: [
+      {
+        label: "App repository",
+        href: "https://github.com/AlAminNahid/MessMasterApp",
+      },
+      {
+        label: "Backend repository",
+        href: "https://github.com/AlAminNahid/MessMasterApp_Backend",
+      },
     ],
   },
 ];

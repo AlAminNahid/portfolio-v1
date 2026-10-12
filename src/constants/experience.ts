@@ -2,74 +2,72 @@ import { type ExperienceEntry } from "@/types";
 
 export const experiences: ExperienceEntry[] = [
   {
+    company: "Kolpo LTD",
     role: "Software Engineer",
-    company: "AuraDev LTD",
-    companyUrl: "https://www.auradev.co.uk/",
-    period: "September 2026 – Present",
-    badge: "Full-time",
-    tenure: "June 2026 – Present",
-    previousRoles: [
+    period: "Oct 2026 – Present",
+    current: true,
+    summary:
+      "Working on an enterprise AI application for a client, contributing across frontend development, backend services, agent orchestration, knowledge retrieval, and cloud deployment.",
+    items: [
       {
-        role: "Software Engineering Intern",
-        period: "June – September 2026",
-        badge: "Intern",
+        title: "Frontend architecture",
+        text: "Redesigned the application's user interface and built full-stack features to improve usability and give the product a more consistent experience.",
+      },
+      {
+        title: "Agentic chat system",
+        text: "Built a conversational AI system with custom Python orchestration and Pydantic-based models for structured validation and agent interactions.",
+      },
+      {
+        title: "Knowledge retrieval",
+        text: "Developed a custom knowledge-base retrieval workflow that connects relevant organisational information to the agent for context-aware responses.",
+      },
+      {
+        title: "Sandboxed code execution",
+        text: "Integrated E2B to run Python scripts in isolated sandboxes and feed the results back into the agent workflow.",
+      },
+      {
+        title: "Cloud deployment",
+        text: "Deployed and operated the application on Google Cloud Run in a production environment.",
       },
     ],
-    summary:
-      "Lead the AI engineering on GrantOS — an AI-powered grant management platform for nonprofits — building an autonomous proposal-writing agent on top of a Next.js 16 frontend and FastAPI backend, alongside an LLM-assisted editor, SSE streaming chat, and a full grant lifecycle pipeline.",
-    highlights: [
-      "Architected the platform's proposal-writing agent: an async tool-calling loop over 13 typed tools that takes a user from a raw grant URL to a drafted proposal, pausing only at two explicit human approval gates and running the rest of the pipeline autonomously in a single turn.",
-      "Designed the agent's durability layer — persisted session state and transcripts with automatic compaction past a turn threshold, a server-driven phase state machine that keeps the UI stepper in sync with agent progress, and per-call token and cost accounting written to a usage ledger.",
-      "Built a vectorless retrieval system over organisational knowledge bases: instead of embeddings, an LLM ranks documents by metadata and preview text, full text is fetched for the top matches, and a per-document distillation pass runs only when the selected set exceeds the context budget — removing the vector store from the stack entirely.",
-      "Built a provider-agnostic inference layer on the OpenAI SDK against OpenRouter, with a separate configurable model per task — agent loop, drafting, and chat — so models can be swapped or A/B tested without touching call sites. It backs RFP parsing from PDF, DOCX, or URL; per-section drafting; compliance scoring; six-mode inline rewrites; and a real-time SSE streaming chat assistant.",
-      "Wired a Hono-based JWT-injecting proxy inside Next.js App Router that intercepts every API call, attaches the Clerk bearer token, and forwards to FastAPI — keeping the backend unreachable directly from the browser.",
-      "Built a Plate.js rich-text proposal editor with 60-second autosave, optimistic locking (409 on concurrent edits), version history with diff view across snapshots, and one-click DOCX export.",
-      "Shipped a dnd-kit kanban grant pipeline (7 stages, 4 priority levels), a Cloudflare R2 document vault with presigned download URLs, and a deterministic grant-match scoring algorithm across sector, geography, budget, org-size, and keyword dimensions — no LLM involved.",
-      "Implemented plan gating across FREE/PRO/TEAM tiers; built Zustand slice-pattern state with 10+ domain slices and a SQLAlchemy async + asyncpg data layer with Alembic migrations, deployed on Railway.",
-    ],
-    tags: [
-      "Agentic AI",
-      "Tool Calling",
-      "RAG",
-      "OpenAI",
-      "OpenRouter",
-      "SSE Streaming",
-      "Next.js 16",
-      "FastAPI",
-      "Zustand",
-      "Clerk Auth",
-      "Plate.js",
-      "Hono",
-      "SQLAlchemy",
-      "Cloudflare R2",
-      "dnd-kit",
-      "TypeScript",
-      "Python",
-    ],
+    note: "Client and implementation details are confidential and intentionally omitted.",
+    link: {
+      label: "Company record",
+      href: "https://find-and-update.company-information.service.gov.uk/company/16795993",
+    },
   },
   {
-    role: "Software Engineer",
-    company: "Bilimbi Studio",
-    companyUrl: "https://bilimbi-studio.is-a.dev",
-    period: "2025 – Present",
-    badge: "Founding Team",
+    company: "AuraDev LTD",
+    role: "Software Engineering Intern",
+    period: "Jun 2026 – Sep 2026",
     summary:
-      "Part of the founding engineering team at Bilimbi Studio, a small software studio in Dhaka, Bangladesh. Built the studio's marketing site and engineered MessMaster — an Android app for shared student messes, backed by a NestJS API.",
-    highlights: [
-      "Built the studio's marketing site (Next.js 16 App Router, React 19) with a hand-authored two-tier CSS design token system — brand primitives composed into semantic roles via CSS color-mix() — zero Tailwind utility classes.",
-      "Kept the page RSC-first with targeted client boundaries: mobile nav drawer (useDisclosure), an animated ProcessFlow (IntersectionObserver + setInterval, respects prefers-reduced-motion), and the contact form.",
-      "Implemented dual-layer Zod validation — client-side field errors before fetch and server-side safeParse in a Next.js Route Handler — forwarding validated submissions to a custom mail relay via API key.",
-      "Engineered and shipped MessMaster — an Android app for tracking monthly meal and bazaar costs in shared student messes — backed by a NestJS REST API deployed on Render.",
+      "Worked across a Next.js frontend and an asynchronous FastAPI backend on an AI-powered grant management platform, building AI-assisted proposal workflows and knowledge management features.",
+    items: [
+      {
+        title: "Agentic proposal generation",
+        text: "Built a tool-driven workflow that guides users from grant source analysis and requirement extraction to proposal drafting, with human approval at key stages.",
+      },
+      {
+        title: "Conversational agent and state",
+        text: "Implemented an agentic chat experience with multi-step workflow orchestration, contextual interactions, and conversation state management.",
+      },
+      {
+        title: "Custom knowledge retrieval",
+        text: "Developed summary-guided retrieval: short document descriptions in PostgreSQL identify the relevant files in Cloudflare R2, and only then are full contents retrieved for deeper analysis.",
+      },
+      {
+        title: "Collaborative editing",
+        text: "Integrated Plate.js commenting into the proposal editor to support review and feedback.",
+      },
+      {
+        title: "Backend and data",
+        text: "Built authenticated, asynchronous APIs with FastAPI, SQLAlchemy, Alembic and PostgreSQL, using Clerk JWT authentication and organisation-based access control.",
+      },
+      {
+        title: "Document workflows",
+        text: "Contributed to PDF/DOCX processing, proposal version history, and persistent document workflows.",
+      },
     ],
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind",
-      "Zod",
-      "React Server Components",
-      "Android",
-      "Kotlin",
-      "Vercel",
-    ],
+    link: { label: "Company website", href: "https://www.auradev.co.uk/" },
   },
 ];
