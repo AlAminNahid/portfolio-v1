@@ -1,203 +1,167 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { FaArrowRight, FaExternalLinkAlt } from "react-icons/fa";
-import { SiIeee } from "react-icons/si";
-import { researchPapers } from "@/constants/research";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { researchPapers, SELF_AUTHOR } from "@/constants/research";
+import Section from "@/components/ui/Section";
+import SectionHead from "@/components/ui/SectionHead";
+import ArrowLink from "@/components/ui/ArrowLink";
+import Tags from "@/components/ui/Tags";
 import { Reveal } from "@/components/ui/Reveal";
-import ArrowButton from "@/components/features/works/ArrowButton";
+
+const arrowButton =
+  "inline-grid h-10 w-10 place-items-center rounded-full border border-border text-fg transition-colors duration-200 hover:border-border-strong hover:bg-surface disabled:pointer-events-none disabled:opacity-35";
 
 export default function Research() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
+  const track = useRef<HTMLDivElement>(null);
+  const [index, setIndex] = useState(0);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
   const count = researchPapers.length;
 
-  const slideOffset = (track: HTMLDivElement, index: number) => {
-    const slides = track.children as HTMLCollectionOf<HTMLElement>;
-    return slides[index].offsetLeft - slides[0].offsetLeft;
-  };
+  const sync = useCallback(() => {
+    const el = track.current;
+    if (!el) return;
+    const cards = el.children;
+    const step =
+      cards.length > 1
+        ? (cards[1] as HTMLElement).offsetLeft -
+          (cards[0] as HTMLElement).offsetLeft
+        : el.clientWidth;
+    const end = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4;
+    setAtStart(el.scrollLeft <= 4);
+    setAtEnd(end);
+    setIndex(
+      end ? count - 1 : Math.min(count - 1, Math.round(el.scrollLeft / step)),
+    );
+  }, [count]);
 
-  const scrollTo = (index: number) => {
-    const track = trackRef.current;
-    if (!track) return;
-    track.scrollTo({ left: slideOffset(track, index), behavior: "smooth" });
-  };
+  useEffect(() => {
+    sync();
+    window.addEventListener("resize", sync);
+    return () => window.removeEventListener("resize", sync);
+  }, [sync]);
 
-  const handleScroll = () => {
-    const track = trackRef.current;
-    if (!track || count < 2) return;
-    setActive(Math.round(track.scrollLeft / slideOffset(track, 1)));
-  };
+  function move(direction: 1 | -1) {
+    const el = track.current;
+    if (!el) return;
+    el.scrollBy({ left: direction * el.clientWidth, behavior: "smooth" });
+  }
 
   return (
-    <section
-      id="research"
-      className="w-full px-6 lg:px-[8%] py-24 scroll-mt-20 border-t border-border"
-    >
-      <Reveal className="max-w-5xl mx-auto">
-        <p className="text-xs font-mono tracking-widest uppercase text-fg-muted mb-2">
-          Research &amp; Intelligence
-        </p>
-        <div className="flex items-end justify-between gap-6 mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-fg tracking-tight">
-            Published Work
-          </h2>
+    <Section id="research" labelledBy="research-heading">
+      <SectionHead
+        id="research-heading"
+        label="Research and publications"
+        title="Applied machine learning and AI research."
+      />
 
-          {count > 1 && (
-            <div className="flex items-center gap-2">
-              <ArrowButton
-                direction="left"
-                onClick={() => scrollTo(active - 1)}
-                disabled={active === 0}
-                aria-label="Previous paper"
-                className="w-10 h-10 border border-border text-fg-muted hover:border-accent/40 hover:text-fg"
-              />
-              <ArrowButton
-                direction="right"
-                onClick={() => scrollTo(active + 1)}
-                disabled={active === count - 1}
-                aria-label="Next paper"
-                className="w-10 h-10 border border-border text-fg-muted hover:border-accent/40 hover:text-fg"
-              />
-            </div>
-          )}
+      <Reveal className="mb-4 flex items-center justify-between">
+        <span className="label tabular-nums" aria-live="polite">
+          {index + 1} / {count}
+        </span>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            aria-label="Previous paper"
+            disabled={atStart}
+            onClick={() => move(-1)}
+            className={arrowButton}
+          >
+            <ChevronLeft size={17} strokeWidth={1.5} aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            aria-label="Next paper"
+            disabled={atEnd}
+            onClick={() => move(1)}
+            className={arrowButton}
+          >
+            <ChevronRight size={17} strokeWidth={1.5} aria-hidden="true" />
+          </button>
         </div>
-
-        <div
-          ref={trackRef}
-          onScroll={handleScroll}
-          aria-roledescription="carousel"
-          aria-label="Research papers"
-          className="flex gap-16 overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {researchPapers.map((paper, i) => (
-            <article
-              key={paper.title}
-              aria-roledescription="slide"
-              aria-label={`${i + 1} of ${researchPapers.length}`}
-              className="w-full shrink-0 snap-start grid lg:grid-cols-[1fr_340px] gap-12 lg:gap-20"
-            >
-              <div>
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-6">
-                  <p className="text-xs font-mono tracking-widest uppercase text-fg-subtle">
-                    {paper.conference} · {paper.location} · {paper.year}
-                  </p>
-                  {paper.publisherUrl && (
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-success-border/60 bg-success-surface/70 px-2.5 py-1 text-[10px] font-mono tracking-widest uppercase text-success">
-                      <SiIeee size={13} aria-hidden />
-                      {paper.publisher}
-                    </span>
-                  )}
-                </div>
-
-                <h3 className="text-2xl sm:text-3xl font-bold text-fg tracking-tight leading-snug mb-8">
-                  {paper.title}
-                </h3>
-
-                <p className="text-base text-fg-muted leading-7 mb-4">
-                  {paper.description}
-                </p>
-
-                <p className="text-base text-fg-muted leading-7 mb-8">
-                  {paper.coAuthors}
-                </p>
-
-                <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-                  {paper.publisherUrl && (
-                    <a
-                      href={paper.publisherUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface-inverted text-fg-inverted text-sm font-semibold hover:opacity-90 transition"
-                    >
-                      Read on {paper.publisher}
-                      <FaArrowRight
-                        size={11}
-                        className="transition-transform duration-200 group-hover:translate-x-0.5"
-                      />
-                    </a>
-                  )}
-
-                  <a
-                    href={paper.conferenceUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-fg-muted hover:text-accent transition-colors duration-200"
-                  >
-                    Conference site <FaExternalLinkAlt size={11} />
-                  </a>
-                </div>
-              </div>
-
-              <div className="border border-border rounded-xl p-6 h-fit">
-                <div className="mb-6">
-                  <p className="text-xs font-mono tracking-widest uppercase text-fg-subtle mb-3">
-                    Method
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {paper.highlights.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs font-mono px-3 py-1.5 rounded-full border border-border text-fg-muted hover:border-accent/40 transition-colors"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="border-t border-border pt-5 mb-5">
-                  <p className="text-xs font-mono tracking-widest uppercase text-fg-subtle mb-2">
-                    Status
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <span className="relative flex h-1.5 w-1.5">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success-solid opacity-60" />
-                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success-solid" />
-                    </span>
-                    <span className="text-sm font-medium text-success">
-                      {paper.status}
-                    </span>
-                  </div>
-                  {paper.publisherUrl && (
-                    <p className="mt-1.5 text-xs text-fg-subtle">
-                      Indexed in the {paper.publisher} Digital Library
-                    </p>
-                  )}
-                </div>
-
-                <div className="border-t border-border pt-5">
-                  <p className="text-xs font-mono tracking-widest uppercase text-fg-subtle mb-2">
-                    Conference
-                  </p>
-                  <p className="text-sm text-fg-muted">
-                    {paper.conferenceFullName}
-                  </p>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        {count > 1 && (
-          <div className="mt-12 flex justify-center gap-2">
-            {researchPapers.map((paper, i) => (
-              <button
-                key={paper.title}
-                type="button"
-                onClick={() => scrollTo(i)}
-                aria-label={`Go to paper ${i + 1}`}
-                aria-current={active === i}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  active === i
-                    ? "w-6 bg-fg"
-                    : "w-1.5 bg-border-strong hover:bg-fg-subtle"
-                }`}
-              />
-            ))}
-          </div>
-        )}
       </Reveal>
-    </section>
+
+      <div
+        ref={track}
+        onScroll={sync}
+        role="region"
+        aria-label="Publications, scroll horizontally"
+        tabIndex={0}
+        className="flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-3.5 [scrollbar-color:var(--border-strong)_transparent] [scrollbar-width:thin]"
+      >
+        {researchPapers.map((paper) => (
+          <article
+            key={paper.title}
+            className="grid min-w-0 shrink-0 basis-full snap-start snap-always content-start gap-5 rounded-md border border-border bg-surface p-[clamp(24px,3.4vw,44px)] transition-colors duration-300 hover:border-accent"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+              <span
+                className={`inline-flex items-center gap-2 rounded-full px-3 py-[5px] font-mono text-[11.5px] leading-snug tracking-[0.08em] uppercase ${
+                  paper.status === "Published"
+                    ? "bg-accent text-accent-foreground"
+                    : "border border-accent text-accent"
+                }`}
+              >
+                <span
+                  aria-hidden="true"
+                  className="h-1.5 w-1.5 rounded-full bg-current"
+                />
+                {paper.status}
+              </span>
+              <span className="label">{paper.statusNote}</span>
+            </div>
+
+            <h3 className="max-w-[34em] text-[clamp(1.4rem,2.6vw,2rem)] leading-snug font-medium tracking-[-0.025em] text-balance">
+              {paper.title}
+            </h3>
+
+            <p className="max-w-[62ch] text-fg-muted">
+              {paper.authors.map((author, i) => (
+                <span key={author}>
+                  {author === SELF_AUTHOR ? (
+                    <b className="font-medium text-fg">{author}</b>
+                  ) : (
+                    author
+                  )}
+                  {i < paper.authors.length - 2
+                    ? ", "
+                    : i === paper.authors.length - 2
+                      ? ", and "
+                      : "."}
+                </span>
+              ))}
+            </p>
+
+            <p className="max-w-[66ch] text-pretty text-fg-muted">
+              {paper.abstract}
+            </p>
+
+            <dl className="grid gap-x-7 gap-y-3.5 md:grid-cols-[1fr_2fr_1fr]">
+              {[
+                ["Conference", paper.conference],
+                ["Full name", paper.conferenceFullName],
+                ["Location", paper.location],
+              ].map(([term, value]) => (
+                <div key={term} className="border-t border-border-strong pt-3">
+                  <dt className="label">{term}</dt>
+                  <dd className="mt-1 text-[14.5px]">{value}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <Tags items={paper.tags} />
+
+            <div className="flex flex-wrap gap-x-7 gap-y-2.5">
+              {paper.links.map(({ label, href }) => (
+                <ArrowLink key={href} href={href} external>
+                  {label}
+                </ArrowLink>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </Section>
   );
 }

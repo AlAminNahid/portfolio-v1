@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Al Amin Hossain Nahid — AI & Full-Stack Engineer";
+export const alt =
+  "Al Amin Hossain Nahid — Software Engineer | Full-Stack & AI Systems";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -13,7 +14,7 @@ export default function OpengraphImage() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        background: "#09090b",
+        background: "#121211",
         padding: "80px",
       }}
     >
@@ -23,7 +24,7 @@ export default function OpengraphImage() {
           fontSize: 28,
           letterSpacing: "0.2em",
           textTransform: "uppercase",
-          color: "#71717a",
+          color: "#9a9a93",
         }}
       >
         Portfolio
@@ -35,7 +36,7 @@ export default function OpengraphImage() {
             display: "flex",
             fontSize: 88,
             fontWeight: 700,
-            color: "#fafafa",
+            color: "#ecece7",
             letterSpacing: "-0.02em",
           }}
         >
@@ -46,10 +47,10 @@ export default function OpengraphImage() {
             display: "flex",
             marginTop: 20,
             fontSize: 38,
-            color: "#a1a1aa",
+            color: "#c9c9c2",
           }}
         >
-          AI &amp; Full-Stack Engineer
+          Software Engineer | Full-Stack &amp; AI Systems
         </div>
       </div>
 
@@ -58,18 +59,18 @@ export default function OpengraphImage() {
           display: "flex",
           gap: "18px",
           fontSize: 26,
-          color: "#818cf8",
+          color: "#8fa4ec",
         }}
       >
-        <span>LLM Agents</span>
-        <span style={{ color: "#3f3f46" }}>·</span>
-        <span>TypeScript</span>
-        <span style={{ color: "#3f3f46" }}>·</span>
+        <span>Agentic AI</span>
+        <span style={{ color: "#3d3d39" }}>·</span>
+        <span>Knowledge Retrieval</span>
+        <span style={{ color: "#3d3d39" }}>·</span>
         <span>Next.js</span>
-        <span style={{ color: "#3f3f46" }}>·</span>
+        <span style={{ color: "#3d3d39" }}>·</span>
         <span>FastAPI</span>
-        <span style={{ color: "#3f3f46" }}>·</span>
-        <span>Kotlin</span>
+        <span style={{ color: "#3d3d39" }}>·</span>
+        <span>Cloud Run</span>
       </div>
     </div>,
     size,
