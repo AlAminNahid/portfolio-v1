@@ -2,6 +2,39 @@ import { type Project } from "@/types";
 
 export const projects: Project[] = [
   {
+    title: "Nirapod Fine",
+    category: "AI + Full-stack + Blockchain",
+    summary:
+      "A web app that checks Bangladeshi traffic fine receipts against the Road Transport Act 2018. An AI model reads the receipt, a deterministic rule engine makes every legal decision, and case audits are anchored on-chain for tamper evidence.",
+    highlights: [
+      "Rule engine built from the Road Transport Act 2018 — 42 offence rules and 15 exception rules, seeded and versioned",
+      "AI-powered receipt reading with dual-read disagreement flagging; user always reviews and confirms",
+      "Deterministic legal decisions — the AI never decides status, the rule engine does",
+      "Solidity smart contract (AuditRegistry) anchors case and dataset fingerprints on-chain with no personal data",
+      "Clerk authentication with role-based access and rate-limited AI reads",
+      "Admin dataset versioning: clone, edit, and activate rule sets",
+    ],
+    tags: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "FastAPI",
+      "Python",
+      "PostgreSQL",
+      "Solidity",
+      "Hardhat",
+      "Clerk",
+      "Docker",
+      "Tailwind CSS",
+    ],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/AxisAkash/Nirapod_Fine",
+      },
+    ],
+  },
+  {
     title: "Bilimbi Studio",
     category: "Production website",
     summary:

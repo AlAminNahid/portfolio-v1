@@ -18,7 +18,7 @@ export default function Works() {
             key={project.title}
             project={project}
             index={i}
-            defaultOpen={i === 0}
+            defaultOpen={false}
           />
         ))}
       </Reveal>
