@@ -23,17 +23,6 @@ Every section of the site — hero, about, services, experience, research, works
 
 ---
 
-## Features
-
-- **Editorial, image-free design** — typography-led layout in a warm off-white / charcoal palette with one cobalt accent
-- **Light and dark themes** — follows the system by default, with a manual toggle (`next-themes`)
-- **Sections** — header, about with technical expertise, experience, projects, research carousel, certificates, and contact
-- **Working contact form** — client-side Zod validation, honeypot, rate-limited API route, Gmail SMTP via Nodemailer
-- **Accessible motion** — scroll progress, rotating headline, reveals; all respect `prefers-reduced-motion`
-- **Responsive** — verified from phone to wide desktop
-
----
-
 ## Tech Stack
 
 | Layer       | Technology                 |
@@ -148,16 +137,6 @@ All site content is driven by files in `constants/` — no component edits requi
 | Research papers            | `src/constants/research.ts`          |
 | Certificates               | `src/constants/certificates.ts`      |
 | Site title, email, CV path | `src/constants/site.ts`              |
-
--------------------------- | ------------------------------------ |
-| Name, bio, university      | `src/components/features/about.tsx`  |
-| Hero CTAs and social links | `src/constants/hero.ts`              |
-| Navigation links           | `src/constants/navigation.ts`        |
-| Skills and technologies    | `src/constants/skills.ts`            |
-| Services / offerings       | `src/constants/services.ts`          |
-| Work experience            | `src/constants/experience.ts`        |
-| Research papers            | `src/constants/research.ts`          |
-| Projects                   | `src/constants/projects.ts`          |
 | Contact email recipient    | `src/config/transporter.ts` + `.env` |
 
 ---

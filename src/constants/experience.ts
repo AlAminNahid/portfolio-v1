@@ -30,10 +30,9 @@ export const experiences: ExperienceEntry[] = [
         text: "Deployed and operated the application on Google Cloud Run in a production environment.",
       },
     ],
-    note: "Client and implementation details are confidential and intentionally omitted.",
     link: {
-      label: "Company record",
-      href: "https://find-and-update.company-information.service.gov.uk/company/16795993",
+      label: "Company website",
+      href: "https://www.kolpo.xyz/",
     },
   },
   {
