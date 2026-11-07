@@ -72,8 +72,6 @@ export const skillGroups: SkillGroup[] = [
       "Firebase",
       "Vercel",
       "Railway",
-      "Solidity",
-      "Hardhat",
       "Render",
     ],
   },

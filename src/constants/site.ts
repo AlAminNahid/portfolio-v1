@@ -11,3 +11,6 @@ export const SITE_DESCRIPTION =
 export const RESUME_PATH = "/Nahid_s_Resume.pdf";
 
 export const EMAIL = "robin.nahid123@gmail.com";
+
+export const GITHUB_REPOS_URL =
+  "https://github.com/AlAminNahid?tab=repositories";

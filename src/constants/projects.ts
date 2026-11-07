@@ -2,36 +2,33 @@ import { type Project } from "@/types";
 
 export const projects: Project[] = [
   {
-    title: "Nirapod Fine",
-    category: "AI + Full-stack + Blockchain",
+    title: "Relgari",
+    category: "Full-stack",
     summary:
-      "A web app that checks Bangladeshi traffic fine receipts against the Road Transport Act 2018. An AI model reads the receipt, a deterministic rule engine makes every legal decision, and case audits are anchored on-chain for tamper evidence.",
+      "A redesign of Bangladesh Railway's ticket booking, built to be faster and friendlier in Bangla and English. A concept project: no real tickets are sold. Search, login and registration are built; seat selection, payment and tickets come next.",
     highlights: [
-      "Rule engine built from the Road Transport Act 2018 — 42 offence rules and 15 exception rules, seeded and versioned",
-      "AI-powered receipt reading with dual-read disagreement flagging; user always reviews and confirms",
-      "Deterministic legal decisions — the AI never decides status, the rule engine does",
-      "Solidity smart contract (AuditRegistry) anchors case and dataset fingerprints on-chain with no personal data",
-      "Clerk authentication with role-based access and rate-limited AI reads",
-      "Admin dataset versioning: clone, edit, and activate rule sets",
+      "Search in a single row: type the stations, pick a date on a small calendar, choose a class",
+      "Fully bilingual in Bangla and English, with the language saved in a cookie and rendered on the server so the page never flashes the wrong language",
+      "Login and registration in one boarding-pass-style popup instead of separate pages",
+      "NestJS API with argon2id password hashing and HttpOnly session cookies; only a hash of each session token is stored",
+      "NID never stored as plain text: a keyed hash blocks duplicate accounts, and an AES-256-GCM copy is shown only to its owner",
+      "Rate-limited sign-in, with the same Zod rules checked in the browser and on the server, and PostgreSQL tables added feature by feature with Prisma migrations",
     ],
     tags: [
       "Next.js",
       "React",
       "TypeScript",
-      "FastAPI",
-      "Python",
+      "NestJS",
       "PostgreSQL",
-      "Solidity",
-      "Hardhat",
-      "Clerk",
-      "Docker",
+      "Prisma",
+      "Zod",
+      "next-intl",
+      "shadcn/ui",
       "Tailwind CSS",
     ],
     links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/AxisAkash/Nirapod_Fine",
-      },
+      { label: "Live site", href: "https://relgari.vercel.app/" },
+      { label: "GitHub", href: "https://github.com/AlAminNahid/relgari" },
     ],
   },
   {
