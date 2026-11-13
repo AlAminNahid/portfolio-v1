@@ -1,5 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#191919"/>
-  <path d="M20 47V17M44 47V17" fill="none" stroke="#F8F8F5" stroke-width="7" stroke-linecap="butt"/>
-  <path d="M20 17L44 47" fill="none" stroke="#8FA4EC" stroke-width="7" stroke-linecap="butt"/>
+  <style>
+    .bg { fill: #191919; }
+    .stem { stroke: #F8F8F5; }
+    .diagonal { stroke: #8FA4EC; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #F8F8F5; }
+      .stem { stroke: #191919; }
+      .diagonal { stroke: #2D4DAF; }
+    }
+  </style>
+  <rect class="bg" width="64" height="64" rx="14"/>
+  <path class="stem" d="M20 47V17M44 47V17" fill="none" stroke-width="7" stroke-linecap="butt"/>
+  <path class="diagonal" d="M20 17L44 47" fill="none" stroke-width="7" stroke-linecap="butt"/>
 </svg>
