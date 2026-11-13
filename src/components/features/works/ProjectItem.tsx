@@ -4,7 +4,7 @@ import { useState, type PointerEvent } from "react";
 import { Plus } from "lucide-react";
 import { type Project } from "@/types";
 import ArrowLink from "@/components/ui/ArrowLink";
-import Tags from "@/components/ui/Tags";
+import SkillPills from "@/components/ui/SkillPills";
 
 type ProjectItemProps = {
   project: Project;
@@ -53,9 +53,23 @@ export default function ProjectItem({
             <span className="block text-[clamp(1.35rem,2.4vw,1.85rem)] leading-[1.18] font-medium tracking-[-0.025em] transition duration-300 group-hover:translate-x-1.5 group-hover:text-accent">
               {project.title}
             </span>
-            <span className="label mt-2.5 block text-accent">
-              {project.category}
+            <span className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-2">
+              <span className="label text-accent">{project.category}</span>
+              {project.status && (
+                <span className="label inline-flex items-center gap-1.5 rounded-full border border-border-strong px-2.5 py-0.5 text-fg">
+                  <span
+                    aria-hidden="true"
+                    className="h-1.5 w-1.5 rounded-full bg-accent"
+                  />
+                  {project.status}
+                </span>
+              )}
             </span>
+            {project.role && (
+              <span className="mt-2 block text-[13.5px] text-fg-muted">
+                {project.role}
+              </span>
+            )}
           </span>
           <span className="col-span-2 col-start-2 row-start-2 max-w-[52ch] pt-[0.3em] text-[15.5px] text-pretty text-fg-muted lg:col-span-1 lg:col-start-auto lg:row-start-auto">
             {project.summary}
@@ -100,13 +114,36 @@ export default function ProjectItem({
                   </li>
                 ))}
               </ul>
-              <Tags items={project.tags} />
+              {project.upcoming && (
+                <div className="grid gap-3">
+                  <p className="label">Coming next</p>
+                  <ul className="flex flex-wrap gap-2">
+                    {project.upcoming.map((item) => (
+                      <li
+                        key={item}
+                        className="rounded-full border border-dashed border-border-strong px-3.5 py-1.5 text-[13.5px] leading-tight text-fg-muted"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <SkillPills items={project.tags} />
               <div className="flex flex-wrap gap-x-7 gap-y-2.5">
-                {project.links.map(({ label, href }) => (
-                  <ArrowLink key={href} href={href} external>
-                    {label}
-                  </ArrowLink>
-                ))}
+                {project.links.map(({ label, href }) => {
+                  const internal = href.startsWith("#");
+                  return (
+                    <ArrowLink
+                      key={href}
+                      href={href}
+                      external={!internal}
+                      arrow={internal ? "↓" : "↗"}
+                    >
+                      {label}
+                    </ArrowLink>
+                  );
+                })}
               </div>
             </div>
           </div>

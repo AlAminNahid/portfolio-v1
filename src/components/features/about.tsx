@@ -1,6 +1,6 @@
 import { aboutParagraphs, education } from "@/constants/about";
 import { skillGroups } from "@/constants/skills";
-import { skillIcons } from "@/constants/skillIcons";
+import SkillPills from "@/components/ui/SkillPills";
 import Section from "@/components/ui/Section";
 import SectionHead from "@/components/ui/SectionHead";
 import { Reveal } from "@/components/ui/Reveal";
@@ -41,25 +41,7 @@ export default function About() {
                   </span>
                   {label}
                 </h3>
-                <ul className="flex flex-wrap items-start gap-2 lg:col-span-9">
-                  {skills.map((skill) => {
-                    const Icon = skillIcons[skill];
-                    return (
-                      <li
-                        key={skill}
-                        className="group inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-[13.5px] leading-tight text-fg transition-colors duration-200 hover:border-accent hover:text-accent"
-                      >
-                        {Icon && (
-                          <Icon
-                            aria-hidden="true"
-                            className="size-3.5 shrink-0 text-fg-muted transition-colors duration-200 group-hover:text-accent"
-                          />
-                        )}
-                        {skill}
-                      </li>
-                    );
-                  })}
-                </ul>
+                <SkillPills items={skills} className="lg:col-span-9" />
               </section>
             ))}
           </div>

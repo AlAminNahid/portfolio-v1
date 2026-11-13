@@ -7,27 +7,35 @@ export const experiences: ExperienceEntry[] = [
     period: "Oct 2026 – Present",
     current: true,
     summary:
-      "Working on an enterprise AI application for a client, contributing across frontend development, backend services, agent orchestration, knowledge retrieval, and cloud deployment.",
+      "I work as part of the engineering team on the company's enterprise AI application. My work covers the frontend, backend services, the agent behind the chat, knowledge retrieval and deployment.",
+    tags: [
+      "TypeScript",
+      "Python",
+      "Pydantic AI",
+      "Pydantic",
+      "E2B",
+      "Google Cloud Run",
+    ],
     items: [
       {
-        title: "Frontend architecture",
-        text: "Redesigned the application's user interface and built full-stack features to improve usability and give the product a more consistent experience.",
+        title: "Frontend development",
+        text: "I work on the application's user interface, building and refining features so the product stays consistent and easy to use. Most of these features also need backend changes, so I work on both sides.",
       },
       {
         title: "Agentic chat system",
-        text: "Built a conversational AI system with custom Python orchestration and Pydantic-based models for structured validation and agent interactions.",
+        text: "I develop conversational AI features using Pydantic AI agents with tool calling. Pydantic models validate the structured data that passes between the agent and its tools.",
       },
       {
         title: "Knowledge retrieval",
-        text: "Developed a custom knowledge-base retrieval workflow that connects relevant organisational information to the agent for context-aware responses.",
+        text: "I work on the retrieval workflow that finds relevant organisational information in the knowledge base and passes it to the agent, so its answers draw on the organisation's own content.",
       },
       {
         title: "Sandboxed code execution",
-        text: "Integrated E2B to run Python scripts in isolated sandboxes and feed the results back into the agent workflow.",
+        text: "I use E2B to run Python scripts in isolated sandboxes. The results go back into the agent workflow, so the agent can use them in its response.",
       },
       {
         title: "Cloud deployment",
-        text: "Deployed and operated the application on Google Cloud Run in a production environment.",
+        text: "I deploy the application's services to Google Cloud Run.",
       },
     ],
     link: {
@@ -40,31 +48,35 @@ export const experiences: ExperienceEntry[] = [
     role: "Software Engineering Intern",
     period: "Jun 2026 – Sep 2026",
     summary:
-      "Worked across a Next.js frontend and an asynchronous FastAPI backend on an AI-powered grant management platform, building AI-assisted proposal workflows and knowledge management features.",
+      "My first engineering role. I contributed to the Next.js frontend and FastAPI backend of AuraScout, an AI-powered grant management platform.",
+    tags: [
+      "Next.js",
+      "shadcn/ui",
+      "Zustand",
+      "FastAPI",
+      "SQLAlchemy",
+      "Alembic",
+      "PostgreSQL",
+      "Cloudflare R2",
+      "Clerk",
+      "Plate.js",
+    ],
     items: [
       {
         title: "Agentic proposal generation",
-        text: "Built a tool-driven workflow that guides users from grant source analysis and requirement extraction to proposal drafting, with human approval at key stages.",
-      },
-      {
-        title: "Conversational agent and state",
-        text: "Implemented an agentic chat experience with multi-step workflow orchestration, contextual interactions, and conversation state management.",
+        text: "Worked on a tool-driven chat workflow that guides users from grant analysis and requirement extraction to proposal drafting. The user approves the output at key stages before the workflow continues.",
       },
       {
         title: "Custom knowledge retrieval",
-        text: "Developed summary-guided retrieval: short document descriptions in PostgreSQL identify the relevant files in Cloudflare R2, and only then are full contents retrieved for deeper analysis.",
+        text: "Implemented a retrieval approach based on document summaries. Short descriptions stored in PostgreSQL identify the relevant files in Cloudflare R2 and only those files are read in full.",
       },
       {
-        title: "Collaborative editing",
-        text: "Integrated Plate.js commenting into the proposal editor to support review and feedback.",
+        title: "Backend development",
+        text: "Built authenticated async APIs with FastAPI, SQLAlchemy, Alembic and PostgreSQL, using Clerk JWT authentication and organisation-based access control.",
       },
       {
-        title: "Backend and data",
-        text: "Built authenticated, asynchronous APIs with FastAPI, SQLAlchemy, Alembic and PostgreSQL, using Clerk JWT authentication and organisation-based access control.",
-      },
-      {
-        title: "Document workflows",
-        text: "Contributed to PDF/DOCX processing, proposal version history, and persistent document workflows.",
+        title: "Document editing",
+        text: "Integrated Plate.js commenting into the proposal editor so reviewers can leave feedback and contributed to PDF/DOCX processing and version history.",
       },
     ],
     link: { label: "Company website", href: "https://www.auradev.co.uk/" },

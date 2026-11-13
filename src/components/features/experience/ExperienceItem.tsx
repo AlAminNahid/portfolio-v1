@@ -4,6 +4,7 @@ import { useState, type PointerEvent } from "react";
 import { Plus } from "lucide-react";
 import { type ExperienceEntry } from "@/types";
 import ArrowLink from "@/components/ui/ArrowLink";
+import SkillPills from "@/components/ui/SkillPills";
 
 type ExperienceItemProps = {
   entry: ExperienceEntry;
@@ -12,6 +13,8 @@ type ExperienceItemProps = {
 function ExperienceDetails({ entry }: { entry: ExperienceEntry }) {
   return (
     <>
+      <SkillPills items={entry.tags} />
+
       <ul className="border-t border-border">
         {entry.items.map(({ title, text }) => (
           <li

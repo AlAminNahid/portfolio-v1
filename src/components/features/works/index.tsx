@@ -11,7 +11,7 @@ export default function Works() {
       <SectionHead
         id="projects-heading"
         label="Projects"
-        title="Selected products I built myself."
+        title="Projects I've built or helped build."
       />
       <Reveal>
         {projects.map((project, i) => (

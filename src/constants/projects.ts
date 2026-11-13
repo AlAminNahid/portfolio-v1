@@ -4,25 +4,26 @@ export const projects: Project[] = [
   {
     title: "Relgari",
     category: "Full-stack",
+    status: "In progress",
     summary:
-      "A redesign of Bangladesh Railway's ticket booking, built to be faster and friendlier in Bangla and English. A concept project: no real tickets are sold. Search, login and registration are built; seat selection, payment and tickets come next.",
+      "A train ticket booking concept inspired by Bangladesh Railway, in Bangla and English. It is a personal concept project: no real tickets are sold.",
     highlights: [
-      "Search in a single row: type the stations, pick a date on a small calendar, choose a class",
-      "Fully bilingual in Bangla and English, with the language saved in a cookie and rendered on the server so the page never flashes the wrong language",
-      "Login and registration in one boarding-pass-style popup instead of separate pages",
-      "NestJS API with argon2id password hashing and HttpOnly session cookies; only a hash of each session token is stored",
-      "NID never stored as plain text: a keyed hash blocks duplicate accounts, and an AES-256-GCM copy is shown only to its owner",
-      "Rate-limited sign-in, with the same Zod rules checked in the browser and on the server, and PostgreSQL tables added feature by feature with Prisma migrations",
+      "Train search in a single row: stations, date and class",
+      "Bilingual in Bangla and English, rendered on the server",
+      "Login and registration in one boarding-pass-style popup",
+      "NestJS API with argon2id password hashing and HttpOnly session cookies",
+      "NID stored encrypted, with a keyed hash to block duplicate accounts",
+      "Rate-limited sign-in, with the same Zod rules in the browser and on the server",
+      "Real railway data: 225 stations and 122 intercity trains",
     ],
+    upcoming: ["Seat selection", "Tickets"],
     tags: [
       "Next.js",
-      "React",
       "TypeScript",
       "NestJS",
       "PostgreSQL",
       "Prisma",
       "Zod",
-      "next-intl",
       "shadcn/ui",
       "Tailwind CSS",
     ],
@@ -32,13 +33,58 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: "Bilimbi Studio",
-    category: "Production website",
+    title: "Nirapod Fine",
+    category: "AI + Full-stack",
+    role: "Thesis project · Co-developed",
     summary:
-      "A content-driven marketing website for a small software studio in Dhaka, built and deployed with a hand-authored design-token system.",
+      "A web app that checks Bangladeshi traffic fine receipts against Road Transport Act 2018 rules. An AI model reads the receipt and writes the explanation; a deterministic rule engine makes every legal decision.",
+    highlights: [
+      "AI reads a receipt photo or PDF and the user reviews every field before analysis",
+      "A plain-Python rule engine picks the section, checks the fine amount and chooses the result",
+      "42 offence rules and 15 exception rules stored in PostgreSQL as versioned datasets",
+      "A hash of each result is recorded on a smart contract so it can be verified later",
+      "FastAPI backend with Clerk sign-in and a Next.js frontend",
+    ],
+    tags: [
+      "Next.js",
+      "FastAPI",
+      "PostgreSQL",
+      "SQLAlchemy",
+      "Alembic",
+      "Clerk",
+      "Hardhat",
+      "Solidity",
+    ],
+    links: [
+      { label: "GitHub", href: "https://github.com/AxisAkash/Nirapod_Fine.." },
+    ],
+  },
+  {
+    title: "AI Chat",
+    category: "AI + Full-stack",
+    summary:
+      "A multi-conversation AI chat application with persistent history, using Google Gemini through server-side API routes with streamed responses.",
+    highlights: [
+      "Gemini integrated server-side with streamed responses",
+      "Conversations saved with Prisma and PostgreSQL on Neon",
+      "Sidebar history to resume or delete any conversation",
+      "REST endpoints for chat completion and conversation management",
+      "Reusable React components with the Next.js App Router",
+    ],
+    tags: ["Next.js", "Gemini API", "Prisma", "PostgreSQL", "Tailwind CSS"],
+    links: [
+      { label: "Live site", href: "https://ai-nova-chat.vercel.app/" },
+      { label: "GitHub", href: "https://github.com/AlAminNahid/ai-chat" },
+    ],
+  },
+  {
+    title: "Bilimbi Studio",
+    category: "Marketing website",
+    summary:
+      "A marketing website for a small software studio in Dhaka, built with Next.js and deployed on Vercel.",
     highlights: [
       "Two-tier design tokens: brand primitives and semantic roles, with hand-written CSS",
-      "All copy lives in typed constants, never inside components",
+      "All copy lives in typed constants, not inside components",
       "Validated contact-form API using Zod and an external email service",
       "Deployed on Vercel with preview deployments on pull requests",
     ],
@@ -48,49 +94,6 @@ export const projects: Project[] = [
       {
         label: "GitHub",
         href: "https://github.com/AlAminNahid/bilimbi_studio",
-      },
-    ],
-  },
-  {
-    title: "AI Chat",
-    category: "AI + Full-stack",
-    summary:
-      "A multi-conversation AI chat application with persistent history, powered by Google Gemini through server-side API routes with streamed responses.",
-    highlights: [
-      "Gemini integrated server-side with streamed responses",
-      "Conversations persisted with Prisma 7 and PostgreSQL on Neon",
-      "Sidebar history to resume or delete any conversation",
-      "REST endpoints for chat completion and conversation management",
-      "Reusable React components, Next.js App Router, Tailwind CSS",
-    ],
-    tags: ["Next.js", "Gemini API", "Prisma", "PostgreSQL", "Tailwind CSS"],
-    links: [
-      { label: "Live site", href: "https://ai-nova-chat.vercel.app/" },
-      { label: "GitHub", href: "https://github.com/AlAminNahid/ai-chat" },
-    ],
-  },
-  {
-    title: "MessMaster",
-    category: "Mobile + Backend",
-    summary:
-      "A native Android app for student messes, hostels and shared apartments, with a NestJS backend. Tracks meals, utilities and monthly expenses and calculates each member's bill.",
-    highlights: [
-      "Manager and Member roles: a manager creates the mess, records meals, manages utilities and posts notices",
-      "Meal rate calculated automatically as total monthly expense ÷ total meals",
-      "Utility tracking for electricity, water, internet, grocery and more",
-      "JWT auth with access and refresh tokens, bcrypt password hashing, validated APIs",
-      "Android client built with MVVM, Kotlin Coroutines, Retrofit and Material Design",
-      "NestJS and PostgreSQL backend with TypeORM, in internal testing on Google Play",
-    ],
-    tags: ["Kotlin", "Android SDK", "NestJS", "PostgreSQL", "TypeORM", "JWT"],
-    links: [
-      {
-        label: "App repository",
-        href: "https://github.com/AlAminNahid/MessMasterApp",
-      },
-      {
-        label: "Backend repository",
-        href: "https://github.com/AlAminNahid/MessMasterApp_Backend",
       },
     ],
   },

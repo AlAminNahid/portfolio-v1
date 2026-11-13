@@ -10,7 +10,7 @@ export default function Experience() {
       <SectionHead
         id="experience-heading"
         label="Professional experience"
-        title="Where I have worked on production software."
+        title="Where I've worked so far."
       />
 
       <Reveal>

@@ -13,8 +13,11 @@ export interface ExternalLink {
 export interface Project {
   title: string;
   category: string;
+  status?: string;
+  role?: string;
   summary: string;
   highlights: readonly string[];
+  upcoming?: readonly string[];
   tags: readonly string[];
   links: readonly ExternalLink[];
 }
@@ -35,6 +38,7 @@ export interface ExperienceEntry {
   period: string;
   current?: boolean;
   summary: string;
+  tags: readonly string[];
   items: readonly ExperienceItem[];
   note?: string;
   link: ExternalLink;
