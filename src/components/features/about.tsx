@@ -1,5 +1,6 @@
 import { aboutParagraphs, education } from "@/constants/about";
 import { skillGroups } from "@/constants/skills";
+import { skillIcons } from "@/constants/skillIcons";
 import Section from "@/components/ui/Section";
 import SectionHead from "@/components/ui/SectionHead";
 import { Reveal } from "@/components/ui/Reveal";
@@ -25,24 +26,39 @@ export default function About() {
         <Reveal className="lg:col-span-12">
           <p className="label mb-5 text-fg">Skills</p>
           <div className="border-t border-border">
-            {skillGroups.map(({ label, skills }) => (
+            {skillGroups.map(({ label, skills }, i) => (
               <section
                 key={label}
                 aria-label={label}
                 className="grid gap-3.5 border-b border-border py-5 lg:grid-cols-12 lg:gap-x-6 lg:py-6"
               >
-                <h3 className="text-[1.05rem] font-medium tracking-[-0.015em] lg:col-span-3 lg:pt-1">
+                <h3 className="flex items-baseline gap-3 text-[1.05rem] font-medium tracking-[-0.015em] lg:col-span-3 lg:pt-1">
+                  <span
+                    aria-hidden="true"
+                    className="font-mono text-[12.5px] font-normal tracking-normal text-fg-muted tabular-nums"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   {label}
                 </h3>
                 <ul className="flex flex-wrap items-start gap-2 lg:col-span-9">
-                  {skills.map((skill) => (
-                    <li
-                      key={skill}
-                      className="rounded-full border border-border bg-surface px-3.5 py-1.5 text-[13.5px] leading-tight text-fg transition-colors duration-200 hover:border-accent hover:text-accent"
-                    >
-                      {skill}
-                    </li>
-                  ))}
+                  {skills.map((skill) => {
+                    const Icon = skillIcons[skill];
+                    return (
+                      <li
+                        key={skill}
+                        className="group inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-[13.5px] leading-tight text-fg transition-colors duration-200 hover:border-accent hover:text-accent"
+                      >
+                        {Icon && (
+                          <Icon
+                            aria-hidden="true"
+                            className="size-3.5 shrink-0 text-fg-muted transition-colors duration-200 group-hover:text-accent"
+                          />
+                        )}
+                        {skill}
+                      </li>
+                    );
+                  })}
                 </ul>
               </section>
             ))}
