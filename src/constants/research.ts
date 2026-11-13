@@ -5,34 +5,6 @@ export const SELF_AUTHOR = "Al Amin Hossain Nahid";
 export const researchPapers: ResearchPaper[] = [
   {
     title:
-      "An AI-Based Legal Advisory System for Traffic Violation Verification Using Official Traffic Regulations",
-    authors: [
-      SELF_AUTHOR,
-      "Chowdhury Shakil Hasan",
-      "Rakibul Islam Akash",
-      "Abdullah Al Rafe Ayon",
-      "Kazi Sadia",
-      "Md Imamul Islam",
-      "Ahmed Al Mansur",
-    ],
-    abstract:
-      "A framework for AI-assisted legal verification of traffic violation notices. It retrieves the relevant provisions from official traffic regulations and produces citation-backed explanations with RAG, deferring to human review when evidence or law is insufficient. A blockchain layer protects the integrity of the verification reports.",
-    status: "Accepted",
-    statusNote: "To be presented · 1–3 Nov 2026",
-    conference: "IEEE CSDE 2026",
-    conferenceFullName:
-      "11th IEEE Asia-Pacific Conference on Computer Science and Data Engineering",
-    location: "Cox's Bazar, Bangladesh",
-    tags: [
-      "RAG",
-      "Large language models",
-      "Legal reasoning",
-      "Blockchain verification",
-    ],
-    links: [{ label: "Conference", href: "https://ieee-csde.org/" }],
-  },
-  {
-    title:
       "Intelligent Waste Classification for Sustainable Urban Development: A MobileNetV3-Based Deep Learning Approach Using the BDWaste Dataset",
     authors: [
       SELF_AUTHOR,
@@ -46,7 +18,7 @@ export const researchPapers: ResearchPaper[] = [
     statusNote: "IEEE Xplore · 2026",
     conference: "PECCII 2026",
     conferenceFullName:
-      "Intl. Conference on Power, Electronics, Communications, Computing, and Intelligent Infrastructure",
+      "Intl. Conference on Power, Electronics, Communications, Computing and Intelligent Infrastructure",
     location: "Jhenaidah, Bangladesh",
     tags: [
       "MobileNetV3",
@@ -61,5 +33,33 @@ export const researchPapers: ResearchPaper[] = [
       },
       { label: "Conference", href: "https://peccii.pust.ac.bd/" },
     ],
+  },
+  {
+    title:
+      "An AI-Based Legal Advisory System for Traffic Violation Verification Using Official Traffic Regulations",
+    authors: [
+      SELF_AUTHOR,
+      "Chowdhury Shakil Hasan",
+      "Rakibul Islam Akash",
+      "Abdullah Al Rafe Ayon",
+      "Kazi Sadia",
+      "Md Imamul Islam",
+      "Ahmed Al Mansur",
+    ],
+    abstract:
+      "A framework for AI-assisted legal verification of traffic violation notices. An AI model reads the notice and a rule engine built from official traffic regulations checks the offence and the fine. Explanations cite the relevant section and cases go to human review when the evidence or law is insufficient. A blockchain layer protects the integrity of the verification reports.",
+    status: "Presented",
+    statusNote: "1–3 Nov 2026",
+    conference: "IEEE CSDE 2026",
+    conferenceFullName:
+      "11th IEEE Asia-Pacific Conference on Computer Science and Data Engineering",
+    location: "Cox's Bazar, Bangladesh",
+    tags: [
+      "Rule-based verification",
+      "Large language models",
+      "Legal reasoning",
+      "Blockchain verification",
+    ],
+    links: [{ label: "Conference", href: "https://ieee-csde.org/" }],
   },
 ];

@@ -48,7 +48,7 @@ export interface ResearchPaper {
   title: string;
   authors: readonly string[];
   abstract: string;
-  status: "Published" | "Accepted";
+  status: "Published" | "Presented" | "Accepted";
   statusNote: string;
   conference: string;
   conferenceFullName: string;
@@ -63,6 +63,7 @@ export interface Certificate {
   issuer: string;
   date: string;
   detail?: string;
+  href?: string;
   icon: LucideIcon;
 }
 

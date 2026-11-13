@@ -2,6 +2,7 @@ import { certificates } from "@/constants/certificates";
 import Section from "@/components/ui/Section";
 import SectionHead from "@/components/ui/SectionHead";
 import { Reveal } from "@/components/ui/Reveal";
+import ArrowLink from "@/components/ui/ArrowLink";
 
 export default function Certificates() {
   return (
@@ -9,12 +10,12 @@ export default function Certificates() {
       <SectionHead
         id="certificates-heading"
         label="Certificates"
-        title="Recognition and training."
+        title="Certificates and training."
       />
 
       <ul className="grid gap-5 lg:grid-cols-3">
         {certificates.map(
-          ({ title, type, issuer, date, detail, icon: Icon }, i) => (
+          ({ title, type, issuer, date, detail, href, icon: Icon }, i) => (
             <li key={title} className="flex">
               <Reveal delay={i * 0.06} className="flex w-full">
                 <div className="flex w-full flex-col gap-3 rounded-md border border-border bg-surface px-[26px] pt-7 pb-[30px] transition duration-300 hover:-translate-y-[3px] hover:border-accent">
@@ -33,7 +34,22 @@ export default function Certificates() {
                   <p className="mt-auto pt-1 text-[14.5px] text-fg-muted">
                     {issuer}
                   </p>
-                  {detail && <small className="label">{detail}</small>}
+                  {detail && (
+                    <small className="font-mono text-[11.5px] text-fg-muted">
+                      {detail}
+                    </small>
+                  )}
+                  {href && (
+                    <div className="pt-1.5">
+                      <ArrowLink
+                        href={href}
+                        external
+                        className="text-[14.5px]"
+                      >
+                        View certificate
+                      </ArrowLink>
+                    </div>
+                  )}
                 </div>
               </Reveal>
             </li>
