@@ -10,7 +10,7 @@ export default function About() {
       <SectionHead
         id="about-heading"
         label="About"
-        title="Engineer first, across the whole stack."
+        title="Early in my career, working across frontend, backend and AI."
       />
 
       <div className="grid gap-14 lg:grid-cols-12 lg:gap-x-6">

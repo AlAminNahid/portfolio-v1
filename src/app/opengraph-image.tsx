@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const alt =
-  "Al Amin Hossain Nahid — Software Engineer | Full-Stack & AI Systems";
+  "Al Amin Hossain Nahid — Software Engineer | Full-Stack Development & Applied AI";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -46,11 +46,11 @@ export default function OpengraphImage() {
           style={{
             display: "flex",
             marginTop: 20,
-            fontSize: 38,
+            fontSize: 34,
             color: "#c9c9c2",
           }}
         >
-          Software Engineer | Full-Stack &amp; AI Systems
+          Software Engineer | Full-Stack Development &amp; Applied AI
         </div>
       </div>
 

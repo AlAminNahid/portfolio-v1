@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     "Al Amin Hossain Nahid",
     "Software Engineer",
     "full-stack developer",
-    "AI systems",
+    "applied AI",
     "agentic workflows",
     "RAG",
     "Next.js",
